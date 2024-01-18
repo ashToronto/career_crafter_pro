@@ -52,8 +52,9 @@ group :development, :test do
   gem 'faker'
   gem 'pry'
   gem 'rails-controller-testing'
-  gem 'rspec-rails', '~> 5.0'
+  gem 'rspec-rails', '~> 6.1.0'
   gem 'rubocop', require: false
+  gem 'shoulda-matchers'
   gem 'bullet'
 end
 
@@ -66,4 +67,5 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'simplecov', require: false
 end
