@@ -4,19 +4,17 @@ namespace :admin do
     email = ENV['EMAIL'] || 'admin@example.com'
     password = ENV['PASSWORD'] || 'password'
 
-    user = User.find_or_create_by(email: email) do |u|
-      u.password = password
-      u.role = :admin
+    admin_exists_already = User.find_by(email: email, role: :admin)
+    user = User.new(email: email, password: password, role: :admin)
+
+    if admin_exists_already
+      puts "admin already exists"
     end
 
-    if user.persisted?
-      if user.created_at == user.updated_at
-        puts 'Admin user created successfully!'
-      else
-        puts 'Admin user already exists and has been updated!'
-      end
+    if user.save
+      puts 'Admin user created successfully!'
     else
-      puts 'Failed to create or update admin user with error:'
+      puts 'Failed to create admin user:'
       puts user.errors.full_messages.join(', ')
     end
   end

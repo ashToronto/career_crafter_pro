@@ -23,7 +23,7 @@ RSpec.describe 'admin:create_admin', type: :task do
     end
   end
 
-  context 'when updating an existing admin user' do
+  context 'when existing admin user has non unique email' do
     let!(:existing_admin) { create(:user, :admin, email: 'admin@example.com') }
 
     it 'does not create a new user' do
@@ -31,17 +31,6 @@ RSpec.describe 'admin:create_admin', type: :task do
         task.execute
       }.not_to change(User, :count)
 
-    end
-  end
-
-  context 'when the task fails' do
-    # Simulate a failure, such as trying to create a user with an invalid email
-    before { allow(User).to receive(:find_or_create_by).and_raise(StandardError) }
-
-    it 'does not create a new user' do
-      expect {
-        expect { task.execute }.to raise_error(StandardError)
-      }.not_to change(User, :count)
     end
   end
 end
