@@ -6,14 +6,14 @@
     %ul.navbar-nav
       - if user_signed_in?
         %li.nav-item
-          = link_to 'Home placeholder', "/", class: 'nav-link'
+          = link_to 'Home', root_path, class: 'nav-link'
         %li.nav-item.dropdown
           %a.nav-link.dropdown-toggle{"href" => "#", "role" => "button", "data-bs-toggle" => "dropdown"}
             = current_user.email 
           .dropdown-menu.dropdown-menu-end
             = link_to 'Edit Profile', edit_user_registration_path, class: 'dropdown-item'
             - if current_user.admin?
-              = link_to 'Admin placeholder', edit_user_registration_path, class: 'dropdown-item'
+              = link_to 'Admin edit profile placeholder', edit_user_registration_path, class: 'dropdown-item'
       - else
         %li.nav-item
           = link_to 'Sign Up', new_user_registration_path, class: 'nav-link'

@@ -1,0 +1,51 @@
+%section.hero.bg-dark.text-white.py-5
+  .container
+    .row.align-items-center
+      .col-md-6
+        %h1 Welcome to Career Crafter Pro
+        %p.lead Your Journey to a Perfect Resume Begins Here
+        %p Whether you're a student, tech professional, executive, or in any other field, Career Crafter Pro is your partner in highlighting your unique story. Craft resumes that open doors.
+        = link_to 'Start Crafting', new_user_registration_path, class: 'btn btn-primary btn-lg mt-3'
+
+      .col-md-6
+        %img{src: "https://via.placeholder.com/600x400", alt: "Resume Crafting Visual", class: "img-fluid"}
+
+%section.about.bg-light.py-5
+  .container
+    %h2.text-center.mb-4 The Art of Crafting Your Professional Identity
+    %p.text-center Embrace the craft of resume building. Tailor your professional narrative to reflect your skills, experiences, and aspirations, regardless of your field.
+
+%section.features.py-5
+  .container
+    %h2.text-center.mb-4 Versatile for Every Professional
+    .row.g-4
+      .col-md-4
+        .card.h-100
+          .card-body
+            %h3.card-title Innovators & Creators
+            %p.card-text Tech enthusiasts and creatives, design a resume that showcases your groundbreaking projects and inventive skills.
+            %img{src: "https://via.placeholder.com/150", alt: "Tech Innovation Graphic", class: "card-img-top"}
+      .col-md-4
+        .card.h-100
+          .card-body
+            %h3.card-title Leaders & Visionaries
+            %p.card-text Executives and managers, craft a narrative that highlights your strategic leadership and impactful decisions.
+            %img{src: "https://via.placeholder.com/150", alt: "Leadership Graphic", class: "card-img-top"}
+      .col-md-4
+        .card.h-100
+          .card-body
+            %h3.card-title Diverse Professions
+            %p.card-text Nurses, teachers, tradespeople – your roles are pivotal. Create a resume that speaks to your dedication and skills.
+            %img{src: "https://via.placeholder.com/150", alt: "Diverse Professions Graphic", class: "card-img-top"}
+
+%section.premium.bg-primary.text-white.py-5
+  .container
+    %h2.text-center.mb-4 Premium Features: A Step Above
+    %p.text-center With exclusive templates and advanced editing features, our premium service elevates your resume to the next level.
+    = link_to 'Explore Premium', '#', class: 'btn btn-outline-light'
+
+%section.cta.bg-secondary.text-white.py-5
+  .container.text-center
+    %h2 Start Crafting Your Future
+    %p Begin the journey to a standout resume today with Career Crafter Pro.
+    = link_to 'Join Now', new_user_registration_path, class: 'btn btn-dark btn-lg mt-3'

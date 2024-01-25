@@ -1,0 +1,40 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  %div.container-fluid
+    %button.navbar-toggler{type: "button", 'data-bs-toggle': "collapse", 'data-bs-target': "#sidebarMenu", 'aria-controls': "sidebarMenu", 'aria-expanded': "false", 'aria-label': "Toggle navigation"}
+      %span.navbar-toggler-icon
+    %a.navbar-brand{href: "#"} Dashboard
+
+%div.container-fluid
+  %div.row
+    %nav#sidebarMenu.col-md-3.col-lg-2.d-md-block.bg-light.sidebar.collapse
+      .position-sticky.pt-3
+        %ul.nav.flex-column
+          %li.nav-item
+            %a.nav-link.active{href: "#", 'aria-current': "page"}
+              %span.me-2{"data-feather" => "home"}
+              Dashboard
+          %li.nav-item
+            %a.nav-link{href: "#"}
+              %span.me-2{"data-feather" => "file"}
+              Resumes
+          %li.nav-item
+            %a.nav-link{href: "#"}
+              %span.me-2{"data-feather" => "shopping-cart"}
+              Templates
+          %li.nav-item
+            %a.nav-link{href: "#"}
+              %span.me-2{"data-feather" => "users"}
+              Account
+          %li.nav-item
+            %a.nav-link{href: "#"}
+              %span.me-2{"data-feather" => "bar-chart-2"}
+              Analytics
+          %li.nav-item
+            %a.nav-link{href: "#"}
+              %span.me-2{"data-feather" => "layers"}
+              Integrations
+    %main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
+        %h1.h2 Dashboard
+      .container
+        %p Welcome to your dashboard! Here you can manage your resumes, templates, and account settings.
