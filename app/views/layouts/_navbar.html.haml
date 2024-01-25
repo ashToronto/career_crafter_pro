@@ -1,0 +1,28 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  %a.navbar-brand{:href => "/"} Career Crafter Pro
+  %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarNav.collapse.navbar-collapse
+    %ul.navbar-nav
+      - if user_signed_in?
+        %li.nav-item
+          = link_to 'Home placeholder', "/", class: 'nav-link'
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle{"href" => "#", "role" => "button", "data-bs-toggle" => "dropdown"}
+            = current_user.email 
+          .dropdown-menu.dropdown-menu-end
+            = link_to 'Edit Profile', edit_user_registration_path, class: 'dropdown-item'
+            - if current_user.admin?
+              = link_to 'Admin placeholder', edit_user_registration_path, class: 'dropdown-item'
+      - else
+        %li.nav-item
+          = link_to 'Sign Up', new_user_registration_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'Login', new_user_session_path, class: 'nav-link'
+    - if user_signed_in?
+      %ul.navbar-nav.ms-auto.d-flex.align-items-center
+        %li.nav-item
+          = link_to 'cta Placeholder', edit_user_registration_path, class: 'btn btn-outline-primary nav-link btn-create-post'
+        %li.nav-item
+          = form_tag destroy_user_session_path, method: :delete, class: 'nav-link' do
+            = button_tag 'Logout', class: 'btn btn-outline-warning'
