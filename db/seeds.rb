@@ -7,3 +7,19 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'faker'
+
+User.where.not(role: :admin).destroy_all
+
+users = Array.new(3) {
+  User.create(
+    email: Faker::Internet.email,
+    password: 'password'
+    )
+  }
+
+User.all.each do |user|
+  user.resumes.create
+end
+
+puts 'SUCCESS Database SEEDED'
