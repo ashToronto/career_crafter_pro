@@ -45,4 +45,8 @@ RSpec.describe User, type: :model do
       expect(user.errors.messages[:password_confirmation]).to include("doesn't match Password")
     end
   end
+
+  context 'Resumes' do
+    it { should have_many(:resumes) }
+  end
 end
