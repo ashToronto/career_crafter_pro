@@ -2,7 +2,9 @@
   %div.container-fluid
     %button.navbar-toggler{type: "button", 'data-bs-toggle': "collapse", 'data-bs-target': "#sidebarMenu", 'aria-controls': "sidebarMenu", 'aria-expanded': "false", 'aria-label': "Toggle navigation"}
       %span.navbar-toggler-icon
-    %a.navbar-brand{href: "#"} Dashboard
+    %a.navbar-brand{href: "/"} 
+      %strong 
+        Dashboard
 
 %div.container-fluid
   %div.row
@@ -10,31 +12,37 @@
       .position-sticky.pt-3
         %ul.nav.flex-column
           %li.nav-item
-            %a.nav-link.active{href: "#", 'aria-current': "page"}
-              %span.me-2{"data-feather" => "home"}
-              Dashboard
-          %li.nav-item
-            %a.nav-link{href: "#"}
-              %span.me-2{"data-feather" => "file"}
-              Resumes
-          %li.nav-item
-            %a.nav-link{href: "#"}
-              %span.me-2{"data-feather" => "shopping-cart"}
-              Templates
-          %li.nav-item
-            %a.nav-link{href: "#"}
-              %span.me-2{"data-feather" => "users"}
-              Account
-          %li.nav-item
-            %a.nav-link{href: "#"}
-              %span.me-2{"data-feather" => "bar-chart-2"}
-              Analytics
-          %li.nav-item
-            %a.nav-link{href: "#"}
-              %span.me-2{"data-feather" => "layers"}
-              Integrations
+            = link_to 'Craft New Resume', new_resume_path, class: 'nav-link'
     %main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
       .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
         %h1.h2 Dashboard
       .container
         %p Welcome to your dashboard! Here you can manage your resumes, templates, and account settings.
+
+      .container.mt-4
+        %h2 Your Resumes
+
+        .row.row-cols-1.row-cols-md-2.g-4
+          - current_user.resumes.each do |resume|
+            .col
+              .card.hoverable
+                .card-header.d-flex.justify-content-between.align-items-center
+                  %h5.card-title= resume.first_name
+                  .btn-group
+                    = link_to 'Details', resume_path(resume), class: 'btn btn-primary'
+                    = form_for resume, method: :delete, data: { confirm: 'Are you sure you want to delete this resume?' } do |f|
+                      = f.submit 'Delete', class: 'btn btn-danger'
+                .card-body.hoverable-card-body
+                  %p.card-text= resume.job_title
+                  %p.card-text
+                    %strong Country:
+                    = resume.country
+                  %p.card-text
+                    %strong City:
+                    = resume.state
+                  %p.card-text
+                    %strong Phone Number:
+                    = resume.phone_number
+                  %p.card-text
+                    %strong Email:
+                    = resume.email

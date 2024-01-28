@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+ .active-link {
+  font-weight: bold;
+}
+
+/* Apply styles to the card body on hover */
+.hoverable-card-body {
+  transition: transform 0.2s, box-shadow 0.3s; /* Smooth transition for hover effect */
+  cursor: pointer; /* Change cursor to indicate interactivity */
+}
+
+.hoverable-card-body:hover {
+  transform: scale(1.02); /* Slightly scale up the card on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* Add a shadow on hover */
+}

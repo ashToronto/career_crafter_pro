@@ -1,0 +1,33 @@
+%div.container
+  .card.hoverable
+    .card-body.hoverable-card-body
+      .card-header.d-flex.justify-content-between.align-items-center
+        %h1.h2= @resume.first_name + ' ' + @resume.last_name
+        .btn-group
+          = link_to 'Edit', edit_resume_path(@resume), class: 'btn btn-primary'
+      %h5
+        = @resume.job_title
+      %div.row
+        .col-md-6
+          %p
+            %strong First Name:
+            = @resume.first_name
+          %p
+            %strong Last Name:
+            = @resume.last_name
+          %p
+            %strong Country:
+            = @resume.country
+        .col-md-6
+          %p
+            %strong City:
+            = @resume.state
+          %p
+            %strong Phone Number:
+            = @resume.phone_number
+          %p
+            %strong Email:
+            = @resume.email
+
+%div.container  
+  = link_to 'Back to Resumes', root_path, class: 'btn btn-secondary'
