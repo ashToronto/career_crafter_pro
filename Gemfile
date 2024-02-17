@@ -47,6 +47,8 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'haml-rails', '~> 2.0'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]

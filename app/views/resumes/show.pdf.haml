@@ -1,0 +1,52 @@
+!!!
+%html
+  %head
+    :css
+      body, html {
+        font-family: 'Helvetica', 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .left-column {
+        width: 30%; /* Narrow column */
+        padding: 15px;
+        vertical-align: top;
+        background-color: blue;
+        
+      }
+      .right-column {
+        width: 70%; /* Main content column */
+        padding: 15px;
+        vertical-align: top;
+      }
+      h1, h2, h3, h4, h5, h6, p {
+        margin: 0 0 10px 0;
+      }
+  %body
+    %table
+      %tr
+        %td.left-column
+          %h2= @resume.first_name
+          %h2= @resume.last_name
+          %p
+            %strong Email:
+            = @resume.email
+          %p
+            %strong Phone:
+            = @resume.phone_number
+          %h3 Skills
+          %p Skill 1
+          %p Skill 2
+          %p Skill 3
+        %td.right-column
+          %h3 Education Placeholders
+          %p Education degree
+          %p education.start_date - education.end_date
+          %p Education institution
+          %h3 Professional Experience Placeholders
+          %p Experience details

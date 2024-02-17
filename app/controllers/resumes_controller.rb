@@ -1,6 +1,6 @@
 class ResumesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_resume, only: [:edit, :update, :destroy, :show]
+  before_action :set_resume, only: %i[edit update destroy show]
 
   def new
     @resume = current_user.resumes.build
@@ -16,6 +16,16 @@ class ResumesController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "resume_#{params[:id]}",
+               template: 'resumes/show',
+               layout: false, # No layout is used
+               page_size: 'A4',
+               encoding: 'UTF-8'
+      end
+    end
   end
 
   def edit
