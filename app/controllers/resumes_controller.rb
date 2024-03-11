@@ -20,7 +20,7 @@ class ResumesController < ApplicationController
       format.html
       format.pdf do
         render pdf: "resume_#{params[:id]}",
-               template: 'resumes/show',
+               template: 'layouts/resumes/free_default',
                layout: false, # No layout is used
                page_size: 'A4',
                encoding: 'UTF-8'
