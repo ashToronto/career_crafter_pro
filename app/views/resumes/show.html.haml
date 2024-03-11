@@ -31,3 +31,5 @@
 
 %div.container  
   = link_to 'Back to Resumes', root_path, class: 'btn btn-secondary'
+  = link_to 'Preview PDF', resume_path(@resume, format: :pdf), target: '_blank', class: 'btn btn-primary'
+
