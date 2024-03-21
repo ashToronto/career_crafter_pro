@@ -1,0 +1,15 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  %div.container-fluid
+    %button.navbar-toggler{type: "button", 'data-bs-toggle': "collapse", 'data-bs-target': "#sidebarMenu", 'aria-controls': "sidebarMenu", 'aria-expanded': "false", 'aria-label': "Toggle navigation"}
+      %span.navbar-toggler-icon
+    %a.navbar-brand{href: "/"} 
+      %strong 
+        Dashboard
+
+%div.container-fluid
+  %div.row
+    %nav#sidebarMenu.col-md-3.col-lg-2.d-md-block.bg-light.sidebar.collapse
+      .position-sticky.pt-3
+        %ul.nav.flex-column
+          %li.nav-item
+            = link_to 'Add work experience', new_resume_experience_path(@resume), class: 'nav-link'

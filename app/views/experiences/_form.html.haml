@@ -1,0 +1,50 @@
+= form_for([@resume, @experience]) do |f|
+  - if @experience.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@experience.errors.count, "error")
+        prohibited this experience from being saved:
+      %ul
+        - @experience.errors.full_messages.each do |message|
+          %li= message
+
+  .row.mb-3
+    .col-md-6
+      = f.label :company_name, class: 'form-label'
+      = f.text_field :company_name, class: 'form-control', required: true
+
+  .row.mb-3
+    .col-md-6
+      = f.label :description, class: 'form-label'
+      = f.text_area :description, class: 'form-control', placeholder: "Description", required: true
+
+  .row.mb-3
+    .col-md-6
+      = f.label :job_title, class: 'form-label'
+      = f.text_field :job_title, class: 'form-control', required: true
+
+  .row.mb-3
+    .col-md-6
+      = f.label :city, class: 'form-label'
+      = f.text_field :city, class: 'form-control', required: true
+
+  .row.mb-3
+    .col-md-6
+      = f.label :province, class: 'form-label'
+      = f.text_field :province, class: 'form-control', required: true
+
+  .row.mb-3
+    .col-md-6
+      = f.label :start_date, class: 'form-label'
+      = f.date_field :start_date, class: 'form-control', required: true
+
+  .row.mb-3
+    .col-md-6
+      = f.label :end_date, class: 'form-label'
+      = f.date_field :end_date, class: 'form-control'
+
+  .form-check.mb-3
+    = f.check_box :current_work, class: 'form-check-input', id: 'currentWorkCheck'
+    = f.label :current_work, class: 'form-check-label', for: 'currentWorkCheck'
+
+  = f.submit experience.new_record? ? 'Next' : 'Update Experience', class: 'btn btn-primary'
