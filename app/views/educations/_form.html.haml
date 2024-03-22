@@ -1,0 +1,40 @@
+= form_for([@resume, @education]) do |f|
+  - if @education.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@education.errors.count, "error")
+        prohibited this education from being saved:
+      %ul
+        - @education.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :institution_name
+    = f.text_field :institution_name, class: 'form-control'
+
+  .field
+    = f.label :location
+    = f.text_field :location, class: 'form-control'
+
+  .field
+    = f.label :field_of_study
+    = f.text_field :field_of_study, class: 'form-control'
+
+  .field
+    = f.label :degree
+    = f.select :degree, Education.degrees.keys.map { |degree| [degree.titleize, degree] }, {}, class: 'form-select'
+
+  .field
+    = f.label :start_date
+    = f.date_field :start_date, class: 'form-control'
+
+  .field
+    = f.label :end_date
+    = f.date_field :end_date, class: 'form-control'
+
+  .field
+    = f.label :currently_study
+    = f.check_box :currently_study
+
+  .actions
+    = f.submit @education.new_record? ? 'Create Education' : 'Update Education', class: 'btn btn-primary'

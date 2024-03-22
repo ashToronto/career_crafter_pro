@@ -1,6 +1,7 @@
 class Resume < ApplicationRecord
   belongs_to :user
   has_many :experiences, dependent: :destroy
+  has_many :educations, dependent: :destroy
 
   validates :user_id, presence: true
   validates :first_name, presence: true

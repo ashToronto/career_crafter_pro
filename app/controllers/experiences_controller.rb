@@ -1,13 +1,7 @@
 class ExperiencesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_resume
-  before_action :set_experience, only: %i[show edit update destroy]
-
-  def index
-    @experiences = @resume.experiences.all
-  end
-
-  def show; end
+  before_action :set_experience, only: %i[edit update destroy]
 
   def new
     @experience = @resume.experiences.build
