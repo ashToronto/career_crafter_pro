@@ -1,72 +1,71 @@
 = render 'sidebar'
 %main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
-  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
-    %h1.h2 Dashboard
+  .d-flex.justify-content-between.align-items-center.pt-3.pb-2.mb-3.border-bottom
+    .ms-auto
+      = link_to 'Back to Resumes', root_path, class: 'btn btn-secondary me-2'
+      = link_to 'Preview PDF', resume_path(@resume, format: :pdf), target: '_blank', class: 'btn btn-primary'
 
-  %div.container
-  .card.hoverable.mb-3
-    .card-body.hoverable-card-body
-      .card-header.d-flex.justify-content-between.align-items-center
-        %h1.h2= @resume.first_name + ' ' + @resume.last_name
-        .btn-group
-          = link_to 'Edit', edit_resume_path(@resume), class: 'btn btn-primary'
-      %h5= @resume.job_title
-      %div.row
-        .col-md-6
-          %p
-            %strong First Name:
-            = @resume.first_name
-          %p
-            %strong Last Name:
-            = @resume.last_name
-          %p
-            %strong Country:
-            = @resume.country
-        .col-md-6
-          %p
-            %strong City:
-            = @resume.state
-          %p
-            %strong Phone Number:
-            = @resume.phone_number
-          %p
-            %strong Email:
-            = @resume.email
+  .container
+    .card.mb-4
+      .card-body.hoverable-card-body
+        .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-3
+          %h1= @resume.first_name + ' ' + @resume.last_name
+          = link_to edit_resume_path(@resume), class: 'btn btn-outline-primary btn-sm mt-3 mt-md-0' do
+            = image_tag('pencil.png', alt: 'Edit', width: "20")
+        %h5= @resume.job_title
+        .row
+          .col-12.col-md-6
+            %p
+              %strong First Name:
+              = @resume.first_name
+            %p
+              %strong Last Name:
+              = @resume.last_name
+            %p
+              %strong Country:
+              = @resume.country
+          .col-12.col-md-6
+            %p
+              %strong City:
+              = @resume.state
+            %p
+              %strong Phone Number:
+              = @resume.phone_number
+            %p
+              %strong Email:
+              = @resume.email
 
-  - if @resume.experiences.any?
-    %h3.mb-3 Work Experiences
-    - @resume.experiences.each do |experience|
-      .card.hoverable.mb-3
-        .card-body.hoverable-card-body
-          .card-header.d-flex.justify-content-between.align-items-center
-            %h1.h2= experience.company_name
-            .btn-group
-              = link_to 'Edit', edit_resume_experience_path(@resume, experience), class: 'btn btn-primary'
-              = form_for([@resume, experience], method: :delete, data: { confirm: 'Are you sure?' }) do
-                = submit_tag 'Destroy', class: 'btn btn-danger'
-          %h6.card-subtitle.mb-2.text-muted= experience.job_title
-          %p.card-text= experience.description
-          %div.row
-            .col-md-6
-              %p
-                %strong City: 
-                = experience.city
-              %p
-                %strong Province: 
-                = experience.province
-
-            .col-md-6
-              %p 
-                %strong Start Date: 
-                = experience.start_date.strftime('%B %d, %Y')
-              - if experience.end_date.present?
+    - if @resume.experiences.any?
+      %h3.mb-3 Work Experiences
+      - @resume.experiences.each do |experience|
+        .card.mb-3
+          .card-body.hoverable-card-body
+            .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
+              %h2.h5= experience.company_name
+              .btn-group.mt-3.mt-md-0
+                = link_to edit_resume_experience_path(@resume, experience), class: 'btn btn-outline-primary btn-sm me-2' do
+                  = image_tag('pencil.png', alt: 'Edit', width: "20")
+                = form_for([@resume, experience], method: :delete, data: { confirm: 'Are you sure?' }) do
+                  = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
+                    = image_tag('trashcan.png', alt: 'Delete', width: "20")
+            %h6.card-subtitle.mb-2.text-muted= experience.job_title
+            %p= experience.description
+            .row
+              .col-12.col-md-6
                 %p
-                  %strong Start Date: 
-                  = experience.end_date.strftime('%B %d, %Y')
-              - if experience.current_work
+                  %strong City:
+                  = experience.city
                 %p
-                  %strong Currently Working Here
-
-  %div.container  
-    = link_to 'Back to Resumes', root_path, class: 'btn btn-secondary'
-    = link_to 'Preview PDF', resume_path(@resume, format: :pdf), target: '_blank', class: 'btn btn-primary'
+                  %strong Province:
+                  = experience.province
+              .col-12.col-md-6
+                %p 
+                  %strong Start Date:
+                  = experience.start_date.strftime('%B %d, %Y')
+                - if experience.end_date.present?
+                  %p
+                    %strong End Date:
+                    = experience.end_date.strftime('%B %d, %Y')
+                - if experience.current_work
+                  %p
+                    %strong Currently Working Here
