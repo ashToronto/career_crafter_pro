@@ -9,7 +9,7 @@ class ResumesController < ApplicationController
   def create
     @resume = current_user.resumes.build(resume_params)
     if @resume.save
-      redirect_to @resume, notice: 'Resume was successfully created.'
+      redirect_to new_resume_experience_path(@resume), notice: 'Resume was successfully created.'
     else
       render :new
     end
