@@ -34,16 +34,28 @@ users.each do |user|
     )
   end
 
-  # Specifically create an experience with current_work = true and no end_date
-  resume.experiences.create(
-    company_name: Faker::Company.name,
+  # Seed educations for the created resume
+  2.times do
+    resume.educations.create(
+      institution_name: Faker::University.name,
+      location: Faker::Address.city,
+      field_of_study: Faker::Educator.subject,
+      degree: Education.degrees.keys.sample, # Assuming Education model has enum for degrees
+      start_date: Faker::Date.between(from: 5.years.ago, to: 3.years.ago),
+      end_date: Faker::Date.between(from: 3.years.ago, to: 1.year.ago),
+      currently_study: false
+    )
+  end
+
+  # Specifically create an education with currently_study = true and no end_date
+  resume.educations.create(
+    institution_name: Faker::University.name,
+    location: Faker::Address.city,
+    field_of_study: Faker::Educator.subject,
+    degree: Education.degrees.keys.sample, # Adjust based on the available degrees in your enum
     start_date: Faker::Date.between(from: 2.years.ago, to: Date.today),
-    job_title: Faker::Job.position,
-    description: Faker::Lorem.paragraph(sentence_count: 2),
-    city: Faker::Address.city,
-    province: Faker::Address.state,
-    current_work: true,
-    end_date: nil # Explicitly set end_date to nil for current_work
+    currently_study: true,
+    end_date: nil # Explicitly set end_date to nil for currently_study
   )
 end
 
