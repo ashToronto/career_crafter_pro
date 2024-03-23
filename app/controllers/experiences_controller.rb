@@ -10,7 +10,7 @@ class ExperiencesController < ApplicationController
   def create
     @experience = @resume.experiences.build(experience_params)
     if @experience.save
-      redirect_to resume_path(@resume), notice: 'Work Experience was successfully created.'
+      redirect_to new_resume_education_path(@resume), notice: 'Work Experience was successfully created.'
     else
       render :new
     end
