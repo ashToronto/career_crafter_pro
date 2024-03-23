@@ -1,10 +1,10 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[dashboard]
 
   def index
-    if user_signed_in?
-      redirect_to dashboard_path
-    end
+    return unless user_signed_in?
+
+    redirect_to dashboard_path
   end
 
   def dashboard

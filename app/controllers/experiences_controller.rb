@@ -1,13 +1,7 @@
 class ExperiencesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_resume
-  before_action :set_experience, only: %i[show edit update destroy]
-
-  def index
-    @experiences = @resume.experiences.all
-  end
-
-  def show; end
+  before_action :set_experience, only: %i[edit update destroy]
 
   def new
     @experience = @resume.experiences.build
@@ -16,7 +10,7 @@ class ExperiencesController < ApplicationController
   def create
     @experience = @resume.experiences.build(experience_params)
     if @experience.save
-      redirect_to resume_path(@resume), notice: 'Work Experience was successfully created.'
+      redirect_to new_resume_education_path(@resume), notice: 'Work Experience was successfully created.'
     else
       render :new
     end

@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   resources :resumes do
     resources :experiences
+    resources :educations
   end
 end

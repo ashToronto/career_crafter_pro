@@ -38,7 +38,7 @@ RSpec.describe ResumesController, type: :controller do
 
       it 'redirects to the created resume' do
         post :create, params: { resume: valid_attributes }
-        expect(response).to redirect_to(Resume.last)
+        expect(response).to redirect_to(new_resume_experience_path(Resume.last))
       end
     end
 
