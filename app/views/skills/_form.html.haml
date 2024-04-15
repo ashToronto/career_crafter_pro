@@ -1,0 +1,15 @@
+= form_for([@resume, @skill]) do |f|
+  - if @skill.errors.any?
+    #error_explanation
+      %h2= pluralize(@skill.errors.count, "error")
+      prohibited this skill from being saved:
+      %ul
+        - @skill.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name, 'Skill Name'
+    = f.text_field :name, class: 'form-control'
+
+  .actions
+    = f.submit 'Add Skill', class: 'btn btn-primary'

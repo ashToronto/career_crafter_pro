@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :resumes do
     resources :experiences
     resources :educations
+    resources :skills, only: %i[new create destroy]
     member do
       get 'download_pdf'
     end

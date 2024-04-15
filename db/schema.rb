@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_22_205631) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_15_014537) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_22_205631) do
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.bigint "resume_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_skills_on_resume_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -73,4 +81,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_22_205631) do
   add_foreign_key "educations", "resumes"
   add_foreign_key "experiences", "resumes"
   add_foreign_key "resumes", "users"
+  add_foreign_key "skills", "resumes"
 end
