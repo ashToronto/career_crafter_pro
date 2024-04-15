@@ -1,6 +1,6 @@
 class ResumesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_resume, only: %i[edit update destroy show]
+  before_action :set_resume, only: %i[edit update destroy show download_pdf]
 
   def new
     @resume = current_user.resumes.build
@@ -26,6 +26,15 @@ class ResumesController < ApplicationController
                encoding: 'UTF-8'
       end
     end
+  end
+
+  def download_pdf
+    pdf = render_to_string pdf: "resume_#{params[:id]}",
+                           template: 'layouts/resumes/free_default',
+                           layout: false,
+                           page_size: 'A4',
+                           encoding: 'UTF-8'
+    send_data pdf, filename: "resume_#{params[:id]}.pdf", type: 'application/pdf', disposition: 'attachment'
   end
 
   def edit

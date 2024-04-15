@@ -13,5 +13,8 @@ Rails.application.routes.draw do
   resources :resumes do
     resources :experiences
     resources :educations
+    member do
+      get 'download_pdf'
+    end
   end
 end
