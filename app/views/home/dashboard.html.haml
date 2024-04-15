@@ -23,7 +23,7 @@
         %h2 Your Resumes
 
         .row.row-cols-1.row-cols-md-2.g-4
-          - current_user.resumes.each do |resume|
+          - @user_resumes.each do |resume|
             .col
               .card.hoverable
                 .card-header.d-flex.justify-content-between.align-items-center
@@ -31,9 +31,15 @@
                   .btn-group.mt-3.mt-md-0
                     = link_to resume_path(resume), class: 'btn btn-outline-primary btn-sm me-2' do
                       = image_tag('pencil.png', alt: 'Edit', width: "20")
+   
+                    = link_to download_pdf_resume_path(resume, format: :pdf), class: 'btn btn-outline-primary btn-sm me-2' do
+                      = image_tag('download.png', alt: 'Download', width: "20")
+                      %span Download PDF
+
                     = form_for resume, method: :delete, data: { confirm: 'Are you sure you want to delete this resume?' } do
                       = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
                         = image_tag('trashcan.png', alt: 'Delete', width: "20")
+                        
                 .card-body.hoverable-card-body
                   %p.card-text= resume.job_title
                   %p.card-text
@@ -48,3 +54,6 @@
                   %p.card-text
                     %strong Email:
                     = resume.email
+                  %p.card-text
+                    %small.text-muted            
+                    = resume.created_at.strftime("%B %d, %Y")
