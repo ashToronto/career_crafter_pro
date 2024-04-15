@@ -18,8 +18,8 @@ RSpec.describe Experience, type: :model do
 
     context 'when current_work is false' do
       it 'is not valid if end_date is before start_date' do
-        experience = build(:experience, start_date: Date.today, end_date: Date.yesterday, current_work: false)
-        expect(experience).not_to be_valid
+        experience = build(:experience, start_date: Date.tomorrow, end_date: Date.today, current_work: false)
+        experience.valid?
         expect(experience.errors[:end_date]).to include('must be after the start date')
       end
     end
