@@ -27,8 +27,8 @@ RSpec.describe Education, type: :model do
 
     context 'when currently_study is false' do
       it 'is not valid if end_date is before start_date' do
-        education = build(:education, start_date: Date.today, end_date: Date.yesterday, currently_study: false)
-        expect(education).not_to be_valid
+        education = build(:education, start_date: Date.tomorrow, end_date: Date.today, currently_study: false)
+        education.valid?
         expect(education.errors[:end_date]).to include('must be after the start date')
       end
     end
