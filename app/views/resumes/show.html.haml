@@ -106,3 +106,12 @@
                 - if education.currently_study
                   %p
                     %strong Currently Working Here
+
+    - if @resume.skills.any?
+      %h3.mb-3 Skill Sets
+      .d-flex.flex-wrap.gap-2
+        - @resume.skills.each do |skill|
+          .badge.bg-primary.d-inline-flex.align-items-center.px-3.py-2.me-2.mb-2.position-relative
+            %span.text-white= skill.name
+            = form_for([@resume, skill], method: :delete, data: { confirm: 'Are you sure?' }, html: { class: "d-inline" }) do |f|
+              %button.btn-close.btn-close-white.position-absolute{type: "submit", aria: {label: "Close"}, style: "right: 0; top: 50%; transform: translateY(-50%);"}

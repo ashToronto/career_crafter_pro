@@ -1,0 +1,16 @@
+= render 'resumes/sidebar'
+
+%main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
+  .d-flex.justify-content-between.align-items-center.pt-3.pb-2.mb-3.border-bottom
+    .container
+      %h1 Add a new skill
+      = render 'form', resume: @resume, skill: @skill
+
+      - if @resume.skills.any?
+        %h3.mb-3 Skill Sets
+        .d-flex.flex-wrap.gap-2
+          - @resume.skills.each do |skill|
+            .badge.bg-primary.d-inline-flex.align-items-center.px-3.py-2.me-2.mb-2.position-relative
+              %span.text-white= skill.name
+              = form_for([@resume, skill], method: :delete, data: { confirm: 'Are you sure?' }, html: { class: "d-inline" }) do |f|
+                %button.btn-close.btn-close-white.position-absolute{type: "submit", aria: {label: "Close"}, style: "right: 0; top: 50%; transform: translateY(-50%);"}
