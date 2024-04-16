@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_15_014537) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_16_033930) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +65,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_15_014537) do
     t.index ["resume_id"], name: "index_skills_on_resume_id"
   end
 
+  create_table "social_links", force: :cascade do |t|
+    t.bigint "resume_id", null: false
+    t.string "linkedin_url"
+    t.string "github_url"
+    t.string "twitter_url"
+    t.string "youtube_url"
+    t.string "facebook_url"
+    t.string "instagram_url"
+    t.string "personal_website_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_social_links_on_resume_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -82,4 +96,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_15_014537) do
   add_foreign_key "experiences", "resumes"
   add_foreign_key "resumes", "users"
   add_foreign_key "skills", "resumes"
+  add_foreign_key "social_links", "resumes"
 end

@@ -1,0 +1,37 @@
+= form_for [@resume, @social_link], url: resume_social_link_path(@resume) do |f|
+  - if @social_link.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@social_link.errors.count, "error")} prevented this social link from being saved:"
+      %ul
+        - @social_link.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.label :linkedin_url, 'LinkedIn URL'
+    = f.text_field :linkedin_url, class: 'form-control', placeholder: 'https://www.linkedin.com/in/your-profile'
+
+  .form-group
+    = f.label :github_url, 'GitHub URL'
+    = f.text_field :github_url, class: 'form-control', placeholder: 'https://github.com/your-username'
+
+  .form-group
+    = f.label :twitter_url, 'Twitter URL'
+    = f.text_field :twitter_url, class: 'form-control', placeholder: 'https://twitter.com/your-username'
+
+  .form-group
+    = f.label :youtube_url, 'YouTube URL'
+    = f.text_field :youtube_url, class: 'form-control', placeholder: 'https://www.youtube.com/channel/your-channel'
+
+  .form-group
+    = f.label :facebook_url, 'Facebook URL'
+    = f.text_field :facebook_url, class: 'form-control', placeholder: 'https://www.facebook.com/your-profile'
+
+  .form-group
+    = f.label :instagram_url, 'Instagram URL'
+    = f.text_field :instagram_url, class: 'form-control', placeholder: 'https://www.instagram.com/your-username'
+
+  .form-group
+    = f.label :personal_website_url, 'Personal Website URL'
+    = f.text_field :personal_website_url, class: 'form-control', placeholder: 'https://www.yourwebsite.com'
+
+  = f.submit 'Save Social Links', class: 'btn btn-primary'
