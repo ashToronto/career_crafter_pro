@@ -1,15 +1,5 @@
-= form_for([@resume, @skill]) do |f|
-  - if @skill.errors.any?
-    #error_explanation
-      %h2= pluralize(@skill.errors.count, "error")
-      prohibited this skill from being saved:
-      %ul
-        - @skill.errors.full_messages.each do |message|
-          %li= message
+= form_tag resume_skills_path(@resume), method: :post do
+  %label{for: "skills_name"} Skills (comma-separated)
+  %input#skills_name{name: "skills[name]", placeholder: "e.g., Ruby, JavaScript, HTML", type: "text", class: "form-control"}
 
-  .field
-    = f.label :name, 'Skill Name'
-    = f.text_field :name, class: 'form-control'
-
-  .actions
-    = f.submit 'Add Skill', class: 'btn btn-primary'
+  = submit_tag "Add Skills", class: "btn btn-primary mt-2"

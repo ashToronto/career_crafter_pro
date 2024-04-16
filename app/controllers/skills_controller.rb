@@ -8,17 +8,17 @@ class SkillsController < ApplicationController
   end
 
   def create
-    @skill = @resume.skills.build(skill_params)
-    if @skill.save
-      redirect_to resume_path(@resume), notice: 'Skill was successfully added.' # Redirect to the resume's edit page or wherever you manage skills
-    else
-      render :new # Assuming you have a `new.html.erb` for skills; if not, keep 'resumes/edit'
+    skill_names = params[:skills][:name].split(',').map(&:strip).reject(&:empty?)
+    skill_names.each do |name|
+      @resume.skills.create(name: name)
     end
+
+    redirect_to @resume, notice: 'Skills were successfully added.'
   end
 
   def destroy
     @skill.destroy
-    redirect_to resume_path(@resume), notice: 'Skill was successfully removed.'
+    redirect_to new_resume_skill_path(@resume), notice: 'Skill was successfully removed.'
   end
 
   private
