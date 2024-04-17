@@ -20,7 +20,7 @@ class ResumesController < ApplicationController
       format.html
       format.pdf do
         render pdf: "resume_#{params[:id]}",
-               template: 'layouts/resumes/free_default',
+               template: "layouts/resumes/#{@resume.theme.name}",
                layout: false, # No layout is used
                page_size: 'A4',
                encoding: 'UTF-8'
@@ -30,7 +30,7 @@ class ResumesController < ApplicationController
 
   def download_pdf
     pdf = render_to_string pdf: "resume_#{params[:id]}",
-                           template: 'layouts/resumes/free_default',
+                           template: "layouts/resumes/#{@resume.theme.name}",
                            layout: false,
                            page_size: 'A4',
                            encoding: 'UTF-8'

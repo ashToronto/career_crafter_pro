@@ -1,0 +1,47 @@
+!!!
+%html
+  %head
+    = wicked_pdf_stylesheet_link_tag 'free_pdf_stylesheet/free_classic'
+%body
+  %table
+    %tr
+      %td.left-column
+        %h1
+          = @resume.first_name
+          = @resume.last_name
+        %p
+          %strong Email:
+          = @resume.email
+        %p
+          %strong Phone:
+          = @resume.phone_number
+        %h2 Skills
+        %div
+          - @resume.skills.each do |skill|
+            %span.skill-badge= skill.name
+        - if @resume.social_link.present?
+          %h2 Social Links
+          - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
+            - if @resume.social_link[link].present?
+              %p
+                %strong= link.titleize.gsub('_', ' ') + ':'
+                = @resume.social_link[link]
+      %td.right-column
+        - if @resume.educations.any?
+          .section
+            %h2 Education
+            - @resume.educations.each do |education|
+              %h3= education.degree.titleize
+              %p= "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"
+              %p= education.institution_name
+        - if @resume.experiences.any?
+          .section
+            %h2 Professional Experience
+            - @resume.experiences.each do |experience|
+              %h3= experience.job_title + " at " + experience.company_name
+              %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
+              %p= experience.description
+        - if @resume.cover_letter.present?
+          .section
+            %h2 Cover Letter
+            %p= @resume.cover_letter
