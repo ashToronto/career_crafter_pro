@@ -59,7 +59,10 @@
             .card.mb-3
               .card-body.hoverable-card-body
                 .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
-                  %h2.h5= experience.company_name
+                  %h2.h5
+                    = experience.job_title
+                    %span at
+                    = experience.company_name
                   .btn-group.mt-3.mt-md-0
                     = link_to edit_resume_experience_path(@resume, experience), class: 'btn btn-outline-primary btn-sm me-2' do
                       = image_tag('pencil.png', alt: 'Edit', width: "20")
@@ -71,11 +74,13 @@
                 .row
                   .col-12.col-md-6
                     %p
-                      %strong City:
+                      %strong Address :
+                      = experience.country
+                      = experience.province  
                       = experience.city
-                    %p
-                      %strong Province:
-                      = experience.province
+                    - if experience.remote_work
+                      %p
+                        %strong Remote Work
                   .col-12.col-md-6
                     %p 
                       %strong Start Date:
@@ -86,7 +91,7 @@
                         = experience.end_date.strftime('%B %d, %Y')
                     - if experience.current_work
                       %p
-                        %strong Currently Working Here
+                        %strong Currently Work Here
 
 
         - if @resume.educations.any?

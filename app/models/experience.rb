@@ -4,7 +4,7 @@ class Experience < ApplicationRecord
 
   before_save :clear_end_date_if_current_work
 
-  validates :company_name, :start_date, :job_title, :city, :province, presence: true
+  validates :company_name, :start_date, :job_title, presence: true
   validate :end_date_after_start_date
 
   private
