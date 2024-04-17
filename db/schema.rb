@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_16_033930) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_17_020907) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cover_letters", force: :cascade do |t|
+    t.bigint "resume_id", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_cover_letters_on_resume_id"
+  end
 
   create_table "educations", force: :cascade do |t|
     t.bigint "resume_id", null: false
@@ -92,6 +100,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_16_033930) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cover_letters", "resumes"
   add_foreign_key "educations", "resumes"
   add_foreign_key "experiences", "resumes"
   add_foreign_key "resumes", "users"
