@@ -9,6 +9,11 @@ users = Array.new(3) do
   )
 end
 
+themes = %w[free_default]
+themes.each do |name|
+  Theme.find_or_create_by(name: name)
+end
+
 users.each do |user|
   resume = user.resumes.create(
     email: Faker::Internet.email,
@@ -17,7 +22,8 @@ users.each do |user|
     country: Faker::Address.country,
     state: Faker::Address.state,
     phone_number: Faker::PhoneNumber.cell_phone,
-    job_title: Faker::Job.title
+    job_title: Faker::Job.title,
+    theme_id: Theme.all.sample
   )
 
   # Seed experiences for the created resume

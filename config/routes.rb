@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :skills, only: %i[new create destroy]
     resource :social_link, only: %i[new create edit update destroy]
     resource :cover_letter, only: %i[new create edit update destroy]
+    resource :theme, only: %i[edit update] # Added for theme management ui
     member do
       get 'download_pdf'
     end
