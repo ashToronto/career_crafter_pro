@@ -1,18 +1,22 @@
 %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  %div.container-fluid
+  .container-fluid
     %button.navbar-toggler{type: "button", 'data-bs-toggle': "collapse", 'data-bs-target': "#sidebarMenu", 'aria-controls': "sidebarMenu", 'aria-expanded': "false", 'aria-label': "Toggle navigation"}
       %span.navbar-toggler-icon
-    %a.navbar-brand{href: "#{resume_path(@resume)}"} 
-      %strong 
-        Dashboard
+    %a.navbar-brand{href: "#{resume_path(@resume)}"}
+      %strong Dashboard
 
 %div.container-fluid
   %div.row
-    %nav#sidebarMenu.col-md-3.col-lg-2.d-md-block.bg-light.sidebar.collapse
+    %nav#sidebarMenu.col-md.col-lg.d-md-block.bg-light.sidebar.collapse
       .position-sticky.pt-3
         %ul.nav.flex-column
           %li.nav-item
-            = link_to 'Add work experience', new_resume_experience_path(@resume), class: 'nav-link'
-            = link_to 'Add education', new_resume_education_path(@resume), class: 'nav-link'
-            = link_to 'Add skills', new_resume_skill_path(@resume), class: 'nav-link'
-            = link_to 'Add Socials', new_resume_social_link_path(@resume), class: 'nav-link'
+            = link_to 'Dashboard', resume_path(@resume), class: 'nav-link'
+          %li.nav-item
+            = link_to 'Work experience', new_resume_experience_path(@resume), class: 'nav-link'
+          %li.nav-item
+            = link_to 'Education', new_resume_education_path(@resume), class: 'nav-link'
+          %li.nav-item
+            = link_to 'Skills', new_resume_skill_path(@resume), class: 'nav-link'
+          %li.nav-item
+            = link_to 'Socials', new_resume_social_link_path(@resume), class: 'nav-link'

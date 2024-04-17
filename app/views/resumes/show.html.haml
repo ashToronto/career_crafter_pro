@@ -1,174 +1,177 @@
-= render 'sidebar'
-%main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
-  .d-flex.justify-content-between.align-items-center.pt-3.pb-2.mb-3.border-bottom
-    .ms-auto
-      = link_to 'Back to Resumes', root_path, class: 'btn btn-secondary me-2'
-      = link_to 'Preview PDF', resume_path(@resume, format: :pdf), target: '_blank', class: 'btn btn-primary'
-      = link_to 'Download PDF', download_pdf_resume_path(@resume, format: :pdf), class: 'btn btn-primary'
+.container-fluid
+  .row
+    .col-lg-3
+      = render 'sidebar'
+    .col-lg-9
+      .d-flex.justify-content-between.align-items-center.pt-3.pb-2.mb-3.border-bottom
+        .ms-auto
+          = link_to 'Back to Resumes', root_path, class: 'btn btn-secondary me-2'
+          = link_to 'Preview PDF', resume_path(@resume, format: :pdf), target: '_blank', class: 'btn btn-primary'
+          = link_to 'Download PDF', download_pdf_resume_path(@resume, format: :pdf), class: 'btn btn-primary'
 
-  .container
-    .card.mb-4
-      .card-body.hoverable-card-body
-        .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-3
-          %h1= @resume.first_name + ' ' + @resume.last_name
-          = link_to edit_resume_path(@resume), class: 'btn btn-outline-primary btn-sm mt-3 mt-md-0' do
-            = image_tag('pencil.png', alt: 'Edit', width: "20")
-        %h5= @resume.job_title
-        .row
-          .col-12.col-md-6
-            %p
-              %strong First Name:
-              = @resume.first_name
-            %p
-              %strong Last Name:
-              = @resume.last_name
-            %p
-              %strong Country:
-              = @resume.country
-          .col-12.col-md-6
-            %p
-              %strong City:
-              = @resume.state
-            %p
-              %strong Phone Number:
-              = @resume.phone_number
-            %p
-              %strong Email:
-              = @resume.email
-
-    - if @resume.experiences.any?
-      %h3.mb-3 Work Experience
-      - @resume.experiences.each do |experience|
-        .card.mb-3
+      .container
+        .card.mb-4
           .card-body.hoverable-card-body
-            .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
-              %h2.h5= experience.company_name
-              .btn-group.mt-3.mt-md-0
-                = link_to edit_resume_experience_path(@resume, experience), class: 'btn btn-outline-primary btn-sm me-2' do
-                  = image_tag('pencil.png', alt: 'Edit', width: "20")
-                = form_for([@resume, experience], method: :delete, data: { confirm: 'Are you sure?' }) do
-                  = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
-                    = image_tag('trashcan.png', alt: 'Delete', width: "20")
-            %h6.card-subtitle.mb-2.text-muted= experience.job_title
-            %p= experience.description
+            .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-3
+              %h1= @resume.first_name + ' ' + @resume.last_name
+              = link_to edit_resume_path(@resume), class: 'btn btn-outline-primary btn-sm mt-3 mt-md-0' do
+                = image_tag('pencil.png', alt: 'Edit', width: "20")
+            %h5= @resume.job_title
             .row
+              .col-12.col-md-6
+                %p
+                  %strong First Name:
+                  = @resume.first_name
+                %p
+                  %strong Last Name:
+                  = @resume.last_name
+                %p
+                  %strong Country:
+                  = @resume.country
               .col-12.col-md-6
                 %p
                   %strong City:
-                  = experience.city
+                  = @resume.state
                 %p
-                  %strong Province:
-                  = experience.province
-              .col-12.col-md-6
-                %p 
-                  %strong Start Date:
-                  = experience.start_date.strftime('%B %d, %Y')
-                - if experience.end_date.present?
-                  %p
-                    %strong End Date:
-                    = experience.end_date.strftime('%B %d, %Y')
-                - if experience.current_work
-                  %p
-                    %strong Currently Working Here
-
-
-    - if @resume.educations.any?
-      %h3.mb-3 Education
-      - @resume.educations.each do |education|
-        .card.mb-3
-          .card-body.hoverable-card-body
-            .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
-              %h2.h5= education.institution_name
-              .btn-group.mt-3.mt-md-0
-                = link_to edit_resume_education_path(@resume, education), class: 'btn btn-outline-primary btn-sm me-2' do
-                  = image_tag('pencil.png', alt: 'Edit', width: "20")
-                = form_for([@resume, education], method: :delete, data: { confirm: 'Are you sure?' }) do
-                  = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
-                    = image_tag('trashcan.png', alt: 'Delete', width: "20")
-            %h6.card-subtitle.mb-2.text-muted= education.location
-            %p= education.field_of_study
-            .row
-              .col-12.col-md-6
+                  %strong Phone Number:
+                  = @resume.phone_number
                 %p
-                  %strong degree:
-                  = education.degree
-                %p
-                  %strong Province:
-                  = education.location
-              .col-12.col-md-6
-                %p 
-                  %strong Start Date:
-                  = education.start_date.strftime('%B %d, %Y')
-                - if education.end_date.present?
-                  %p
-                    %strong End Date:
-                    = education.end_date.strftime('%B %d, %Y')
-                - if education.currently_study
-                  %p
-                    %strong Currently Working Here
+                  %strong Email:
+                  = @resume.email
 
-    - if @resume.skills.any?
-      %h3.mb-3 Skill Sets
-      .d-flex.flex-wrap.gap-2
-        - @resume.skills.each do |skill|
-          .badge.bg-primary.d-inline-flex.align-items-center.px-3.py-2.me-2.mb-2.position-relative
-            %span.text-white= skill.name
-            = form_for([@resume, skill], method: :delete, data: { confirm: 'Are you sure?' }, html: { class: "d-inline" }) do |f|
-              %button.btn-close.btn-close-white.position-absolute{type: "submit", aria: {label: "Close"}, style: "right: 0; top: 50%; transform: translateY(-50%);"}
-
-    - if @resume.social_link.present?
-      %h3.mb-3 Social Media Links
-      .card.mb-3
-        .card-body.hoverable-card-body
-          .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
-            %h2.h5 Social media links
-            .btn-group.mt-3.mt-md-0
-              = link_to edit_resume_social_link_path(@resume, @resume.social_link), class: 'btn btn-outline-primary btn-sm me-2' do
-                = image_tag('pencil.png', alt: 'Edit', width: "20")
-              = form_for([@resume, @resume.social_link], method: :delete, data: { confirm: 'Are you sure?' }) do
-                = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
-                  = image_tag('trashcan.png', alt: 'Delete', width: "20")
-          %h6.card-subtitle.mb-2
-          .row
-            .col-12.col-md-6
-              - if @resume.social_link.youtube_url.present?
-                %p
-                  %strong youtube_url:
-                  =  @resume.social_link.youtube_url
-
-              - if @resume.social_link.facebook_url.present?
-                %p
-                  %strong facebook_url:
-                  = @resume.social_link.facebook_url
-
-            .col-12.col-md-6
-              - if @resume.social_link.twitter_url.present?
-                %p 
-                  %strong twitter_url:
-                  = @resume.social_link.twitter_url
-
-              - if @resume.social_link.linkedin_url.present?
-                %p 
-                  %strong linkedin_url:
-                  @resume.social_link.linkedin_url
-                  = @resume.social_link.linkedin_url
-
-            .col-12.col-md-6
-              - if @resume.social_link.github_url.present?
-                %p 
-                  %strong github_url:
-                  = @resume.social_link.github_url
-
-              - if @resume.social_link.instagram_url.present?
-                %p 
-                  %strong instagram_url:
-                  = @resume.social_link.instagram_url
-
-              - if @resume.social_link.personal_website_url.present?
-                %p
-                  %strong personal_website_url:
-                  = @resume.social_link.personal_website_url
+        - if @resume.experiences.any?
+          %h3.mb-3 Work Experience
+          - @resume.experiences.each do |experience|
+            .card.mb-3
+              .card-body.hoverable-card-body
+                .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
+                  %h2.h5= experience.company_name
+                  .btn-group.mt-3.mt-md-0
+                    = link_to edit_resume_experience_path(@resume, experience), class: 'btn btn-outline-primary btn-sm me-2' do
+                      = image_tag('pencil.png', alt: 'Edit', width: "20")
+                    = form_for([@resume, experience], method: :delete, data: { confirm: 'Are you sure?' }) do
+                      = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
+                        = image_tag('trashcan.png', alt: 'Delete', width: "20")
+                %h6.card-subtitle.mb-2.text-muted= experience.job_title
+                %p= experience.description
+                .row
+                  .col-12.col-md-6
+                    %p
+                      %strong City:
+                      = experience.city
+                    %p
+                      %strong Province:
+                      = experience.province
+                  .col-12.col-md-6
+                    %p 
+                      %strong Start Date:
+                      = experience.start_date.strftime('%B %d, %Y')
+                    - if experience.end_date.present?
+                      %p
+                        %strong End Date:
+                        = experience.end_date.strftime('%B %d, %Y')
+                    - if experience.current_work
+                      %p
+                        %strong Currently Working Here
 
 
+        - if @resume.educations.any?
+          %h3.mb-3 Education
+          - @resume.educations.each do |education|
+            .card.mb-3
+              .card-body.hoverable-card-body
+                .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
+                  %h2.h5= education.institution_name
+                  .btn-group.mt-3.mt-md-0
+                    = link_to edit_resume_education_path(@resume, education), class: 'btn btn-outline-primary btn-sm me-2' do
+                      = image_tag('pencil.png', alt: 'Edit', width: "20")
+                    = form_for([@resume, education], method: :delete, data: { confirm: 'Are you sure?' }) do
+                      = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
+                        = image_tag('trashcan.png', alt: 'Delete', width: "20")
+                %h6.card-subtitle.mb-2.text-muted= education.location
+                %p= education.field_of_study
+                .row
+                  .col-12.col-md-6
+                    %p
+                      %strong degree:
+                      = education.degree
+                    %p
+                      %strong Province:
+                      = education.location
+                  .col-12.col-md-6
+                    %p 
+                      %strong Start Date:
+                      = education.start_date.strftime('%B %d, %Y')
+                    - if education.end_date.present?
+                      %p
+                        %strong End Date:
+                        = education.end_date.strftime('%B %d, %Y')
+                    - if education.currently_study
+                      %p
+                        %strong Currently Working Here
 
-            
+        - if @resume.skills.any?
+          %h3.mb-3 Skill Sets
+          .d-flex.flex-wrap.gap-2
+            - @resume.skills.each do |skill|
+              .badge.bg-primary.d-inline-flex.align-items-center.px-3.py-2.me-2.mb-2.position-relative
+                %span.text-white= skill.name
+                = form_for([@resume, skill], method: :delete, data: { confirm: 'Are you sure?' }, html: { class: "d-inline" }) do |f|
+                  %button.btn-close.btn-close-white.position-absolute{type: "submit", aria: {label: "Close"}, style: "right: 0; top: 50%; transform: translateY(-50%);"}
+
+        - if @resume.social_link.present?
+          %h3.mb-3 Social Media Links
+          .card.mb-3
+            .card-body.hoverable-card-body
+              .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
+                %h2.h5 Social media links
+                .btn-group.mt-3.mt-md-0
+                  = link_to edit_resume_social_link_path(@resume, @resume.social_link), class: 'btn btn-outline-primary btn-sm me-2' do
+                    = image_tag('pencil.png', alt: 'Edit', width: "20")
+                  = form_for([@resume, @resume.social_link], method: :delete, data: { confirm: 'Are you sure?' }) do
+                    = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
+                      = image_tag('trashcan.png', alt: 'Delete', width: "20")
+              %h6.card-subtitle.mb-2
+              .row
+                .col-12.col-md-6
+                  - if @resume.social_link.youtube_url.present?
+                    %p
+                      %strong youtube_url:
+                      =  @resume.social_link.youtube_url
+
+                  - if @resume.social_link.facebook_url.present?
+                    %p
+                      %strong facebook_url:
+                      = @resume.social_link.facebook_url
+
+                .col-12.col-md-6
+                  - if @resume.social_link.twitter_url.present?
+                    %p 
+                      %strong twitter_url:
+                      = @resume.social_link.twitter_url
+
+                  - if @resume.social_link.linkedin_url.present?
+                    %p 
+                      %strong linkedin_url:
+                      @resume.social_link.linkedin_url
+                      = @resume.social_link.linkedin_url
+
+                .col-12.col-md-6
+                  - if @resume.social_link.github_url.present?
+                    %p 
+                      %strong github_url:
+                      = @resume.social_link.github_url
+
+                  - if @resume.social_link.instagram_url.present?
+                    %p 
+                      %strong instagram_url:
+                      = @resume.social_link.instagram_url
+
+                  - if @resume.social_link.personal_website_url.present?
+                    %p
+                      %strong personal_website_url:
+                      = @resume.social_link.personal_website_url
+
+
+
+                
