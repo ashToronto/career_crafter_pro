@@ -42,9 +42,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_020907) do
     t.date "end_date"
     t.string "job_title"
     t.text "description"
+    t.string "country"
     t.string "city"
     t.string "province"
     t.boolean "current_work"
+    t.boolean "remote_work"
     t.bigint "resume_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

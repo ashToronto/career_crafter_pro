@@ -6,9 +6,11 @@ class CreateExperiences < ActiveRecord::Migration[7.1]
       t.date :end_date
       t.string :job_title
       t.text :description
+      t.string :country
       t.string :city
       t.string :province
       t.boolean :current_work
+      t.boolean :remote_work
 
       t.references :resume, null: false, foreign_key: true
 

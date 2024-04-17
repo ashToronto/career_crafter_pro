@@ -28,9 +28,11 @@ users.each do |user|
       end_date: Faker::Date.between(from: 2.years.ago, to: Date.today),
       job_title: Faker::Job.position,
       description: Faker::Lorem.paragraph(sentence_count: 2),
+      country: Faker::Address.country,
       city: Faker::Address.city,
       province: Faker::Address.state,
-      current_work: [true, false].sample
+      current_work: [true, false].sample,
+      remote_work: [true, false].sample
     )
   end
 
@@ -57,6 +59,12 @@ users.each do |user|
     currently_study: true,
     end_date: nil # Explicitly set end_date to nil for currently_study
   )
+
+  3.times do
+    resume.skills.create(
+      name: Faker::Job.key_skill
+    )
+  end
 end
 
 puts 'SUCCESS: Database SEEDED'
