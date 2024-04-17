@@ -5,7 +5,11 @@ class SocialLinksController < ApplicationController
   before_action :set_social_link, only: %i[edit update destroy]
 
   def new
-    @social_link = @resume.build_social_link
+    if @resume.social_link.present?
+      redirect_to edit_resume_social_link_path(@resume)
+    else
+      @social_link = @resume.social_link || @resume.build_social_link
+    end
   end
 
   def create
@@ -14,7 +18,8 @@ class SocialLinksController < ApplicationController
       redirect_to resume_path(@resume), notice: 'Social links were successfully added.'
     else
       puts @social_link.errors.full_messages.to_sentence
-      render :new
+      redirect_to new_resume_social_link_path(@resume),
+                  alert: 'Social links were not successfully updated please check url.'
     end
   end
 
@@ -29,7 +34,8 @@ class SocialLinksController < ApplicationController
     if @social_link.update(social_link_params)
       redirect_to resume_path(@resume), notice: 'Social links were successfully updated.'
     else
-      render :edit
+      puts @social_link.errors.full_messages.to_sentence
+      redirect_to edit_resume_social_link_path(@resume), alert: 'Social links were not successfully updated.'
     end
   end
 

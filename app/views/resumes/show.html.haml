@@ -131,28 +131,44 @@
           %h6.card-subtitle.mb-2
           .row
             .col-12.col-md-6
-              %p
-                %strong youtube:
-                =  @resume.social_link.youtube_url
-              %p
-                %strong facebook_url:
-                = @resume.social_link.facebook_url
-            .col-12.col-md-6
-              %p 
-                %strong twitter_url:
-                @resume.social_link.twitter_url
+              - if @resume.social_link.youtube_url.present?
+                %p
+                  %strong youtube_url:
+                  =  @resume.social_link.youtube_url
 
-              %p 
-                %strong linkedin_url:
-                @resume.social_link.linkedin_url
+              - if @resume.social_link.facebook_url.present?
+                %p
+                  %strong facebook_url:
+                  = @resume.social_link.facebook_url
 
             .col-12.col-md-6
-              %p 
-                %strong github_url:
-                @resume.social_link.github_url
+              - if @resume.social_link.twitter_url.present?
+                %p 
+                  %strong twitter_url:
+                  = @resume.social_link.twitter_url
 
-              %p 
-                %strong instagram_url:
-                @resume.social_link.instagram_url
+              - if @resume.social_link.linkedin_url.present?
+                %p 
+                  %strong linkedin_url:
+                  @resume.social_link.linkedin_url
+                  = @resume.social_link.linkedin_url
+
+            .col-12.col-md-6
+              - if @resume.social_link.github_url.present?
+                %p 
+                  %strong github_url:
+                  = @resume.social_link.github_url
+
+              - if @resume.social_link.instagram_url.present?
+                %p 
+                  %strong instagram_url:
+                  = @resume.social_link.instagram_url
+
+              - if @resume.social_link.personal_website_url.present?
+                %p
+                  %strong personal_website_url:
+                  = @resume.social_link.personal_website_url
+
+
 
             
