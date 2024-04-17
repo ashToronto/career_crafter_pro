@@ -1,0 +1,63 @@
+body, html {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #333;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* Keeps columns fixed */
+}
+.left-column, .right-column {
+  vertical-align: top; /* Aligns content to the top */
+  padding: 20px;
+}
+.left-column {
+  width: 30%;
+  background-color: #f8f9fa;
+  border-right: 2px solid #dee2e6;
+}
+.right-column {
+  width: 70%;
+}
+h1, h2, h3, h4, h5, h6, p {
+  margin: 10px 0;
+}
+h1 {
+  font-size: 28px;
+  color: #007bff;
+}
+h2 {
+  font-size: 22px;
+  margin-top: 20px;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 5px;
+}
+h3 {
+  font-size: 18px;
+  color: #343a40;
+}
+p, li {
+  font-size: 14px;
+  line-height: 1.5;
+}
+ul {
+  padding-left: 20px;
+  list-style-type: none;
+}
+.skill-badge {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.section {
+  margin-bottom: 30px; /* Adds more space between sections */
+}
