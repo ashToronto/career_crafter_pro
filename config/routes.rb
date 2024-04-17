@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :educations
     resources :skills, only: %i[new create destroy]
     resource :social_link, only: %i[new create edit update destroy]
+    resource :cover_letter, only: %i[new create edit update destroy]
     member do
       get 'download_pdf'
     end
