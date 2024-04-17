@@ -18,7 +18,7 @@ class SkillsController < ApplicationController
 
   def destroy
     @skill.destroy
-    redirect_to new_resume_skill_path(@resume), notice: 'Skill was successfully removed.'
+    redirect_to resume_skill_path(@resume), notice: 'Skill was successfully removed.'
   end
 
   private

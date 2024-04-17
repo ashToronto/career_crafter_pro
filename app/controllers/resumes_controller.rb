@@ -1,6 +1,6 @@
 class ResumesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_resume, only: %i[edit update destroy show download_pdf]
+  before_action :set_resume, only: %i[update destroy show download_pdf]
 
   def new
     @resume = current_user.resumes.build
@@ -38,6 +38,7 @@ class ResumesController < ApplicationController
   end
 
   def edit
+    @resume = current_user.resumes.find(params[:id])
     render :edit
   end
 

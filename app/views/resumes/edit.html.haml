@@ -1,11 +1,8 @@
-.container-fluid
-  .row
-    .col-md-3
-      #sidebar
-        %ul.nav.flex-column
-          %li.nav-item
-            = link_to 'Dashboard', root_path, class: 'nav-link'
-    .col-md-9
-      %p Welcome to your dashboard! Here you can manage your resumes, templates, and account settings.
+= render 'resumes/sidebar'
+
+%main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
+  .d-flex.justify-content-between.align-items-center.pt-3.pb-2.mb-3.border-bottom
+    .container
+      %h1 Add a new work experience
       = render 'form'
       = link_to 'Back to Resumes', root_path, class: 'btn btn-secondary mt-3'
