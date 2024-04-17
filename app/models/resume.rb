@@ -3,6 +3,7 @@ class Resume < ApplicationRecord
   has_many :experiences, dependent: :destroy
   has_many :educations, dependent: :destroy
   has_many :skills, dependent: :destroy
+  has_one :social_link, dependent: :destroy
 
   validates :user_id, presence: true
   validates :first_name, presence: true

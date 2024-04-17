@@ -1,10 +1,13 @@
-= render 'resumes/sidebar'
-
-%main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
-  .d-flex.justify-content-between.align-items-center.pt-3.pb-2.mb-3.border-bottom
-    .container
-      %h1 Add a new skill
+.container-fluid
+  .row
+    .col-lg-3
+      = render 'resumes/sidebar'
+    .col-lg-9
+      %h2 Information
+      %p Welcome to your dashboard! Here you can manage your resumes, templates, and account settings.
       = render 'form', resume: @resume, skill: @skill
+
+      = link_to 'Back to Resumes', resumes_path, class: 'btn btn-secondary mt-3'
 
       - if @resume.skills.any?
         %h3.mb-3 Skill Sets

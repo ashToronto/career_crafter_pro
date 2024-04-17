@@ -1,5 +1,10 @@
-%h1 Update work Experience
+.container-fluid
+  .row
+    .col-lg-3
+      = render 'resumes/sidebar'
+    .col-lg-9
+      %h2 Information
+      %p Welcome to your dashboard! Here you can manage your resumes, templates, and account settings.
+      = render 'form', experience: @experience
 
-= render 'form', experience: @experience
-
-= link_to 'Back', resume_path(@resume)
+      = link_to 'Back to Resumes', resumes_path, class: 'btn btn-secondary mt-3'
