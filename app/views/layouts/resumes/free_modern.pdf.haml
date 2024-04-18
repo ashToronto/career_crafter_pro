@@ -1,0 +1,108 @@
+!!!
+%html
+  %head
+  %body
+    .banner
+      %h1= "#{@resume.first_name} #{@resume.last_name}"
+    %table.layout
+      %tr
+        %td.left-column
+          %h2 Contact
+          %p
+            %strong Email:
+            = @resume.email
+          %p
+            %strong Phone:
+            = @resume.phone_number
+          %h2 Skills
+          - @resume.skills.each do |skill|
+            %span.skill-badge= skill.name
+          - if @resume.social_link.present?
+            %h2 Social Links
+            - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
+              - if @resume.social_link[link].present?
+                %p.social-link
+                  %strong= link.titleize.gsub('_', ' ') + ':'
+                  = @resume.social_link[link]
+        %td.right-column
+          - if @resume.educations.any?
+            .section
+              %h2 Education
+              - @resume.educations.each do |education|
+                %h3= education.degree.titleize
+                %p= "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"
+                %p= education.institution_name
+          - if @resume.experiences.any?
+            .section
+              %h2 Professional Experience
+              - @resume.experiences.each do |experience|
+                %h3= "#{experience.job_title} at #{experience.company_name}"
+                %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
+                %p= experience.description
+          - if @resume.cover_letter.present?
+            .section
+              %h2 Cover Letter
+              %p= @resume.cover_letter
+
+:css
+  body, html {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background-color: #EEE;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  .banner {
+    background-color: #0056b3;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  table.layout {
+    width: 100%;
+    table-layout: fixed;
+  }
+  td.left-column, td.right-column {
+    padding: 20px;
+    vertical-align: top;
+  }
+  td.left-column {
+    width: 35%;
+    background-color: #f0f0f0;
+  }
+  td.right-column {
+    width: 65%;
+  }
+  h1, h2, h3, p {
+    margin: 10px 0;
+  }
+  h1 {
+    font-size: 26px;
+    color: white;
+  }
+  h2 {
+    font-size: 20px;
+    color: #333;
+    margin-top: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+  }
+  .skill-badge, .social-link {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin: 5px 5px 5px 0;
+    font-size: 12px;
+  }
+  .section {
+    margin-bottom: 20px;
+  }
+  .social-link {
+    background-color: transparent;
+    padding: 0;
+    margin: 0 5px 5px 0;
+    color: #007bff;
+  }

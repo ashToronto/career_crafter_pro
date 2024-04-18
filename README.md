@@ -1,4 +1,4 @@
-# README
+# CareerCrafterPro
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -17,8 +17,8 @@ application up and running.
 ##### Database creation
 
 * run `rake db:setup`
-* run `rake db:migrate` - for any migrations or db updates
-* run `rake admin:create_admin` - to create an a mock admin user
+* run `rake db:migrate` - migrations or db updates
+* run `rake admin:create_admin` - to create mock admin user
 
 ##### How to run the test suite
 
@@ -26,7 +26,7 @@ application up and running.
 * to generate a coverage report: `COVERAGE=true bundle exec rspec`
 * to view the code coverage in a web browser: from your the root dir & terminal run: `open coverage/index.html`
 
-- Services (job queues, cache servers, search engines, gems, etc.)
+- Services TBD (job queues, cache servers, search engines, gems, etc.)
 
 * `gem cancancan` 🧩 for admin user managment & built over `devise` - if you assign another user admin privelages the current admin will no longer keep their admin status. There can be only one admin. This functionality is kept to ensure continuity of any business model i.e if the admin quits it can be passed on to the next in chain of leadership. 🧩
 
@@ -45,3 +45,13 @@ Create a Post or write a Comment and save the inputs as html to the database i.e
 ##### Deployment instructions
 
 * If you choose to clone this repo and want to deploy, you will need a new master-key (gitignored and used to decrypt) and a new `credentials.ymc.enc` file (which you will check-in to version control).
+
+##### Contributing
+
+- Adding new templates and themes:
+* 🧩 Make sure you use the correct prefix i.e `free` vs `premium` followed by the design name.
+* 🧩 Create a new file `[my pdf design name].pdf.haml` in the appropriate resume themes folder structure.
+* 🧩 For the time being css for .pdf themes will be inline css and isolated to only those files.
+* 🧩 Update database with new theme name it should correspond to the correct .pdf file name `[my pdf design name].pdf.haml`
+* 🧩 Add image/screenshot of the pdf design place under `assets/images/themes/[my pdf design name].png` make sure the design name of the file and image are consistant.
+
