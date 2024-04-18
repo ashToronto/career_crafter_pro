@@ -9,7 +9,7 @@ users = Array.new(3) do
   )
 end
 
-themes = %w[free_default free_classic]
+themes = %w[free_default free_classic free_modern]
 themes.each do |name|
   Theme.find_or_create_by(name: name)
 end
