@@ -1,5 +1,5 @@
-= form_tag resume_skills_path(@resume), method: :post do
-  %label{for: "skills_name"} Skills (comma-separated)
-  %input#skills_name{name: "skills[name]", placeholder: "e.g., Ruby, JavaScript, HTML", type: "text", class: "form-control"}
-
-  = submit_tag "Add Skills", class: "btn btn-primary mt-2"
+= form_tag resume_skills_path(@resume), method: :post, class: 'form-inline' do
+  .form-group.mb-3
+    %label{for: "skills_name"} Skills (comma-separated)
+    %input#skills_name{name: "skills[name]", placeholder: "e.g., Ruby, JavaScript, HTML", type: "text", class: "form-control"}
+  = submit_tag "Save", class: "btn btn-success mt-2"

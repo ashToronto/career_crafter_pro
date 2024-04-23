@@ -8,33 +8,32 @@
         - @education.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :institution_name
+  .form-group.mb-3
+    = f.label :institution_name, class: 'form-label'
     = f.text_field :institution_name, class: 'form-control'
 
-  .field
-    = f.label :location
+  .form-group.mb-3
+    = f.label :location, class: 'form-label'
     = f.text_field :location, class: 'form-control'
 
-  .field
-    = f.label :field_of_study
+  .form-group.mb-3
+    = f.label :field_of_study, class: 'form-label'
     = f.text_field :field_of_study, class: 'form-control'
 
-  .field
-    = f.label :degree
+  .form-group.mb-3
+    = f.label :degree, class: 'form-label'
     = f.select :degree, Education.degrees.keys.map { |degree| [degree.titleize, degree] }, {}, class: 'form-select'
 
-  .field
-    = f.label :start_date
-    = f.date_field :start_date, class: 'form-control'
+  .row.mb-3
+    .col-md-6
+      = f.label :start_date, class: 'form-label'
+      = f.date_field :start_date, class: 'form-control'
+    .col-md-6
+      = f.label :end_date, class: 'form-label'
+      = f.date_field :end_date, class: 'form-control'
 
-  .field
-    = f.label :end_date
-    = f.date_field :end_date, class: 'form-control'
+  .form-check.mb-3
+    = f.check_box :currently_study, class: 'form-check-input', id: 'currentStudyCheck'
+    = f.label :currently_study, class: 'form-check-label', for: 'currentStudyCheck', class: 'form-label'
 
-  .field
-    = f.label :currently_study
-    = f.check_box :currently_study
-
-  .actions
-    = f.submit @education.new_record? ? 'Create Education' : 'Update Education', class: 'btn btn-primary'
+  = f.submit @education.new_record? ? 'Create Education' : 'Update Education', class: 'btn btn-success'

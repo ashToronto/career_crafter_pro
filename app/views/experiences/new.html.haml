@@ -2,9 +2,7 @@
   .row
     .col-lg-3
       = render 'resumes/sidebar'
-    .col-lg-9
-      %h2 Information
-      %p Welcome to your dashboard! Here you can manage your resumes, templates, and account settings.
+    .col-lg-6.offset-lg-1
+      %h2 Work History
       = render 'form', experience: @experience
-
-      = link_to 'Back to Resumes', resumes_path, class: 'btn btn-secondary mt-3'
+  
