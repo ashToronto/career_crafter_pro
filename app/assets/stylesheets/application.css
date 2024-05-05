@@ -30,6 +30,10 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
+.resume-section-heading  {
+  padding: 20px;
+}
+
 /* Subtle hover effects to reduce the yellow dominance */
 .btn:hover, a:hover, .nav-link:hover {
   background-color: #495057 !important; /* Slightly lighter grey for hover */

@@ -4,7 +4,7 @@
       = render 'resumes/sidebar'
     .col-lg-6.offset-lg-1
       - if @resume.skills.any?
-        %h3.mb-3 Skill Sets
+        %h3.mb-3-resume-section-heading Skill Sets
         .d-flex.flex-wrap.gap-2
           - @resume.skills.each do |skill|
             .badge.bg-primary.d-inline-flex.align-items-center.px-3.py-2.me-2.mb-2.position-relative
