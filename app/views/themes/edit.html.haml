@@ -1,8 +1,9 @@
 .container-fluid
+.container-fluid
   .row
     .col-lg-3
       = render 'resumes/sidebar'
-    .col-lg-9
-      %h2 Select Theme 
+    .col-lg-6.offset-lg-1
+      %h2 Social Links
       = render 'form'
-      = link_to 'Back to Resumes', resumes_path, class: 'btn btn-secondary mt-3'
+  

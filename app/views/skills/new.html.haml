@@ -2,13 +2,7 @@
   .row
     .col-lg-3
       = render 'resumes/sidebar'
-    .col-lg-9
-      %h2 Information
-      %p Welcome to your dashboard! Here you can manage your resumes, templates, and account settings.
-      = render 'form', resume: @resume, skill: @skill
-
-      = link_to 'Back to Resumes', resumes_path, class: 'btn btn-secondary mt-3'
-
+    .col-lg-6.offset-lg-1
       - if @resume.skills.any?
         %h3.mb-3 Skill Sets
         .d-flex.flex-wrap.gap-2
@@ -17,3 +11,6 @@
               %span.text-white= skill.name
               = form_for([@resume, skill], method: :delete, data: { confirm: 'Are you sure?' }, html: { class: "d-inline" }) do |f|
                 %button.btn-close.btn-close-white.position-absolute{type: "submit", aria: {label: "Close"}, style: "right: 0; top: 50%; transform: translateY(-50%);"}
+
+      %p Add comma-separated skills to add multiple at a time.
+      = render 'form'

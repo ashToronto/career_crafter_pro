@@ -1,6 +1,7 @@
 = form_for [@resume, @cover_letter], url: resume_cover_letter_path(@resume) do |f|
-  .form-group
+  .form-group.mb-3
     = f.label :content, 'Executive summary'
-    = f.text_area :content, class: 'form-control', placeholder: 'max 300 characters'
+    = f.text_area :content, class: 'form-control', placeholder: "What's your mission statement? What do you offer?", required: true
 
-    = f.submit 'Save Summary', class: 'btn btn-primary'
+
+    = f.submit 'Save Summary', class: 'btn btn-success'
