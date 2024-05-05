@@ -1,3 +1,13 @@
+/* Forms and inputs with less yellow */
+.form-control {
+  border: 1px solid #6c757d; /* Grey border for inputs to reduce yellow */
+  background-color: #495057 !important;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25) !important; /* Subtle yellow glow */
+}
+
 /* General form styling */
 .form-group {
   margin-top: 1.5rem;

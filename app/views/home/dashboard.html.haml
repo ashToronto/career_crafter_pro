@@ -1,45 +1,40 @@
-%nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  %div.container-fluid
+%nav.navbar.navbar-expand-lg
+  .container-fluid
     %button.navbar-toggler{type: "button", 'data-bs-toggle': "collapse", 'data-bs-target': "#sidebarMenu", 'aria-controls': "sidebarMenu", 'aria-expanded': "false", 'aria-label': "Toggle navigation"}
       %span.navbar-toggler-icon
-    %a.navbar-brand{href: "/"} 
-      %strong 
+    %a.navbar-brand{href: "/"}
+      %strong.text-warning
         Dashboard
 
 %div.container-fluid
   %div.row
-    %nav#sidebarMenu.col-md-3.col-lg-2.d-md-block.bg-light.sidebar.collapse
+    %nav#sidebarMenu.col-md-3.col-lg-2.d-md-block.sidebar.collapse
       .position-sticky.pt-3
         %ul.nav.flex-column
           %li.nav-item
-            = link_to 'Craft New Resume', new_resume_path, class: 'nav-link'
-    %main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
-      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
-        %h1.h2 Dashboard
+            = link_to 'Craft New Resume', new_resume_path, class: 'nav-link text-warning'
+    %main.col-md-9.ms-sm-auto.col-lg-10.px-md-4.text-white
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom.border-warning
+        %h1.h2.text-warning Dashboard
       .container
         %p Welcome to your dashboard! Here you can manage your resumes, templates, and account settings.
-
       .container.mt-4
-        %h2 Your Resumes
-
+        %h2.text-warning Your Resumes
         .row.row-cols-1.row-cols-md-2.g-4
           - @user_resumes.each do |resume|
             .col
-              .card.hoverable
+              .card.bg-secondary.text-white.hoverable
                 .card-header.d-flex.justify-content-between.align-items-center
                   %h5.card-title= resume.first_name
                   .btn-group.mt-3.mt-md-0
-                    = link_to resume_path(resume), class: 'btn btn-outline-primary btn-sm me-2' do
+                    = link_to resume_path(resume), class: 'btn btn-outline-warning btn-sm me-2' do
                       = image_tag('pencil.png', alt: 'Edit', width: "20")
-   
-                    = link_to download_pdf_resume_path(resume, format: :pdf), class: 'btn btn-outline-primary btn-sm me-2' do
+                    = link_to download_pdf_resume_path(resume, format: :pdf), class: 'btn btn-outline-warning btn-sm me-2' do
                       = image_tag('download.png', alt: 'Download', width: "20")
                       %span Download PDF
-
                     = form_for resume, method: :delete, data: { confirm: 'Are you sure you want to delete this resume?' } do
                       = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
                         = image_tag('trashcan.png', alt: 'Delete', width: "20")
-                        
                 .card-body.hoverable-card-body
                   %p.card-text= resume.job_title
                   %p.card-text
@@ -55,5 +50,5 @@
                     %strong Email:
                     = resume.email
                   %p.card-text
-                    %small.text-muted            
+                    %small.text-muted
                     = resume.created_at.strftime("%B %d, %Y")

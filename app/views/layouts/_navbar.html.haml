@@ -1,28 +1,42 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  %a.navbar-brand{:href => "/"} Career Crafter Pro
+  %a.navbar-brand{:href => "/", style: "color: #ffc107;"}
+    %i.bi.bi-house-fill.me-2
+    CareerCrafterPro
   %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarNav.collapse.navbar-collapse
     %ul.navbar-nav
       - if user_signed_in?
-        %li.nav-item
-          = link_to 'Home', root_path, class: 'nav-link'
         %li.nav-item.dropdown
           %a.nav-link.dropdown-toggle{"href" => "#", "role" => "button", "data-bs-toggle" => "dropdown"}
-            = current_user.email 
-          .dropdown-menu.dropdown-menu-end
-            = link_to 'Edit Profile', edit_user_registration_path, class: 'dropdown-item'
+            %i.bi.bi-person-circle.me-2
+            = current_user.email
+          .dropdown-menu.dropdown-menu-end.dark-dropdown
+            = link_to edit_user_registration_path, class: 'dropdown-item' do
+              %i.bi.bi-gear-wide-connected.me-2
+              Manage Account
             - if current_user.admin?
-              = link_to 'Admin edit profile placeholder', edit_user_registration_path, class: 'dropdown-item'
+              = link_to edit_user_registration_path, class: 'dropdown-item' do
+                %i.bi.bi-gear-fill.me-2
+                Admin Settings
+
       - else
         %li.nav-item
-          = link_to 'Sign Up', new_user_registration_path, class: 'nav-link'
+          = link_to new_user_registration_path, class: 'nav-link' do
+            %i.bi.bi-person-plus-fill.me-2
+            Sign Up
         %li.nav-item
-          = link_to 'Login', new_user_session_path, class: 'nav-link'
+          = link_to new_user_session_path, class: 'nav-link' do
+            %i.bi.bi-box-arrow-in-right.me-2
+            Login
     - if user_signed_in?
       %ul.navbar-nav.ms-auto.d-flex.align-items-center
         %li.nav-item
-          = link_to 'cta Placeholder', edit_user_registration_path, class: 'btn btn-outline-primary nav-link btn-create-post'
+          = link_to new_resume_path, class: 'btn btn-outline-warning' do
+            %i.bi.bi-plus-circle-fill.me-2
+            Craft
         %li.nav-item
           = form_tag destroy_user_session_path, method: :delete, class: 'nav-link' do
-            = button_tag 'Logout', class: 'btn btn-outline-warning'
+            = button_tag type: 'submit', class: 'btn btn-outline-danger' do
+              %i.bi.bi-box-arrow-right.me-2
+              Logout
