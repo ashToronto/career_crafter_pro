@@ -12,7 +12,6 @@
  *
 
  *= require form_partials
- *= require sidebar_resume_partials
 
  *= require_tree .
  *= require_self
