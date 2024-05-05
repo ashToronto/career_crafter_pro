@@ -1,3 +1,13 @@
+/* Forms and inputs with less yellow */
+.form-control {
+  border: 1px solid #6c757d; /* Grey border for inputs to reduce yellow */
+  background-color: #495057 !important;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25) !important; /* Subtle yellow glow */
+}
+
 /* General form styling */
 .form-group {
   margin-top: 1.5rem;
@@ -10,38 +20,71 @@
   margin-bottom: 0.5rem; /* Small gap between the label and its corresponding input for clarity */
 }
 
-/* Forms and inputs with less yellow */
-.form-control {
-  border: 1px solid #6c757d; /* Grey border for inputs to reduce yellow */
-  background-color: #495057; /* Dark grey background */
-  color: #ffffff; /* White text for readability */
-  border-radius: 4px; /* Rounded corners for a smoother look */
+/* Specific styles for form controls to ensure uniform appearance */
+input.form-control,
+select.form-select,
+textarea.form-control {
+  border: 2px solid #2468ac; /* Uniform border color and width */
   padding: 10px; /* Consistent padding for better text alignment */
+  border-radius: 4px; /* Rounded corners for a smoother look */
   font-weight: 500;
 }
 
 /* Enhancing focus state for input fields, textareas, and selects */
-.form-control:focus {
+input.form-control:focus,
+select.form-select:focus,
+textarea.form-control:focus {
   outline: none; /* Removes the default focus outline */
-  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25); /* Subtle yellow glow */
   border-color: #032b41; /* Sets the border color to red on focus */
 }
 
 /* Maintaining accessibility */
-.form-control:focus-visible {
+input.form-control:focus-visible,
+select.form-select:focus-visible,
+textarea.form-control:focus-visible {
   outline: 1px solid #032b41; /* Restores an outline for keyboard navigation */
 }
 
+
+/* Additional styling to handle specific needs of textareas */
+textarea.form-control {
+  height: 400px; /* Larger area for more text, making it ideal for descriptions */
+}
+
+/* Ensuring default styles for checkboxes remain unaffected */
+input[type='checkbox'].form-check-input {
+  border: 2px solid #255482; /* Reverting to default Bootstrap border color for checkboxes */
+  padding: 0; /* No additional padding for checkboxes */
+}
+
+.active-link {
+  font-weight: bold;
+}
+
+/* Apply styles to the card body on hover */
+.hoverable-card-body {
+  transition: transform 0.2s, box-shadow 0.3s; /* Smooth transition for hover effect */
+  cursor: pointer; /* Change cursor to indicate interactivity */
+}
+
+.hoverable-card-body:hover {
+  transform: scale(1.02); /* Slightly scale up the card on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* Add a shadow on hover */
+}
+
 /* Styling placeholders for all form inputs and textareas */
-.form-control::placeholder {
+input.form-control::placeholder,
+textarea.form-control::placeholder {
   font-weight: 200; /* Lighter font weight for placeholder text */
   color: #888; /* Lighter color to distinguish from input text */
   opacity: 1; /* Ensures the color is not further reduced by default styles */
 }
 
-/* Additional styling to handle specific needs of textareas */
-textarea.form-control {
-  height: 400px; /* Larger area for more text, making it ideal for descriptions */
+/* Optional: Adjust color for even lighter appearance */
+select.form-select::placeholder {
+  font-weight: 200;
+  color: #aaa; /* Slightly lighter than input to differentiate */
+  opacity: 1;
 }
 
 /* Responsive design adjustments */
