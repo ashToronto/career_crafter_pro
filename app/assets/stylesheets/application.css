@@ -10,18 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- 
+
  *= require form_partials
+ *= require sidebar_resume_partials
 
  *= require_tree .
  *= require_self
  */
-
- #sidebarMenu {
-  min-width: 200px;
-}
-
-.nav-link.active {
-  font-weight: bold;
-}
-

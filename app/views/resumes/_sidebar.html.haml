@@ -3,7 +3,7 @@
     %button.navbar-toggler{type: "button", 'data-bs-toggle': "collapse", 'data-bs-target': "#sidebarMenu", 'aria-controls': "sidebarMenu", 'aria-expanded': "false", 'aria-label': "Toggle navigation"}
       %span.navbar-toggler-icon
     %a.navbar-brand{href: "#{resume_path(@resume)}"}
-      %strong Dashboard
+      %strong.text-danger Career Crafter Pro
 
 %div.container-fluid
   %div.row
@@ -11,16 +11,30 @@
       .position-sticky.pt-3
         %ul.nav.flex-column
           %li.nav-item
-            = link_to 'Dashboard', resume_path(@resume), class: 'nav-link'
+            = link_to resume_path(@resume), class: 'nav-link' + (current_page?(resume_path(@resume)) ? ' active' : '') do
+              %i.bi.bi-house
+              Dashboard
           %li.nav-item
-            = link_to 'Work experience', new_resume_experience_path(@resume), class: 'nav-link'
+            = link_to new_resume_experience_path(@resume), class: 'nav-link' + (current_page?(new_resume_experience_path(@resume)) ? ' active' : '') do
+              %i.bi.bi-briefcase
+              Work experience
           %li.nav-item
-            = link_to 'Education', new_resume_education_path(@resume), class: 'nav-link'
+            = link_to new_resume_education_path(@resume), class: 'nav-link' + (current_page?(new_resume_education_path(@resume)) ? ' active' : '') do
+              %i.bi.bi-book
+              Education
           %li.nav-item
-            = link_to 'Skills', new_resume_skill_path(@resume), class: 'nav-link'
+            = link_to new_resume_skill_path(@resume), class: 'nav-link' + (current_page?(new_resume_skill_path(@resume)) ? ' active' : '') do
+              %i.bi.bi-graph-up
+              Skills
           %li.nav-item
-            = link_to 'Socials', new_resume_social_link_path(@resume), class: 'nav-link'
+            = link_to new_resume_social_link_path(@resume), class: 'nav-link' + (current_page?(new_resume_social_link_path(@resume)) ? ' active' : '') do
+              %i.bi.bi-link-45deg
+              Socials
           %li.nav-item
-            = link_to 'Summary', new_resume_cover_letter_path(@resume), class: 'nav-link'
+            = link_to new_resume_cover_letter_path(@resume), class: 'nav-link' + (current_page?(new_resume_cover_letter_path(@resume)) ? ' active' : '') do
+              %i.bi.bi-file-earmark-text
+              Summary
           %li.nav-item
-            = link_to 'Themes', edit_resume_theme_path(@resume), class: 'nav-link'
+            = link_to edit_resume_theme_path(@resume), class: 'nav-link' + (current_page?(edit_resume_theme_path(@resume)) ? ' active' : '') do
+              %i.bi.bi-palette
+              Themes
