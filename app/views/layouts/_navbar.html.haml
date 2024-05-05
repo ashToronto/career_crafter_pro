@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  %a.navbar-brand{:href => "/"}
+  %a.navbar-brand{:href => "/", style: "color: #ffc107;"}
     %i.bi.bi-house-fill.me-2
     CareerCrafterPro
   %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", :type => "button"}
@@ -11,7 +11,7 @@
           %a.nav-link.dropdown-toggle{"href" => "#", "role" => "button", "data-bs-toggle" => "dropdown"}
             %i.bi.bi-person-circle.me-2
             = current_user.email
-          .dropdown-menu.dropdown-menu-end
+          .dropdown-menu.dropdown-menu-end.dark-dropdown
             = link_to edit_user_registration_path, class: 'dropdown-item' do
               %i.bi.bi-gear-wide-connected.me-2
               Manage Account
@@ -19,6 +19,7 @@
               = link_to edit_user_registration_path, class: 'dropdown-item' do
                 %i.bi.bi-gear-fill.me-2
                 Admin Settings
+
       - else
         %li.nav-item
           = link_to new_user_registration_path, class: 'nav-link' do

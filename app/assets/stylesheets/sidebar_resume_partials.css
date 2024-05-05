@@ -25,14 +25,3 @@
 .nav.flex-column .nav-link.active {
   color: #dc3545; /* Red */
 }
-
-/* Sidebar Active Link Indicator */
-.nav.flex-column .nav-link.active:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 4px; /* Indicator width */
-  height: 100%;
-  background-color: #dc3545; /* Red */
-}
