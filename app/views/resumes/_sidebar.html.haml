@@ -29,7 +29,7 @@
               %i.bi.bi-link-45deg
               Socials
           %li.nav-item
-            = link_to new_resume_cover_letter_path(@resume), class: 'nav-link' + (current_page?(new_resume_cover_letter_path(@resume)) ? ' active text-warning' : ' text-white') do
+            = link_to new_resume_cover_letter_path(@resume), class: 'nav-link' + (current_page?(new_resume_cover_letter_path(@resume)) || current_page?(edit_resume_cover_letter_path(@resume)) ? ' active text-warning' : ' text-white') do
               %i.bi.bi-file-earmark-text
               Summary
           %li.nav-item
