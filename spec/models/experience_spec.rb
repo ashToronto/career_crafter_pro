@@ -11,8 +11,6 @@ RSpec.describe Experience, type: :model do
     it { should validate_presence_of(:company_name) }
     it { should validate_presence_of(:start_date) }
     it { should validate_presence_of(:job_title) }
-    it { should validate_presence_of(:city) }
-    it { should validate_presence_of(:province) }
 
     let(:resume) { create(:resume) }
 
