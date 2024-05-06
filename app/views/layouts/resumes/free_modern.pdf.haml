@@ -38,7 +38,7 @@
               - @resume.experiences.each do |experience|
                 %h3= "#{experience.job_title} at #{experience.company_name}"
                 %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
-                %p= experience.description
+                %p= raw experience.content
           - if @resume.cover_letter.present?
             .section
               %h2 Cover Letter

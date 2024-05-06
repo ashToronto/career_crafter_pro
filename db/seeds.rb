@@ -33,7 +33,6 @@ users.each do |user|
       start_date: Faker::Date.between(from: 5.years.ago, to: 2.years.ago),
       end_date: Faker::Date.between(from: 2.years.ago, to: Date.today),
       job_title: Faker::Job.position,
-      description: Faker::Lorem.paragraph(sentence_count: 2),
       country: Faker::Address.country,
       city: Faker::Address.city,
       province: Faker::Address.state,

@@ -1,5 +1,6 @@
 # app/models/experience.rb
 class Experience < ApplicationRecord
+  has_rich_text :content
   belongs_to :resume
 
   before_save :clear_end_date_if_current_work
