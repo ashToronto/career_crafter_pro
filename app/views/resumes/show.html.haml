@@ -38,7 +38,7 @@
                 %p
                   %strong Email:
                   = @resume.email
-      
+
         - if @resume.cover_letter.present?
           .card.mb-3
             .card-body.hoverable-card-body
@@ -70,19 +70,19 @@
                       = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
                         = image_tag('trashcan.png', alt: 'Delete', width: "20")
                 %h6.card-subtitle.mb-2.text-muted= experience.job_title
-                %p= experience.description
+                %p= experience.content
                 .row
                   .col-12.col-md-6
                     %p
                       %strong Address :
                       = experience.country
-                      = experience.province  
+                      = experience.province
                       = experience.city
                     - if experience.remote_work
                       %p
                         %strong Remote Work
                   .col-12.col-md-6
-                    %p 
+                    %p
                       %strong Start Date:
                       = experience.start_date.strftime('%B %d, %Y')
                     - if experience.end_date.present?
@@ -118,7 +118,7 @@
                       %strong Province:
                       = education.location
                   .col-12.col-md-6
-                    %p 
+                    %p
                       %strong Start Date:
                       = education.start_date.strftime('%B %d, %Y')
                     - if education.end_date.present?
@@ -164,24 +164,24 @@
 
                 .col-12.col-md-6
                   - if @resume.social_link.twitter_url.present?
-                    %p 
+                    %p
                       %strong twitter_url:
                       = @resume.social_link.twitter_url
 
                   - if @resume.social_link.linkedin_url.present?
-                    %p 
+                    %p
                       %strong linkedin_url:
                       @resume.social_link.linkedin_url
                       = @resume.social_link.linkedin_url
 
                 .col-12.col-md-6
                   - if @resume.social_link.github_url.present?
-                    %p 
+                    %p
                       %strong github_url:
                       = @resume.social_link.github_url
 
                   - if @resume.social_link.instagram_url.present?
-                    %p 
+                    %p
                       %strong instagram_url:
                       = @resume.social_link.instagram_url
 
@@ -189,5 +189,3 @@
                     %p
                       %strong personal_website_url:
                       = @resume.social_link.personal_website_url
-
-                

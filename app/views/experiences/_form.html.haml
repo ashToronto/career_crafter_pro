@@ -13,7 +13,7 @@
     = f.text_field :company_name, class: 'form-control', required: true
 
   .form-group.mb-3
-    = f.text_area :description, class: 'form-control', placeholder: "Describe your responsibilities and achievments", required: true
+    = f.rich_text_area :content, class: 'form-control custom-text-area', placeholder: "- Highlight your career goals and achievments", required: true
 
   .form-group.mb-3
     = f.label :job_title, class: 'form-label'
