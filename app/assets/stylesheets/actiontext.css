@@ -38,3 +38,8 @@
   padding: 0 0.5em; /* Adjust padding as needed */
   max-width: 33%; /* Adjust max-width as needed */
 }
+
+/* Hide Attachments toolbar */
+trix-toolbar .trix-button--icon-attach {
+  display: none;
+}
