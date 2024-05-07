@@ -1,0 +1,5 @@
+- flash.each do |type, message|
+  %div{ class: "alert #{bootstrap_class_for_flash(type)} fade show", role: "alert" }
+    %button.close{ type: "button", data: { dismiss: "alert" }, aria: { label: "Close" } }
+      %span{ aria: { hidden: "true" } }
+    = message

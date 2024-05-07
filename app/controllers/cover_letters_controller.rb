@@ -16,23 +16,23 @@ class CoverLettersController < ApplicationController
   def create
     @cover_letter = @resume.build_cover_letter(cover_letter_params)
     if @cover_letter.save
-      redirect_to resume_path(@resume), notice: 'Cover Letter was successfully added.'
+      redirect_to resume_path(@resume), flash: { success: 'Cover Letter was successfully added.' }
     else
-      render :new
+      redirect_to new_resume_cover_letter_path, flash: { error: @cover_letter.errors.full_messages.to_sentence }
     end
   end
 
   def update
     if @cover_letter.update(cover_letter_params)
-      redirect_to resume_path(@resume), notice: 'Cover Letter was successfully updated.'
+      redirect_to resume_path(@resume), flash: { success: 'Cover Letter was successfully updated.' }
     else
-      render :edit
+      redirect_to edit_resume_cover_letter_path, flash: { error: @cover_letter.errors.full_messages.to_sentence }
     end
   end
 
   def destroy
     @cover_letter.destroy
-    redirect_to resume_path(@resume), notice: 'Cover Letter was successfully removed.'
+    redirect_to resume_path(@resume), flash: { success: 'Cover Letter was successfully removed.' }
   end
 
   private
