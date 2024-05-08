@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'dashboard#index' # Admin dashboard root path
     resources :users, only: %i[index show update destroy]
+    resources :themes, only: %i[index edit update destroy]
   end
 
   resources :resumes do

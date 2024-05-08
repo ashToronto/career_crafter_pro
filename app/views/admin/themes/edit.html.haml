@@ -1,0 +1,30 @@
+%div.container-fluid
+  %div.row
+    %div.col-lg-3
+      = render 'admin/sidebar'
+
+    %div.col-lg-9
+      = form_for [:admin, @theme], html: { class: 'needs-validation', novalidate: '' } do |f|
+        %div.card
+          %div.card-header
+            %h5 Edit Theme
+          %div.card-body
+            %div.form-group
+              = f.label :name, 'Theme Name', class: 'form-label'
+              = f.text_field :name, class: 'form-control', required: true
+
+            %div.form-group.form-check
+              = f.check_box :active, class: 'form-check-input'
+              = f.label :active, 'Active', class: 'form-check-label'
+
+        %div.card-footer
+          = f.submit 'Update Theme', class: 'btn btn-primary'
+          = link_to 'Cancel', admin_themes_path, class: 'btn btn-secondary'
+
+      %div.card.mb-4
+        %div.card-body
+          %p.text-muted-white (if you want to update image do it through version control to file system)
+          - if @theme
+            = image_tag "themes/#{@theme.name.downcase}.png", alt: @theme.name, class: 'img-fluid'
+          - else
+            %p No theme selected.

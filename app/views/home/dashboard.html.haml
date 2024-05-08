@@ -4,7 +4,9 @@
       %span.navbar-toggler-icon
     %a.navbar-brand{href: "/"}
       %strong.text-warning
-        Dashboard
+        %i.bi.bi-file-text-fill.me-1
+        Documents:
+      = current_user.resumes_count
 
 %div.container-fluid
   %div.row

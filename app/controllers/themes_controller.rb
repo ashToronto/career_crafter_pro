@@ -5,7 +5,7 @@ class ThemesController < ApplicationController
   before_action :ensure_default_theme, only: [:edit]
 
   def edit
-    @themes = Theme.all # Load all themes for selection
+    @themes = Theme.where(active: true) # Load all themes for selection
   end
 
   def update
