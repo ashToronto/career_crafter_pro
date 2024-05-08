@@ -1,0 +1,11 @@
+.card-body.hoverable-card-body
+  .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
+    %h2.h5 Executive summary
+    .btn-group.mt-3.mt-md-0
+      = link_to edit_resume_cover_letter_path(@resume, @resume.cover_letter), class: 'btn btn-outline-primary btn-sm me-2' do
+        = image_tag('pencil.png', alt: 'Edit', width: "20")
+      = form_for([@resume, @resume.cover_letter], method: :delete, data: { confirm: 'Are you sure?' }) do
+        = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
+          = image_tag('trashcan.png', alt: 'Delete', width: "20")
+
+  %span= @resume.cover_letter.content

@@ -1,0 +1,55 @@
+.card-body.hoverable-card-body
+  .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
+    %h2.h5 Social media links
+    .btn-group.mt-3.mt-md-0
+      = link_to edit_resume_social_link_path(@resume, @resume.social_link), class: 'btn btn-outline-primary btn-sm me-2' do
+        = image_tag('pencil.png', alt: 'Edit', width: "20")
+      = form_for([@resume, @resume.social_link], method: :delete, data: { confirm: 'Are you sure?' }) do
+        = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
+          = image_tag('trashcan.png', alt: 'Delete', width: "20")
+  %h6.card-subtitle.mb-2
+  .row
+    .col-12.col-md-6
+      - if @resume.social_link.youtube_url.present?
+        %p
+          %i.bi.bi-youtube.me-2
+          %strong YouTube:
+          = link_to @resume.social_link.youtube_url, @resume.social_link.youtube_url, target: "_blank"
+
+      - if @resume.social_link.facebook_url.present?
+        %p
+          %i.bi.bi-facebook.me-2
+          %strong Facebook:
+          = link_to @resume.social_link.facebook_url, @resume.social_link.facebook_url, target: "_blank"
+
+    .col-12.col-md-6
+      - if @resume.social_link.twitter_url.present?
+        %p
+          %i.bi.bi-twitter.me-2
+          %strong Twitter:
+          = link_to @resume.social_link.twitter_url, @resume.social_link.twitter_url, target: "_blank"
+
+      - if @resume.social_link.linkedin_url.present?
+        %p
+          %i.bi.bi-linkedin.me-2
+          %strong LinkedIn:
+          = link_to @resume.social_link.linkedin_url, @resume.social_link.linkedin_url, target: "_blank"
+
+    .col-12.col-md-6
+      - if @resume.social_link.github_url.present?
+        %p
+          %i.bi.bi-github.me-2
+          %strong GitHub:
+          = link_to @resume.social_link.github_url, @resume.social_link.github_url, target: "_blank"
+
+      - if @resume.social_link.instagram_url.present?
+        %p
+          %i.bi.bi-instagram.me-2
+          %strong Instagram:
+          = link_to @resume.social_link.instagram_url, @resume.social_link.instagram_url, target: "_blank"
+
+      - if @resume.social_link.personal_website_url.present?
+        %p
+          %i.bi.bi-globe.me-2
+          %strong Personal Website:
+          = link_to @resume.social_link.personal_website_url, @resume.social_link.personal_website_url, target: "_blank"

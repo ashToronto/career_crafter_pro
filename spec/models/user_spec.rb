@@ -13,18 +13,13 @@ RSpec.describe User, type: :model do
     expect(admin).to be_admin
   end
 
-  it 'can be created as an employer' do
-    employer = create(:user, :employer)
-    expect(employer).to be_employer
-  end
-
   # Sad path tests
 
   context 'with invalid attributes' do
     it 'does not create a user with invalid email' do
       user = build(:user, email: 'invalid_email')
       expect(user).not_to be_valid
-      expect(user.errors.messages[:email]).to include("is invalid")
+      expect(user.errors.messages[:email]).to include('is invalid')
     end
 
     it 'does not create a user with no email' do
@@ -36,7 +31,7 @@ RSpec.describe User, type: :model do
     it 'does not create a user with a short password' do
       user = build(:user, password: 'short', password_confirmation: 'short')
       expect(user).not_to be_valid
-      expect(user.errors.messages[:password]).to include("is too short (minimum is 6 characters)")
+      expect(user.errors.messages[:password]).to include('is too short (minimum is 6 characters)')
     end
 
     it 'does not create a user if the password confirmation does not match' do

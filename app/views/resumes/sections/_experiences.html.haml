@@ -1,0 +1,42 @@
+- @resume.experiences.each do |experience|
+  .card.mb-3
+    .card-body.hoverable-card-body
+      .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
+        %h2.h5
+          = experience.job_title
+          %span at
+          = experience.company_name
+        .btn-group.mt-3.mt-md-0
+          = link_to edit_resume_experience_path(@resume, experience), class: 'btn btn-outline-primary btn-sm me-2' do
+            = image_tag('pencil.png', alt: 'Edit', width: "20")
+          = form_for([@resume, experience], method: :delete, data: { confirm: 'Are you sure?' }) do
+            = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
+              = image_tag('trashcan.png', alt: 'Delete', width: "20")
+      %h6.card-subtitle.mb-2.text-muted= experience.job_title
+      %p= experience.content
+      .row
+        .col-12.col-md-6
+          %p
+            %i.bi.bi-map-fill.me-2
+            %strong Address:
+            = experience.country
+            = experience.province
+            = experience.city
+          - if experience.remote_work
+            %p
+              %i.bi.bi-broadcast-pin.me-2
+              %strong Remote Work
+        .col-12.col-md-6
+          %p
+            %i.bi.bi-calendar-event-fill.me-2
+            %strong Start Date:
+            = experience.start_date.strftime('%B %d, %Y')
+          - if experience.end_date.present?
+            %p
+              %i.bi.bi-calendar-x-fill.me-2
+              %strong End Date:
+              = experience.end_date.strftime('%B %d, %Y')
+          - if experience.current_work
+            %p
+              %i.bi.bi-geo-alt-fill.me-2
+              %strong Currently Work Here

@@ -11,181 +11,24 @@
 
       .container
         .card.mb-4
-          .card-body.hoverable-card-body
-            .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-3
-              %h1= @resume.first_name + ' ' + @resume.last_name
-              = link_to edit_resume_path(@resume), class: 'btn btn-outline-primary btn-sm mt-3 mt-md-0' do
-                = image_tag('pencil.png', alt: 'Edit', width: "20")
-            %h5= @resume.job_title
-            .row
-              .col-12.col-md-6
-                %p
-                  %strong First Name:
-                  = @resume.first_name
-                %p
-                  %strong Last Name:
-                  = @resume.last_name
-                %p
-                  %strong Country:
-                  = @resume.country
-              .col-12.col-md-6
-                %p
-                  %strong City:
-                  = @resume.state
-                %p
-                  %strong Phone Number:
-                  = @resume.phone_number
-                %p
-                  %strong Email:
-                  = @resume.email
+          = render 'resumes/sections/personal_details', resume: @resume
 
         - if @resume.cover_letter.present?
           .card.mb-3
-            .card-body.hoverable-card-body
-              .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
-                %h2.h5 Executive summary
-                .btn-group.mt-3.mt-md-0
-                  = link_to edit_resume_cover_letter_path(@resume, @resume.cover_letter), class: 'btn btn-outline-primary btn-sm me-2' do
-                    = image_tag('pencil.png', alt: 'Edit', width: "20")
-                  = form_for([@resume, @resume.cover_letter], method: :delete, data: { confirm: 'Are you sure?' }) do
-                    = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
-                      = image_tag('trashcan.png', alt: 'Delete', width: "20")
-
-              %span= @resume.cover_letter.content
+            = render 'resumes/sections/cover_letter', resume: @resume
 
         - if @resume.experiences.any?
           %h3.mb-3 Work Experience
-          - @resume.experiences.each do |experience|
-            .card.mb-3
-              .card-body.hoverable-card-body
-                .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
-                  %h2.h5
-                    = experience.job_title
-                    %span at
-                    = experience.company_name
-                  .btn-group.mt-3.mt-md-0
-                    = link_to edit_resume_experience_path(@resume, experience), class: 'btn btn-outline-primary btn-sm me-2' do
-                      = image_tag('pencil.png', alt: 'Edit', width: "20")
-                    = form_for([@resume, experience], method: :delete, data: { confirm: 'Are you sure?' }) do
-                      = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
-                        = image_tag('trashcan.png', alt: 'Delete', width: "20")
-                %h6.card-subtitle.mb-2.text-muted= experience.job_title
-                %p= experience.content
-                .row
-                  .col-12.col-md-6
-                    %p
-                      %strong Address :
-                      = experience.country
-                      = experience.province
-                      = experience.city
-                    - if experience.remote_work
-                      %p
-                        %strong Remote Work
-                  .col-12.col-md-6
-                    %p
-                      %strong Start Date:
-                      = experience.start_date.strftime('%B %d, %Y')
-                    - if experience.end_date.present?
-                      %p
-                        %strong End Date:
-                        = experience.end_date.strftime('%B %d, %Y')
-                    - if experience.current_work
-                      %p
-                        %strong Currently Work Here
-
+          = render 'resumes/sections/experiences', resume: @resume
 
         - if @resume.educations.any?
           %h3.mb-3 Education
-          - @resume.educations.each do |education|
-            .card.mb-3
-              .card-body.hoverable-card-body
-                .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
-                  %h2.h5= education.institution_name
-                  .btn-group.mt-3.mt-md-0
-                    = link_to edit_resume_education_path(@resume, education), class: 'btn btn-outline-primary btn-sm me-2' do
-                      = image_tag('pencil.png', alt: 'Edit', width: "20")
-                    = form_for([@resume, education], method: :delete, data: { confirm: 'Are you sure?' }) do
-                      = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
-                        = image_tag('trashcan.png', alt: 'Delete', width: "20")
-                %h6.card-subtitle.mb-2.text-muted= education.location
-                %p= education.field_of_study
-                .row
-                  .col-12.col-md-6
-                    %p
-                      %strong degree:
-                      = education.degree
-                    %p
-                      %strong Province:
-                      = education.location
-                  .col-12.col-md-6
-                    %p
-                      %strong Start Date:
-                      = education.start_date.strftime('%B %d, %Y')
-                    - if education.end_date.present?
-                      %p
-                        %strong End Date:
-                        = education.end_date.strftime('%B %d, %Y')
-                    - if education.currently_study
-                      %p
-                        %strong Currently Working Here
+          = render 'resumes/sections/educations', resume: @resume
 
         - if @resume.skills.any?
           %h3.mb-3 Skill Sets
-          .d-flex.flex-wrap.gap-2
-            - @resume.skills.each do |skill|
-              .badge.bg-primary.d-inline-flex.align-items-center.px-3.py-2.me-2.mb-2.position-relative
-                %span.text-white= skill.name
-                = form_for([@resume, skill], method: :delete, data: { confirm: 'Are you sure?' }, html: { class: "d-inline" }) do |f|
-                  %button.btn-close.btn-close-white.position-absolute{type: "submit", aria: {label: "Close"}, style: "right: 0; top: 50%; transform: translateY(-50%);"}
+          = render 'resumes/sections/skills', resume: @resume
 
         - if @resume.social_link.present?
           .card.mb-3
-            .card-body.hoverable-card-body
-              .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
-                %h2.h5 Social media links
-                .btn-group.mt-3.mt-md-0
-                  = link_to edit_resume_social_link_path(@resume, @resume.social_link), class: 'btn btn-outline-primary btn-sm me-2' do
-                    = image_tag('pencil.png', alt: 'Edit', width: "20")
-                  = form_for([@resume, @resume.social_link], method: :delete, data: { confirm: 'Are you sure?' }) do
-                    = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
-                      = image_tag('trashcan.png', alt: 'Delete', width: "20")
-              %h6.card-subtitle.mb-2
-              .row
-                .col-12.col-md-6
-                  - if @resume.social_link.youtube_url.present?
-                    %p
-                      %strong youtube_url:
-                      =  @resume.social_link.youtube_url
-
-                  - if @resume.social_link.facebook_url.present?
-                    %p
-                      %strong facebook_url:
-                      = @resume.social_link.facebook_url
-
-                .col-12.col-md-6
-                  - if @resume.social_link.twitter_url.present?
-                    %p
-                      %strong twitter_url:
-                      = @resume.social_link.twitter_url
-
-                  - if @resume.social_link.linkedin_url.present?
-                    %p
-                      %strong linkedin_url:
-                      @resume.social_link.linkedin_url
-                      = @resume.social_link.linkedin_url
-
-                .col-12.col-md-6
-                  - if @resume.social_link.github_url.present?
-                    %p
-                      %strong github_url:
-                      = @resume.social_link.github_url
-
-                  - if @resume.social_link.instagram_url.present?
-                    %p
-                      %strong instagram_url:
-                      = @resume.social_link.instagram_url
-
-                  - if @resume.social_link.personal_website_url.present?
-                    %p
-                      %strong personal_website_url:
-                      = @resume.social_link.personal_website_url
+            = render 'resumes/sections/social_links', resume: @resume
