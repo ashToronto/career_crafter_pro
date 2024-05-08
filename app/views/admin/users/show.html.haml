@@ -1,0 +1,19 @@
+%h1= @user.email
+
+%h3 User Resumes
+- @user.resumes.each do |resume|
+  %p= resume.job_title
+  %p= resume.email
+  %p= resume.phone_number
+  -# Add other resume details as needed
+
+= form_for([:admin, @user], url: admin_user_path(@user), method: :patch) do |f|
+  = f.label :email
+  = f.email_field :email, required: true
+  = f.label :password
+  = f.password_field :password
+  = f.submit 'Update User'
+
+= form_for([:admin, @user], method: :delete, data: { confirm: 'Are you sure?' }) do
+  = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
+    = image_tag('trashcan.png', alt: 'Delete', width: "20")

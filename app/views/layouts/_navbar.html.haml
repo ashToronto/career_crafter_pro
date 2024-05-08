@@ -16,7 +16,7 @@
               %i.bi.bi-gear-wide-connected.me-2
               Manage Account
             - if current_user.admin?
-              = link_to edit_user_registration_path, class: 'dropdown-item' do
+              = link_to admin_root_path, class: 'dropdown-item' do
                 %i.bi.bi-gear-fill.me-2
                 Admin Settings
 

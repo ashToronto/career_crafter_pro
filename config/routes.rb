@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/dashboard', to: 'home#dashboard', as: 'dashboard'
 
+  namespace :admin do
+    root 'dashboard#index' # Admin dashboard root path
+    resources :users, only: %i[index show update destroy]
+  end
+
   resources :resumes do
     resources :experiences
     resources :educations

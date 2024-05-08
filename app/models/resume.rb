@@ -1,5 +1,5 @@
 class Resume < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, counter_cache: :resumes_count
   belongs_to :theme, optional: true
   has_many :experiences, dependent: :destroy
   has_many :educations, dependent: :destroy
