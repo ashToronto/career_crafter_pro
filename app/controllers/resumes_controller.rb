@@ -58,7 +58,9 @@ class ResumesController < ApplicationController
   private
 
   def set_resume
-    @resume = current_user.resumes.includes(:experiences, :educations, :skills, :social_link).find(params[:id])
+    @resume = current_user.resumes.includes(:educations, :skills, :social_link,
+                                            experiences: [:rich_text_content],
+                                            cover_letter: [:rich_text_content]).find(params[:id])
   end
 
   def resume_params

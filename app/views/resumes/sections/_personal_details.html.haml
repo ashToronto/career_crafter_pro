@@ -1,0 +1,33 @@
+.card-body.hoverable-card-body
+  .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-3
+    %h1= @resume.first_name + ' ' + @resume.last_name
+    = link_to edit_resume_path(@resume), class: 'btn btn-outline-primary btn-sm mt-3 mt-md-0' do
+      = image_tag('pencil.png', alt: 'Edit', width: "20")
+  %h5= @resume.job_title
+  .row
+    .col-12.col-md-6
+      %p
+        %i.bi.bi-person-fill.me-2
+        %strong First Name:
+        = @resume.first_name
+      %p
+        %i.bi.bi-person-fill.me-2
+        %strong Last Name:
+        = @resume.last_name
+      %p
+        %i.bi.bi-globe2.me-2
+        %strong Country:
+        = @resume.country
+    .col-12.col-md-6
+      %p
+        %i.bi.bi-geo-alt-fill.me-2
+        %strong City:
+        = @resume.state
+      %p
+        %i.bi.bi-telephone-fill.me-2
+        %strong Phone Number:
+        = @resume.phone_number
+      %p
+        %i.bi.bi-envelope-fill.me-2
+        %strong Email:
+        = @resume.email
