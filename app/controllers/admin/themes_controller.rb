@@ -32,8 +32,23 @@ module Admin
     end
 
     def destroy
-      Resume.where(theme_id: @theme.id).update_all(theme_id: 0) if @theme.destroy
-      redirect_to admin_themes_url, notice: 'Theme was successfully destroyed.'
+      default_theme = Theme.find_by(name: 'free_default')
+
+      # Check if the default theme is found and is not the same as the theme being destroyed
+      if default_theme.present? && @theme.id != default_theme.id
+        # Update all associated resumes to the default theme before destroying the theme
+        Resume.where(theme_id: @theme.id).update_all(theme_id: default_theme.id)
+
+        # Now attempt to destroy the theme
+        notice = if @theme.destroy
+                   'Theme was successfully destroyed and resumes were updated to the default theme.'
+                 else
+                   'Theme could not be destroyed.'
+                 end
+      else
+        notice = 'Default theme not found or cannot destroy the default theme.'
+      end
+      redirect_to admin_themes_url, notice: notice
     end
 
     private
