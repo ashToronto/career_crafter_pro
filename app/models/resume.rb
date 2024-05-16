@@ -1,4 +1,7 @@
 class Resume < ApplicationRecord
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+
   belongs_to :user, counter_cache: :resumes_count
   belongs_to :theme, optional: true
   has_many :experiences, dependent: :destroy
@@ -17,6 +20,12 @@ class Resume < ApplicationRecord
   validates :phone_number, presence: true
   validates :email, presence: true
   validates :job_title, presence: true
+
+  def slug_candidates
+    [
+      %i[first_name last_name job_title]
+    ]
+  end
 
   private
 

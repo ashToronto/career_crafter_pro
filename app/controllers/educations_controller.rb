@@ -34,7 +34,7 @@ class EducationsController < ApplicationController
   private
 
   def set_resume
-    @resume = Resume.find(params[:resume_id])
+    @resume = current_user.resumes.friendly.find(params[:resume_id])
   end
 
   def set_education

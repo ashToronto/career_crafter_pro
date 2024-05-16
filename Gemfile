@@ -50,6 +50,8 @@ gem 'haml-rails', '~> 2.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+gem 'friendly_id', '~> 5.4.0'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
   gem 'factory_bot_rails'
