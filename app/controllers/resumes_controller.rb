@@ -38,7 +38,7 @@ class ResumesController < ApplicationController
   end
 
   def edit
-    @resume = current_user.resumes.find(params[:id])
+    @resume = current_user.resumes.friendly.find(params[:id])
     render :edit
   end
 
@@ -60,7 +60,7 @@ class ResumesController < ApplicationController
   def set_resume
     @resume = current_user.resumes.includes(:theme, :educations, :skills, :social_link,
                                             experiences: [:rich_text_content],
-                                            cover_letter: [:rich_text_content]).find(params[:id])
+                                            cover_letter: [:rich_text_content]).friendly.find(params[:id])
   end
 
   def resume_params
