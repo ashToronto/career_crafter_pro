@@ -1,6 +1,6 @@
 # app/controllers/admin/dashboard_controller.rb
 module Admin
-  class DashboardController < ApplicationController
+  class DashboardController < Admin::AdminController
     before_action :authenticate_user!
     before_action :check_admin
 

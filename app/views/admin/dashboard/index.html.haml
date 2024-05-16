@@ -1,15 +1,20 @@
-%h1 Users and Their Resumes
+.container-fluid
+  .row
+    .col-lg-3
+      = render 'admin/sidebar'
 
-%table
-  %thead
-    %tr
-      %th Email
-      %th Number of Resumes
-      %th Actions
-  %tbody
-    - @users.each do |user|
-      %tr
-        %td= user.email
-        %td= user.resumes_count  # Use counter cache directly
-        %td
-          = link_to 'Show', admin_user_path(user), class: 'btn btn-primary btn-sm'
+    .col-lg-9
+      %h1 Users and Their Resumes
+      %table
+        %thead
+          %tr
+            %th Email
+            %th Number of Resumes
+            %th Actions
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td= user.email
+              %td= user.resumes_count  # Use counter cache directly
+              %td
+                = link_to 'Show', admin_user_path(user), class: 'btn btn-primary btn-sm'

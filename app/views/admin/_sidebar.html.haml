@@ -1,0 +1,18 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  .container-fluid
+    %button.navbar-toggler{type: "button", 'data-bs-toggle': "collapse", 'data-bs-target': "#sidebarMenu", 'aria-controls': "sidebarMenu", 'aria-expanded': "false", 'aria-label': "Toggle navigation"}
+      %span.navbar-toggler-icon
+
+%div.container-fluid
+  %div.row
+    %nav#sidebarMenu.col-md.col-lg.d-md-block.bg-secondary.sidebar.collapse
+      .position-sticky.pt-3
+        %ul.nav.flex-column
+          %li.nav-item
+            = link_to admin_root_path, class: 'nav-link' + (current_page?(admin_root_path) ? ' active text-warning' : ' text-white') do
+              %i.bi.bi-house
+              Admin Dashboard
+          %li.nav-item
+            = link_to admin_themes_path, class: 'nav-link' + (current_page?(admin_themes_path) ? ' active text-warning' : ' text-white') do
+              %i.bi.bi-briefcase
+              Theme templates

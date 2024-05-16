@@ -36,9 +36,9 @@ RSpec.describe ResumesController, type: :controller do
         end.to change(Resume, :count).by(1)
       end
 
-      it 'redirects to the created resume' do
+      it 'redirects to the themes page after resume creation' do
         post :create, params: { resume: valid_attributes }
-        expect(response).to redirect_to(new_resume_experience_path(Resume.last))
+        expect(response).to redirect_to(edit_resume_theme_path(Resume.last))
       end
     end
 
