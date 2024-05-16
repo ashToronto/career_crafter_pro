@@ -40,11 +40,11 @@
             - @resume.experiences.each do |experience|
               %h3= experience.job_title + " at " + experience.company_name
               %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
-              %div= raw experience.content
+              %div.experience= raw experience.content
         - if @resume.cover_letter.present?
           .section
             %h2 Cover Letter
-            %p= @resume.cover_letter
+            %div.cover_letter= raw @resume.cover_letter.content
 
 :css
   body, html {
@@ -109,4 +109,8 @@
   }
   .section {
     margin-bottom: 30px; /* Adds more space between sections */
+  }
+
+  .cover_letter, .experiences {
+    color: #495057;
   }
