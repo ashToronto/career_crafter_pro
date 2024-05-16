@@ -32,7 +32,7 @@ module Admin
     end
 
     def destroy
-      @theme.destroy
+      Resume.where(theme_id: @theme.id).update_all(theme_id: 0) if @theme.destroy
       redirect_to admin_themes_url, notice: 'Theme was successfully destroyed.'
     end
 
