@@ -32,11 +32,11 @@
     - if user_signed_in?
       %ul.navbar-nav.ms-auto.d-flex.align-items-center
         %li.nav-item
-          = link_to new_resume_path, class: 'btn btn-outline-warning' do
+          = link_to new_resume_path, class: 'btn btn-craft' do
             %i.bi.bi-plus-circle-fill.me-2
             Craft
         %li.nav-item
           = form_tag destroy_user_session_path, method: :delete, class: 'nav-link' do
-            = button_tag type: 'submit', class: 'btn btn-outline-danger' do
+            = button_tag type: 'submit', class: 'btn btn-logout' do
               %i.bi.bi-box-arrow-right.me-2
               Logout

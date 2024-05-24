@@ -2,6 +2,7 @@
   .row
     .col-lg-3
       = render 'sidebar'
+
     .col-lg-9
       .d-flex.justify-content-between.align-items-center.pt-3.pb-2.mb-3.border-bottom
         .ms-auto
@@ -11,25 +12,26 @@
           = link_to 'Download PDF', download_pdf_resume_path(@resume, format: :pdf), class: 'btn btn-primary'
 
       .container
-        .card.mb-4
-          = render 'resumes/sections/personal_details', resume: @resume
+        .row
+          .col-md-6
+            = render 'resumes/sections/personal_details', resume: @resume
 
-        - if @resume.cover_letter.present?
-          .card.mb-3
-            = render 'resumes/sections/cover_letter', resume: @resume
+            - if @resume.educations.any?
+              %h3.mb-3 Education
+              = render 'resumes/sections/educations', resume: @resume
 
-        - if @resume.experiences.any?
-          %h3.mb-3 Work Experience
-          = render 'resumes/sections/experiences', resume: @resume
+          .col-md-6
+            - if @resume.cover_letter.present?
+              = render 'resumes/sections/cover_letter', resume: @resume
 
-        - if @resume.educations.any?
-          %h3.mb-3 Education
-          = render 'resumes/sections/educations', resume: @resume
+            - if @resume.skills.any?
+              %h3.mb-3 Skill Sets
+              = render 'resumes/sections/skills', resume: @resume
 
-        - if @resume.skills.any?
-          %h3.mb-3 Skill Sets
-          = render 'resumes/sections/skills', resume: @resume
+            - if @resume.social_link.present?
+              = render 'resumes/sections/social_links', resume: @resume
 
-        - if @resume.social_link.present?
-          .card.mb-3
-            = render 'resumes/sections/social_links', resume: @resume
+          - if @resume.experiences.any?
+            .col-md-12
+              %h3.mb-3 Work Experience
+              = render 'resumes/sections/experiences', resume: @resume

@@ -19,54 +19,87 @@
 
 /* Base colors for background and text */
 body, .navbar, .sidebar, .nav-link, .btn, .form-control {
-  background-color: #343a40 !important; /* Dark grey background */
-  color: #ffffff !important; /* White text for readability */
+  background-color: #16171b !important; /* Dark grey background */
+  color: #efefef !important; /* White text for readability */
 }
 
-/* Highlight elements with yellow more subtly */
+/* Updated primary interaction colors */
 a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
-  color: #ffc107 !important; /* Yellow for active elements and links */
+  color: #9b59b6 !important; /* Subdued purple for active elements and links */
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
-.resume-section-heading  {
-  padding: 20px;
-}
-
-/* Subtle hover effects to reduce the yellow dominance */
+/* Subtle hover effects for enhanced user experience */
 .btn:hover, a:hover, .nav-link:hover {
-  background-color: #495057 !important; /* Slightly lighter grey for hover */
-  color: #ffc107 !important; /* Yellow text on hover for emphasis */
+  background-color: #2c3e50 !important; /* Dark slate for hover */
+  color: #dcdde1 !important; /* Soft light gray for text on hover */
 }
 
+/* Navbar specific styling */
 .navbar {
-  border-bottom: 1px solid #ffc107 !important; /* Yellow bottom border for navbar */
+  background-color: #16171b !important; /* Dark background for navbar */
+  border-bottom: 1px solid #9b59b6 !important; /* Subdued purple border */
 }
 
-/* Card styling adjusted for dark theme */
+/* Card styling for a unified dark theme */
 .card {
-  background-color: #495057 !important; /* Darker grey for cards */
-  border: 1px solid #ffc107 !important; /* Subtle yellow borders for cards */
+  background: linear-gradient(to right, #8e44ad, #9b59b6); /* Subdued purple gradient */
+  border: none;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; /* Rounded corners for a smoother look */
 }
 
 .card-header {
-  background-color: #343a40 !important;
+  background-color: #343a40 !important; /* Darker shade for header */
 }
 
 .card-body {
-  color: #ffffff !important;
+  color: #ffffff !important; /* White for readability */
 }
 
+.card-body.hoverable-card-body {
+  transition: transform 0.2s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+/* Dropdown menu styling within navbar */
 .dark-dropdown {
   background-color: #343a40 !important; /* Dark grey, matching the navbar */
-  color: #fff !important; /* White text for readability */
+  color: #fff !important;
 }
 
 .dark-dropdown .dropdown-item {
-  color: #ffc107 !important; /* Yellow text for items */
+  color: #9b59b6 !important; /* Subdued purple for dropdown items */
 }
 
 .dark-dropdown .dropdown-item:hover {
-  background-color: #495057 !important; /* Slightly lighter grey for hover */
-  color: #ffc107 !important; /* Maintain yellow text on hover */
+  background-color: #2c3e50 !important; /* Dark slate for hover */
+  color: #dcdde1 !important;
+}
+
+/* Custom styling for the Craft button */
+.btn-craft {
+  background-color: #8e44ad; /* Matching the card gradient */
+  color: #ffffff; /* White text for contrast */
+  border: none; /* Removing default border */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.btn-craft:hover {
+  background-color: #9b59b6; /* Lighter purple for hover */
+  color: #ffffff; /* Maintain white text on hover */
+}
+
+/* Custom styling for the Logout button */
+.btn-logout {
+  background-color: #34495e; /* Dark blue-gray */
+  color: #ffffff; /* White text for contrast */
+  border: none; /* Removing default border */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.btn-logout:hover {
+  background-color: #2c3e50; /* Slightly darker shade for hover */
+  color: #ffffff; /* Maintain white text on hover */
 }

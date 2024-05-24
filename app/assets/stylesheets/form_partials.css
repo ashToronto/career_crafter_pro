@@ -7,48 +7,49 @@
 .form-label {
   display: block;
   margin-bottom: 0.5rem;
+  color: #efefef; /* Light font color for readability */
 }
 
-/* Consistent styling for all form controls */
+/* Styling for all form controls with an underline style */
 input.form-control,
 select.form-select,
 textarea.form-control {
-  border: 2px solid #2468ac;
+  border: none;
+  border-bottom: 2px solid #9b59b6; /* Subdued purple underline */
   padding: 10px;
-  border-radius: 30px;
-  background-color: #495057;
-  color: #EFEFEF; /* Light font color for readability on dark backgrounds */
-  font-weight: 500;
+  background-color: transparent; /* Transparent background */
+  color: #efefef; /* Light font color for readability on dark backgrounds */
+  font-weight: 400; /* Normal font weight */
 }
 
-/* Enhancing focus states with a subtle yellow glow and blue border */
+/* Enhancing focus states with a purple glow */
 input.form-control:focus,
 select.form-select:focus,
 textarea.form-control:focus {
   outline: none;
-  border-color: #032b41;
-  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+  border-color: #9b59b6;
+  box-shadow: 0 2px 10px rgba(142, 68, 173, 0.25); /* Subtle purple glow for focus */
 }
 
-/* Ensuring clear visibility for keyboard navigation */
+/* Visibility for keyboard navigation */
 input.form-control:focus-visible,
 select.form-select:focus-visible,
 textarea.form-control:focus-visible {
-  outline: 1px solid #032b41;
+  outline: none;
 }
 
 /* Customized textarea for more text input */
 textarea.form-control {
-  height: 400px;
+  height: 150px; /* Adjusted for better space management */
 }
 
-/* Distinct styling for checkboxes */
+/* Styling for checkboxes to fit dark theme */
 input[type='checkbox'].form-check-input {
-  border: 2px solid #255482;
-  padding: 0;
+  border: 1px solid #9b59b6; /* Subdued purple border */
+  background-color: transparent;
 }
 
-/* Styling for interactive card elements */
+/* Interactive card elements */
 .hoverable-card-body {
   transition: transform 0.2s, box-shadow 0.3s;
   cursor: pointer;
@@ -63,15 +64,15 @@ input[type='checkbox'].form-check-input {
 input.form-control::placeholder,
 textarea.form-control::placeholder {
   font-weight: 200;
-  color: #888;
+  color: #bbb;
   opacity: 1;
 }
 
 select.form-select::placeholder {
-  color: #aaa;
+  color: #bbb;
 }
 
-/* Adjusting form control styles for autofill */
+/* Adjusting form control styles for autofill to blend with the theme */
 input.form-control:-webkit-autofill,
 input.form-control:-webkit-autofill:hover,
 input.form-control:-webkit-autofill:focus,
@@ -81,9 +82,9 @@ textarea.form-control:-webkit-autofill:focus,
 select.form-select:-webkit-autofill,
 select.form-select:-webkit-autofill:hover,
 select.form-select:-webkit-autofill:focus {
-  border-color: #2468ac;
-  -webkit-text-fill-color: #EFEFEF;
-  box-shadow: 0 0 0px 1000px #495057 inset;
+  border-color: #9b59b6;
+  -webkit-text-fill-color: #efefef;
+  box-shadow: 0 0 0px 1000px #16171b inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 

@@ -9,10 +9,10 @@
       .position-sticky.pt-3
         %ul.nav.flex-column
           %li.nav-item
-            = link_to admin_root_path, class: 'nav-link' + (current_page?(admin_root_path) ? ' active text-warning' : ' text-white') do
+            = link_to admin_root_path, class: 'nav-link' + (current_page?(admin_root_path) ? ' active text' : ' text-white') do
               %i.bi.bi-house
               Admin Dashboard
           %li.nav-item
-            = link_to admin_themes_path, class: 'nav-link' + (current_page?(admin_themes_path) ? ' active text-warning' : ' text-white') do
+            = link_to admin_themes_path, class: 'nav-link' + (current_page?(admin_themes_path) ? ' active text' : ' text-white') do
               %i.bi.bi-briefcase
               Theme templates
