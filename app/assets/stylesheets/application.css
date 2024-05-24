@@ -47,7 +47,8 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   border: none;
   color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px; /* Rounded corners for a smoother look */
+  border-radius: 18px; /* Rounded corners for a smoother look */
+  padding: 10px;
 }
 
 .card-header {
@@ -104,41 +105,50 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   color: #ffffff; /* Maintain white text on hover */
 }
 
-
-/* Custom Skill Set Container for Badges */
+/* Custom Styling for Skill Badges */
 .skills-sets-container {
   padding: 20px; /* Adds some padding around the skill badges */
   background-color: #16171b; /* Matches the dark theme of the body */
 }
 
-/* Custom Styling for Skill Badges */
 .badge-custom {
-  background: linear-gradient(to right, #8e44ad, #9b59b6); /* Subdued purple gradient */
-  color: #ffffff; /* White text for maximum readability */
-  padding: 6px 14px; /* Balanced padding */
-  border-radius: 10px; /* Rounded corners for a softer look */
-  margin: 5px; /* Space between badges */
-  font-weight: bold; /* Makes the text stand out */
-  transition: transform 0.2s; /* Smooth transition for interactions */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; /* Center content */
+  background: linear-gradient(to right, #8e44ad, #9b59b6);
+  color: #ffffff;
+  padding: 8px 16px; /* Increased padding for a larger clickable area */
+  border-radius: 20px; /* Rounded corners */
+  margin: 10px; /* Adequate spacing between badges */
+  font-size: 14px; /* Clarity in text */
+  font-weight: bold;
+  transition: transform 0.2s;
+  min-width: 120px; /* Minimum width */
+  box-sizing: border-box; /* Ensures padding is included in the width */
 }
 
 .badge-custom:hover {
-  transform: scale(1.05); /* Slight enlargement on hover */
-  background: linear-gradient(to right, #9b59b6, #8e44ad); /* Inverted gradient on hover */
+  transform: scale(1.05);
 }
 
-/* Positioning for the close button within each badge */
+/* Enhanced Close Button Styling */
 .btn-close-custom {
-  background-color: transparent; /* Ensures the button doesn't block the badge's background */
-  border: none; /* No border */
-  color: #ffffff; /* White color to match the badge text */
-  opacity: 0.8; /* Slightly transparent to integrate seamlessly */
   position: absolute;
   top: 50%;
-  right: -10px; /* Position the button outside the badge */
+  right: 10px; /* Adjust right position to prevent overflow */
   transform: translateY(-50%);
+  background: none; /* Clear any background styling */
+  width: 24px; /* Visible size */
+  height: 24px; /* Maintain aspect ratio */
+  color: #ffffff; /* Button color */
+  font-size: 16px; /* Size of the 'X' */
+  opacity: 0.8; /* Slight transparency */
+  border: none; /* No border */
+  cursor: pointer; /* Cursor as pointer */
 }
 
 .btn-close-custom:hover {
-  opacity: 1; /* Fully visible when hovered */
+  opacity: 1; /* Full visibility on hover */
+  color: #ff0000; /* Change color on hover for visibility */
 }

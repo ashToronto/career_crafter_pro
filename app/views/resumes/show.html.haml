@@ -31,7 +31,8 @@
             - if @resume.social_link.present?
               = render 'resumes/sections/social_links', resume: @resume
 
-          - if @resume.experiences.any?
-            .col-md-12
-              %h3.mb-3 Work Experience
-              = render 'resumes/sections/experiences', resume: @resume
+          .col-md-12
+            - if @resume.experiences.any?
+              .col-md-12
+                %h3.mb-3 Work Experience
+                = render 'resumes/sections/experiences', resume: @resume

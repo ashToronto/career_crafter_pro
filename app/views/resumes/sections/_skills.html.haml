@@ -4,4 +4,5 @@
       .badge-custom
         %span.text-white= skill.name
         = form_for([@resume, skill], method: :delete, data: { confirm: 'Are you sure?' }, html: { class: "d-inline" }) do |f|
-          %button.btn-close.btn-close-white.position-absolute{type: "submit", aria: {label: "Close"}, style: "right: 0; top: 50%; transform: translateY(-50%);"}
+          %button.btn-close.btn-close-custom{type: "submit", aria: {label: "Close"}}
+            ×
