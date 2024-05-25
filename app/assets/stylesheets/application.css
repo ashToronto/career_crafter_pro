@@ -41,6 +41,19 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   border-bottom: 1px solid #9b59b6 !important; /* Subdued purple border */
 }
 
+.navbar-logo {
+  height: 45px;
+  width: 50px;
+  transition: height 0.3s ease;
+  margin-left:5px;
+}
+
+@media (max-width: 768px) {
+  .navbar-logo {
+    height: 50px;
+  }
+}
+
 /* Card styling for a unified dark theme */
 .card {
   background: linear-gradient(to right, #232526, #414345);
