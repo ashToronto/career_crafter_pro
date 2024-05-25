@@ -43,7 +43,8 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
 
 /* Card styling for a unified dark theme */
 .card {
-  background: linear-gradient(to right, #8e44ad, #9b59b6); /* Subdued purple gradient */
+  background: linear-gradient(to right, #232526, #414345);
+
   border: none;
   color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
