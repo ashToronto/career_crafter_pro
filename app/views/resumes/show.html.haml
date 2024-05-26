@@ -6,12 +6,12 @@
     .col-lg-9
       .d-flex.justify-content-between.align-items-center.pt-3.pb-2.mb-3.border-bottom
         .ms-auto
-          = link_to root_path, class: 'btn btn-custom-secondary me-2' do
+          = link_to root_path, class: 'btn' do
             %i.bi.bi-arrow-left-circle-fill.me-1
             Back
 
           - if @resume.theme
-            = link_to resume_path(@resume, format: :pdf), target: '_blank', class: 'btn btn-custom' do
+            = link_to resume_path(@resume, format: :pdf), target: '_blank', class: 'btn' do
               %i.bi.bi-eye-fill.me-1
               Preview
           = link_to download_pdf_resume_path(@resume, format: :pdf), class: 'btn' do
