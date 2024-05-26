@@ -49,15 +49,9 @@ input[type='checkbox'].form-check-input {
   background-color: transparent; /* Clear background to blend in */
 }
 
-/* Interactive elements such as card hover effects */
-.hoverable-card-body {
-  transition: transform 0.2s, box-shadow 0.3s;
-  cursor: pointer;
-}
-
-.hoverable-card-body:hover {
-  transform: scale(1.02); /* Slight scale up for interaction feedback */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+input[type='checkbox'].form-check-input:hover {
+  border-color: #daadeb; /* A lighter purple for hover, compliments the subdued purple */
+  background-color: #2c3e50; /* Dark slate for the checkbox background on hover */
 }
 
 /* Placeholder styles for better clarity and design alignment */
@@ -108,4 +102,67 @@ select.form-select:-webkit-autofill:focus {
 .btn-save:active {
   transform: translateY(1px);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Theme selection form's styling */
+.theme-previews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  justify-content: center;
+  align-items: start;
+}
+
+.theme-preview {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s, background-color 0.3s;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.theme-preview:hover {
+  transform: scale(1.05);
+  background-color: #944848;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.theme-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 500px;
+}
+
+.theme-preview p {
+  text-align: center;
+  color: #ffffff;
+  margin-top: 5px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Styles for radio button selection and hover effects */
+.theme-preview input[type='radio']:checked + img {
+  border: 6px solid #b65959;
+  box-shadow: 0 0 15px rgba(182, 89, 89, 0.75);
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.theme-preview label:hover img {
+  background-color: #7a4343;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transform: scale(1.05);
 }
