@@ -31,7 +31,7 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
 
 /* Subtle hover effects for enhanced user experience */
 .btn:hover, a:hover, .nav-link:hover {
-  background-color: #2c3e50 !important; /* Dark slate for hover */
+  background-color: #944848 !important; /* Dark slate for hover */
   color: #dcdde1 !important; /* Soft light gray for text on hover */
 }
 
@@ -70,7 +70,7 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
 }
 
 .card-header {
-  background-color: #343a40 !important; /* Darker shade for header */
+  background-color: #202020 !important; /* Darker shade for header */
 }
 
 /* Dropdown menu styling within navbar */
@@ -109,6 +109,7 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   transition: transform 0.2s;
   min-width: 120px; /* Minimum width */
   box-sizing: border-box; /* Ensures padding is included in the width */
+  opacity: 0.75;
 }
 
 .badge-custom:hover {
@@ -126,12 +127,12 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   height: 24px; /* Maintain aspect ratio */
   color: #ffffff; /* Button color */
   font-size: 16px; /* Size of the 'X' */
-  opacity: 0.8; /* Slight transparency */
+  opacity: 1; /* Slight transparency */
   border: none; /* No border */
   cursor: pointer; /* Cursor as pointer */
 }
 
 .btn-close-custom:hover {
   opacity: 1; /* Full visibility on hover */
-  color: #ff0000; /* Change color on hover for visibility */
+  color: #f6f2f2; /* Change color on hover for visibility */
 }

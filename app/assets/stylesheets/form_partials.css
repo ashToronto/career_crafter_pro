@@ -1,76 +1,74 @@
 /* Base styles for form elements to improve UI readability and maintainability */
 .form-group {
   margin: 1.5rem 0;
-  font-weight: 200;
-  padding: 20px;
+  padding: 20px; /* Additional padding for cleaner spacing */
 }
 
 .form-label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #efefef; /* Light font color for readability */
+  color: #efefef; /* Light font color for readability against dark background */
 }
 
-/* Styling for all form controls with an underline style */
+/* Styling for all form controls with a consistent theme */
 input.form-control,
 select.form-select,
 textarea.form-control {
   border: none;
-  border-bottom: 2px solid #9b59b6; /* Subdued purple underline */
+  border-bottom: 2px solid #b65959; /* Using primary brand color for underline */
   padding: 10px;
-  background-color: transparent; /* Transparent background */
-  color: #efefef; /* Light font color for readability on dark backgrounds */
-  font-weight: 400; /* Normal font weight */
+  background-color: transparent; /* Maintaining transparency for a sleek look */
+  color: #efefef; /* Ensuring text is readable */
+  font-weight: 400; /* Standard font weight */
 }
 
-/* Enhancing focus states with a purple glow */
+/* Enhancing focus states with a related but distinct glow */
 input.form-control:focus,
 select.form-select:focus,
 textarea.form-control:focus {
   outline: none;
-  border-color: #daadeb;
-  box-shadow: 0 2px 10px rgba(142, 68, 173, 0.25); /* Subtle purple glow for focus */
+  border-color: #daadeb; /* A softer purple for a gentle glow */
+  box-shadow: 0 2px 10px rgba(163, 89, 133, 0.25); /* Subtle glow to emphasize focus */
 }
 
 /* Visibility for keyboard navigation */
 input.form-control:focus-visible,
 select.form-select:focus-visible,
 textarea.form-control:focus-visible {
-  outline: none;
+  outline: none; /* Maintaining no outline for a clean design */
 }
 
-/* Customized textarea for more text input */
+/* Customized textarea for more text input, ensuring usability */
 textarea.form-control {
-  height: 150px; /* Adjusted for better space management */
+  height: 150px; /* Sufficient height for ample writing space */
 }
 
-/* Styling for checkboxes to fit dark theme */
+/* Styling for checkboxes to fit the dark theme */
 input[type='checkbox'].form-check-input {
-  border: 1px solid #9b59b6; /* Subdued purple border */
-  background-color: transparent;
+  border: 1px solid #b65959; /* Consistent with primary color */
+  background-color: transparent; /* Clear background to blend in */
 }
 
-/* Interactive card elements */
+/* Interactive elements such as card hover effects */
 .hoverable-card-body {
   transition: transform 0.2s, box-shadow 0.3s;
   cursor: pointer;
 }
 
 .hoverable-card-body:hover {
-  transform: scale(1.02);
+  transform: scale(1.02); /* Slight scale up for interaction feedback */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
-/* Placeholder styles for clarity */
+/* Placeholder styles for better clarity and design alignment */
 input.form-control::placeholder,
 textarea.form-control::placeholder {
   font-weight: 200;
-  color: #bbb;
-  opacity: 1;
+  color: #bbb; /* Lighter text for placeholders for better differentiation */
 }
 
 select.form-select::placeholder {
-  color: #bbb;
+  color: #bbb; /* Consistent placeholder style for select elements */
 }
 
 /* Adjusting form control styles for autofill to blend with the theme */
@@ -83,37 +81,31 @@ textarea.form-control:-webkit-autofill:focus,
 select.form-select:-webkit-autofill,
 select.form-select:-webkit-autofill:hover,
 select.form-select:-webkit-autofill:focus {
-  border-color: #9b59b6;
+  border-color: #b65959;
   -webkit-text-fill-color: #efefef;
   box-shadow: 0 0 0px 1000px #16171b inset;
-  transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s; /* Smooth transition for background color on autofill */
 }
 
+/* Save button customization to fit with the form's aesthetic */
 .btn-save {
-  background-color: #8e44ad; /* Primary button color - subdued purple */
-  border: none; /* No border to keep it clean */
-  color: #ffffff; /* White text for contrast */
-  padding: 10px 20px; /* Adequate padding for better touch interaction */
-  font-size: 16px; /* Slightly larger font for better readability */
-  border-radius: 5px; /* Soft rounded corners */
-  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  background-color: #b65959; /* Primary button color */
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .btn-save:hover, .btn-save:focus {
-  background-color: #9b59b6; /* A lighter purple for hover and focus */
-  transform: translateY(-2px); /* Slight raise effect on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Increased shadow for floating effect */
+  background-color: #944848; /* Slightly darker shade for hover/focus */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .btn-save:active {
-  transform: translateY(1px); /* Subtle press effect when active */
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); /* Less shadow to mimic being pressed */
-}
-
-/* Responsive design adjustments */
-@media (min-width: 768px) {
-  .row.mb-3 .col-md-6 {
-    padding: 0 0.5rem;
-  }
+  transform: translateY(1px);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
