@@ -25,7 +25,7 @@
         .row.row-cols-1.row-cols-md-3.g-4
           - @user_resumes.each do |resume|
             .col
-              .card.hoverable-card-body{style: "cursor: pointer;", onclick: "window.location='#{resume_path(resume)}';"}
+              .card.hoverable-card-body
                 .card-body
                   %h5.card-title= resume.first_name
                   = image_tag "themes/#{resume.theme.name.downcase}.png", alt: resume.theme.name, class: "img-fluid resume-img-preview"
