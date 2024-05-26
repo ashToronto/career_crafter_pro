@@ -25,7 +25,7 @@ body, .navbar, .sidebar, .nav-link, .btn, .form-control {
 
 /* Updated primary interaction colors */
 a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
-  color: #9b59b6 !important; /* Subdued purple for active elements and links */
+  color: #b65959 !important; /* Subdued orange for active elements and links */
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
@@ -38,7 +38,7 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
 /* Navbar specific styling */
 .navbar {
   background-color: #16171b !important; /* Dark background for navbar */
-  border-bottom: 1px solid #9b59b6 !important; /* Subdued purple border */
+  border-bottom: 1px solid #b65959 !important; /* Subdued purple border */
 }
 
 .navbar-logo {
@@ -56,7 +56,7 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
 
 /* Card styling for a unified dark theme */
 .card {
-  background: linear-gradient(to right, #232526, #2d5f91);
+  background: linear-gradient(to right, #232526, #633438);
   border: none;
   color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -80,38 +80,12 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
 }
 
 .dark-dropdown .dropdown-item {
-  color: #9b59b6 !important; /* Subdued purple for dropdown items */
+  color: #b65959 !important; /* Subdued purple for dropdown items */
 }
 
 .dark-dropdown .dropdown-item:hover {
   background-color: #2c3e50 !important; /* Dark slate for hover */
   color: #dcdde1 !important;
-}
-
-/* Custom styling for the Craft button */
-.btn-craft {
-  background-color: #8e44ad; /* Matching the card gradient */
-  color: #ffffff; /* White text for contrast */
-  border: none; /* Removing default border */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-}
-
-.btn-craft:hover {
-  background-color: #9b59b6; /* Lighter purple for hover */
-  color: #ffffff; /* Maintain white text on hover */
-}
-
-/* Custom styling for the Logout button */
-.btn-logout {
-  background-color: #34495e; /* Dark blue-gray */
-  color: #ffffff; /* White text for contrast */
-  border: none; /* Removing default border */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-}
-
-.btn-logout:hover {
-  background-color: #2c3e50; /* Slightly darker shade for hover */
-  color: #ffffff; /* Maintain white text on hover */
 }
 
 /* Custom Styling for Skill Badges */
@@ -160,16 +134,4 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
 .btn-close-custom:hover {
   opacity: 1; /* Full visibility on hover */
   color: #ff0000; /* Change color on hover for visibility */
-}
-
-
-
-
-/* Custom styling for resume images of a pdf */
-
-.resume-img-preview {
-  max-height: 200px; /* Limiting image height */
-  width: auto; /* Maintain aspect ratio */
-  display: block; /* Ensures proper display */
-  margin: 0 auto; /* Center align within the container */
 }

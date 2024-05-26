@@ -28,7 +28,7 @@ input.form-control:focus,
 select.form-select:focus,
 textarea.form-control:focus {
   outline: none;
-  border-color: #9b59b6;
+  border-color: #daadeb;
   box-shadow: 0 2px 10px rgba(142, 68, 173, 0.25); /* Subtle purple glow for focus */
 }
 
