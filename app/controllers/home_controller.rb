@@ -8,6 +8,6 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    @user_resumes = current_user.resumes
+    @user_resumes = current_user.resumes.includes(:theme).order(updated_at: :desc)
   end
 end

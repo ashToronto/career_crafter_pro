@@ -52,7 +52,7 @@ class ResumesController < ApplicationController
 
   def destroy
     @resume.destroy
-    redirect_to '/dashboard', notice: 'Resume was successfully destroyed.'
+    redirect_to dashboard_path, notice: 'Resume was successfully destroyed.'
   end
 
   private

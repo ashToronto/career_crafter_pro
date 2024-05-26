@@ -56,8 +56,7 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
 
 /* Card styling for a unified dark theme */
 .card {
-  background: linear-gradient(to right, #232526, #414345);
-
+  background: linear-gradient(to right, #232526, #2d5f91);
   border: none;
   color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -65,17 +64,13 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   padding: 10px;
 }
 
+.card:hover {
+  opacity: 0.75; /* Reduce opacity to give a selection effect */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Increase shadow for a lifted effect */
+}
+
 .card-header {
   background-color: #343a40 !important; /* Darker shade for header */
-}
-
-.card-body {
-  color: #ffffff !important; /* White for readability */
-}
-
-.card-body.hoverable-card-body {
-  transition: transform 0.2s, box-shadow 0.3s;
-  cursor: pointer;
 }
 
 /* Dropdown menu styling within navbar */
@@ -165,4 +160,16 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
 .btn-close-custom:hover {
   opacity: 1; /* Full visibility on hover */
   color: #ff0000; /* Change color on hover for visibility */
+}
+
+
+
+
+/* Custom styling for resume images of a pdf */
+
+.resume-img-preview {
+  max-height: 200px; /* Limiting image height */
+  width: auto; /* Maintain aspect ratio */
+  display: block; /* Ensures proper display */
+  margin: 0 auto; /* Center align within the container */
 }
