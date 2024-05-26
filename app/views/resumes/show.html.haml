@@ -11,12 +11,13 @@
             Back
 
           - if @resume.theme
-            = link_to resume_path(@resume, format: :pdf), target: '_blank', class: 'btn' do
+            = link_to resume_path(@resume, format: :pdf), target: '_blank', class: 'btn', data: { controller: "pdf-download", action: "click->pdf-download#download" } do
               %i.bi.bi-eye-fill.me-1
+              %span.spinner-border.spinner-border-sm{ data: { pdf_download_target: "spinner" }, role: "status", style: "display: none;" }
               Preview
-          = link_to download_pdf_resume_path(@resume, format: :pdf), class: 'btn' do
-            %i.bi.bi-download.me-1
-            Download PDF
+            = link_to download_pdf_resume_path(@resume, format: :pdf), class: 'btn' do
+              %i.bi.bi-download.me-1
+              Download PDF
 
       .container
         .row
