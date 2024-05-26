@@ -2,34 +2,44 @@
   .row
     .col-lg-3
       = render 'sidebar'
+
     .col-lg-9
       .d-flex.justify-content-between.align-items-center.pt-3.pb-2.mb-3.border-bottom
         .ms-auto
-          = link_to 'Back to Resumes', root_path, class: 'btn btn-secondary me-2'
-        - if @resume.theme
-          = link_to 'Preview PDF', resume_path(@resume, format: :pdf), target: '_blank', class: 'btn btn-primary'
-          = link_to 'Download PDF', download_pdf_resume_path(@resume, format: :pdf), class: 'btn btn-primary'
+          = link_to root_path, class: 'btn' do
+            %i.bi.bi-arrow-left-circle-fill.me-1
+            Back
+
+          - if @resume.theme
+            = link_to resume_path(@resume, format: :pdf), target: '_blank', class: 'btn' do
+              %i.bi.bi-eye-fill.me-1
+              Preview
+          = link_to download_pdf_resume_path(@resume, format: :pdf), class: 'btn' do
+            %i.bi.bi-download.me-1
+            Download PDF
 
       .container
-        .card.mb-4
-          = render 'resumes/sections/personal_details', resume: @resume
+        .row
+          .col-md-6
+            = render 'resumes/sections/personal_details', resume: @resume
 
-        - if @resume.cover_letter.present?
-          .card.mb-3
-            = render 'resumes/sections/cover_letter', resume: @resume
+            - if @resume.educations.any?
+              %h3.mb-3 Education
+              = render 'resumes/sections/educations', resume: @resume
 
-        - if @resume.experiences.any?
-          %h3.mb-3 Work Experience
-          = render 'resumes/sections/experiences', resume: @resume
+          .col-md-6
+            - if @resume.cover_letter.present?
+              = render 'resumes/sections/cover_letter', resume: @resume
 
-        - if @resume.educations.any?
-          %h3.mb-3 Education
-          = render 'resumes/sections/educations', resume: @resume
+            - if @resume.skills.any?
+              %h3.mb-3 Skill Sets
+              = render 'resumes/sections/skills', resume: @resume
 
-        - if @resume.skills.any?
-          %h3.mb-3 Skill Sets
-          = render 'resumes/sections/skills', resume: @resume
+            - if @resume.social_link.present?
+              = render 'resumes/sections/social_links', resume: @resume
 
-        - if @resume.social_link.present?
-          .card.mb-3
-            = render 'resumes/sections/social_links', resume: @resume
+          .col-md-12
+            - if @resume.experiences.any?
+              .col-md-12
+                %h3.mb-3 Work Experience
+                = render 'resumes/sections/experiences', resume: @resume

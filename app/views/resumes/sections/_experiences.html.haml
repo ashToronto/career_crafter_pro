@@ -13,20 +13,14 @@
             = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
               = image_tag('trashcan.png', alt: 'Delete', width: "20")
       %h6.card-subtitle.mb-2.text-muted= experience.job_title
-      %p= experience.content
       .row
-        .col-12.col-md-6
-          %p
-            %i.bi.bi-map-fill.me-2
-            %strong Address:
-            = experience.country
-            = experience.province
-            = experience.city
+        .col-6.col-md-6
+          %p= experience.content
           - if experience.remote_work
             %p
               %i.bi.bi-broadcast-pin.me-2
               %strong Remote Work
-        .col-12.col-md-6
+        .col-6.col-md-6
           %p
             %i.bi.bi-calendar-event-fill.me-2
             %strong Start Date:
@@ -40,3 +34,9 @@
             %p
               %i.bi.bi-geo-alt-fill.me-2
               %strong Currently Work Here
+          %p
+            %i.bi.bi-map-fill.me-2
+            %strong Address:
+            = experience.country
+            = experience.province
+            = experience.city

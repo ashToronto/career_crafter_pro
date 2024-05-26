@@ -6,13 +6,14 @@
           = radio_button_tag 'resume[theme_id]', theme.id, @resume.theme_id == theme.id
           = image_tag "themes/#{theme.name.downcase}.png", alt: theme.name
           %p= theme.name
-  = f.submit "Save Theme", class: "btn btn-success"
+  = f.submit "Save Theme", class: "btn-save"
 
 :css
   .theme-previews {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    padding: 30px;
   }
   .theme-preview {
     cursor: pointer;
