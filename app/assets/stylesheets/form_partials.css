@@ -83,19 +83,18 @@ select.form-select:-webkit-autofill:focus {
 
 /* Save button customization to fit with the form's aesthetic */
 .btn-save {
-  background-color: #b65959; /* Primary button color */
-  border: none;
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #8e44ad;
   color: #ffffff;
-  padding: 10px 20px;
-  font-size: 16px;
+  border: none;
   border-radius: 5px;
-  transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
 }
 
 .btn-save:hover, .btn-save:focus {
-  background-color: #944848; /* Slightly darker shade for hover/focus */
-  transform: translateY(-2px);
+  background-color: #9b59b6; /* A lighter purple for hover and focus */
+  transform: translateY(-2px); /* Slight raise effect on hover */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -118,7 +117,6 @@ select.form-select:-webkit-autofill:focus {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s, background-color 0.3s;
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
 }
@@ -148,7 +146,6 @@ select.form-select:-webkit-autofill:focus {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
