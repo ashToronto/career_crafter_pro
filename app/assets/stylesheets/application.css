@@ -12,6 +12,7 @@
  *
 
  *= require form_partials
+ *= require charts
 
  *= require_tree .
  *= require_self

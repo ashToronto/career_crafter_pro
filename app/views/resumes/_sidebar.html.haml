@@ -5,7 +5,7 @@
 
 %div.container-fluid
   %div.row
-    %nav#sidebarMenu.col-md.col-lg.d-md-block.bg-secondary.sidebar.collapse
+    %nav#sidebarMenu.col-md.col-lg.d-md-block.sidebar.collapse
       .position-sticky.pt-3
         %ul.nav.flex-column
           %li.nav-item
@@ -36,3 +36,5 @@
             = link_to edit_resume_theme_path(@resume), class: 'nav-link' + (current_page?(edit_resume_theme_path(@resume)) ? ' active text' : ' text-white') do
               %i.bi.bi-palette
               Themes
+
+          = render 'resumes/completion_pie_chart', resume: @resume
