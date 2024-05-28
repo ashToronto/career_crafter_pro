@@ -1,5 +1,5 @@
 = form_for [@resume, @resume.theme || Theme.new], url: resume_theme_path(@resume), method: :put do |f|
-  .sticky-top
+  .sticky-top-button-container
     = f.submit "Save Theme", class: "btn-save"
   .theme-previews
     - @themes.each do |theme|

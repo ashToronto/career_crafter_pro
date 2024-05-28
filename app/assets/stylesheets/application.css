@@ -54,6 +54,18 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   }
 }
 
+/* Items that are to be placed below navbar and also sticky to top */
+.sticky-top-button-container {
+  position: sticky;
+  top: 70px; /* Adjust this value based on the actual height of your navbar */
+  z-index: 1000;
+  background-color: #16171b;
+  padding: 10px 20px;
+  width: 100%;
+  border-bottom: 1px solid #9b59b6;
+}
+
+
 /* Card styling for a unified dark theme */
 .card {
   background: linear-gradient(to right, #232526, #633438);
