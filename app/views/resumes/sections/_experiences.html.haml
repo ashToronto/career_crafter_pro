@@ -20,23 +20,28 @@
             %p
               %i.bi.bi-broadcast-pin.me-2
               %strong Remote Work
-        .col-6.col-md-6
-          %p
-            %i.bi.bi-calendar-event-fill.me-2
-            %strong Start Date:
-            = experience.start_date.strftime('%B %d, %Y')
-          - if experience.end_date.present?
-            %p
-              %i.bi.bi-calendar-x-fill.me-2
-              %strong End Date:
-              = experience.end_date.strftime('%B %d, %Y')
-          - if experience.current_work
-            %p
-              %i.bi.bi-geo-alt-fill.me-2
-              %strong Currently Work Here
           %p
             %i.bi.bi-map-fill.me-2
             %strong Address:
             = experience.country
             = experience.province
             = experience.city
+
+          .card-footer
+            .row.text-muted
+              .col-auto
+                %i.bi.bi-calendar2-event-fill
+                %span.ms-2
+                  %strong Start:
+                  = experience.start_date.strftime('%B %d, %Y')
+              - if experience.end_date.present?
+                .col-auto
+                  %i.bi.bi-calendar2-x-fill
+                  %span.ms-2
+                    %strong End:
+                    = experience.end_date.strftime('%B %d, %Y')
+              - if experience.remote_work
+                .col-auto
+                  %i.bi.bi-check2-circle
+                  %span.ms-2
+                    %strong Currently working here
