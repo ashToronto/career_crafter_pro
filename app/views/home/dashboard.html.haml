@@ -22,10 +22,10 @@
             .col
               .card.hoverable
                 .row.g-0
-                  .col-md-6
+                  .col-md-4
                     .card-body
                       = image_tag "themes/#{resume.theme.name.downcase}.png", alt: resume.theme.name, class: "img-fluid resume-img-preview"
-                  .col-md-6
+                  .col-md-4
                     .card-body
                       %h5.card-title= resume.first_name
                       %p.card-text= resume.job_title
@@ -34,6 +34,8 @@
                       %p.card-text= resume.email
                       %p.card-text
                         %small.text-muted= resume.created_at.strftime("%B %d, %Y")
+                  .col-md-4
+                    = render 'resumes/completion_pie_chart', resume: resume
                     .card-footer.d-flex.justify-content-between
                       .btn-group.mt-3.mt-md-0
                         = link_to resume_path(resume), class: 'btn btn-sm me-2' do

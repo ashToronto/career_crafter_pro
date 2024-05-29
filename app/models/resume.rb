@@ -27,10 +27,6 @@ class Resume < ApplicationRecord
     ]
   end
 
-  def completion_score
-    ResumeScoreService.new(resume: self).calculate_completion_score
-  end
-
   private
 
   def assign_default_theme

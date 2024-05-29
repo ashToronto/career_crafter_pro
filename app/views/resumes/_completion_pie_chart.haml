@@ -1,4 +1,3 @@
-- completion = @resume.completion_score
-.theme-completion-chart
-  %div{style: "background: conic-gradient(#b65959 0% #{completion}%, #16171b #{completion}% 100%); width: 100px; height: 100px; border-radius: 50%; border: 4px solid #ffffff;"}
-  %p.text-center= "#{completion}% Complete"
+- completion = calculate_completion_score(resume)
+.theme-completion-chart{style: "background: conic-gradient(#b65959 0% #{completion}%, #16171b #{completion}% 100%); width: 100px; height: 100px; border-radius: 50%;"}
+  %p.completion-percentage= "#{completion}% Complete"
