@@ -1,5 +1,6 @@
 /* Resume completion pie chart styling */
 .theme-completion-chart {
+  margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
