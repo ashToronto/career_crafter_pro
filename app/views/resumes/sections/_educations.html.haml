@@ -23,17 +23,21 @@
             %i.bi.bi-map-fill.me-2
             %strong Province:
             = education.location
-        .col-12.col-md-6
-          %p
-            %i.bi.bi-calendar2-event-fill.me-2
-            %strong Start Date:
-            = education.start_date.strftime('%B %d, %Y')
-          - if education.end_date.present?
-            %p
-              %i.bi.bi-calendar2-x-fill.me-2
-              %strong End Date:
-              = education.end_date.strftime('%B %d, %Y')
-          - if education.currently_study
-            %p
-              %i.bi.bi-check2-circle.me-2
-              %strong Currently Studying
+        .card-footer
+          .row.text-muted
+            .col-auto
+              %i.bi.bi-calendar2-event-fill
+              %span.ms-2
+                %strong Start:
+                = education.start_date.strftime('%B %d, %Y')
+            - if education.end_date.present?
+              .col-auto
+                %i.bi.bi-calendar2-x-fill
+                %span.ms-2
+                  %strong End:
+                  = education.end_date.strftime('%B %d, %Y')
+            - if education.currently_study
+              .col-auto
+                %i.bi.bi-check2-circle
+                %span.ms-2
+                  %strong Currently Studying
