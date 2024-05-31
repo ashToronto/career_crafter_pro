@@ -1,11 +1,18 @@
-.container-fluid
-  .row
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  .container-fluid
+    %button.navbar-toggler{type: "button", 'data-bs-toggle': "collapse", 'data-bs-target': "#sidebarMenu", 'aria-controls': "sidebarMenu", 'aria-expanded': "false", 'aria-label': "Toggle navigation"}
+      %span.navbar-toggler-icon
+
+%div.container-fluid
+  %div.row
     .col-md-3
-      #sidebar
-        %ul.nav.flex-column
-          %li.nav-item
-            = link_to 'Dashboard', root_path, class: 'nav-link'
+      %nav#sidebarMenu.col-md.col-lg.d-md-block.sidebar.collapse
+        #sidebar
+          %ul.nav.flex-column
+            %li.nav-item
+              = link_to 'Dashboard', root_path, class: 'nav-link'
+              %h3 Let’s start with your header
+              %p Include at least your full name and email for employers to reach you
+
     .col-md-9.pt-5
-      %p Welcome to your dashboard! Here you can manage your resumes, templates, and account settings.
       = render 'form'
-      = link_to 'Back to Resumes', dashboard_path, class: 'btn btn-secondary mt-3'
