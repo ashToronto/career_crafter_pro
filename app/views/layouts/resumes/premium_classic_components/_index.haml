@@ -1,0 +1,92 @@
+!!!
+%html
+  %head
+    = wicked_pdf_stylesheet_link_tag 'premium_pdf_stylesheet/premium'
+.resume-body
+  = render 'layouts/resumes/common_components/banner', locals: { resume: @resume }
+  %article.info
+    %section.contact-info
+      = render 'layouts/resumes/common_components/contact', locals: { resume: @resume }
+      - if @resume.skills.any?
+        = render 'layouts/resumes/common_components/skills', locals: { resume: @resume }
+
+
+  %main
+    - if @resume.cover_letter.present?
+      = render 'layouts/resumes/common_components/cover_letter', locals: { resume: @resume }
+    - if @resume.experiences.any?
+      = render 'layouts/resumes/common_components/experiences', locals: { resume: @resume }
+    - if @resume.educations.any?
+      = render 'layouts/resumes/common_components/education', locals: { resume: @resume }
+
+
+:css
+  .resume-body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #2C3E50;
+    background-color: #EAECEF;
+    color: #000000
+  }
+  header, article, section, div, p {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  header {
+    background-color: #2C3E50;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  .contact-info p, .social-links li {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+  .contact-info p i, .social-links li i {
+    margin-right: 10px;
+  }
+
+  h2 {
+    font-size: 18px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #CCCCCC;
+    padding-bottom: 3px;
+  }
+
+  h3 {
+    font-size: 16px;
+    color: #34495E;
+  }
+
+  .experiences, .educations {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .job, .degree {
+    border-bottom: 1px solid #EEEEEE;
+    padding: 0.5rem;
+  }
+  .social-links {
+    list-style: none;
+    padding: 0;
+  }
+  .cover-letter {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+  }
+
+  .skill-badge {
+    display: inline-block;
+    background-color: #9b59b6; /* Use a solid color for better PDF compatibility */
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 5px;
+    font-size: 12px;
+    font-weight: bold;
+  }
