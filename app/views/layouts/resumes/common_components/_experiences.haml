@@ -1,0 +1,9 @@
+%section.experiences
+  %h2 Professional Experience
+  - @resume.experiences.each do |experience|
+    %div.job
+      - if experience.job_title || experience.company_name
+        %h3= experience.job_title + " at " + experience.company_name
+      - if experience.start_date
+        %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
+      %div= raw experience.content

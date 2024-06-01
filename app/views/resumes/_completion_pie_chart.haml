@@ -1,0 +1,10 @@
+- completion = calculate_completion_score(resume)
+.theme-completion-chart{style: "background: conic-gradient(#b65959 0% #{completion}%, #16171b #{completion}% 100%); width: 100px; height: 100px; border-radius: 50%;"}
+  - if completion == 0
+    %i.bi.bi-emoji-frown-fill.completion-icon{style: "font-size: 30px; color: #b65959;"}
+    %p.completion-percentage= "Get Started!"
+  - elsif completion == 100
+    %i.bi.bi-emoji-smile-fill.completion-icon{style: "font-size: 30px; color: #b65959;"}
+    %p.completion-percentage= "Completed!"
+  - else
+    %p.completion-percentage= "#{completion}% Complete"

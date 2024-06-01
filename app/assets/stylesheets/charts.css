@@ -1,0 +1,41 @@
+/* Resume completion pie chart styling */
+.theme-completion-chart {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #2b2b2b; /* Darker background for contrast */
+  position: relative;
+  overflow: hidden; /* Ensures no overflow from pseudo-elements */
+  border: 2px solid #ffffff; /* White border for a clean look */
+}
+
+.completion-percentage {
+  color: #ffffff;
+  font-size: 16px; /* Adjustable based on your preference */
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Enhances readability */
+  margin: 0; /* Removes any default margin */
+  position: absolute; /* Absolute positioning to center */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Ensures true centering */
+  z-index: 2; /* Ensures text is above any other styled pseudo-elements */
+}
+
+/* Optional: Pseudo-element for additional styling */
+.theme-completion-chart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1); /* Adds a slight darkening overlay */
+}

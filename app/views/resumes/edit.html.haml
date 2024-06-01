@@ -1,9 +1,16 @@
-.container-fluid
-  .row
-    .col-lg-3
-      = render 'sidebar'
-    .col-lg-9
-      %h2 Information
-      %p Welcome to your dashboard! Here you can manage your resumes, templates, and account settings.
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  .container-fluid
+    %button.navbar-toggler{type: "button", 'data-bs-toggle': "collapse", 'data-bs-target': "#sidebarMenu", 'aria-controls': "sidebarMenu", 'aria-expanded': "false", 'aria-label': "Toggle navigation"}
+      %span.navbar-toggler-icon
+
+%div.container-fluid
+  %div.row
+    .col-md-3
+      %nav#sidebarMenu.col-md.col-lg.d-md-block.sidebar.collapse
+        #sidebar
+          %ul.nav.flex-column
+            %h3.pt-4 Let’s start with your header
+            %p Include at least your full name and email for employers to reach you
+
+    .col-md-9.pt-2
       = render 'form'
-      = link_to 'Back to Resumes', resumes_path, class: 'btn btn-secondary mt-3'

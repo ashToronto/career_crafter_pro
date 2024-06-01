@@ -12,6 +12,7 @@
  *
 
  *= require form_partials
+ *= require charts
 
  *= require_tree .
  *= require_self
@@ -25,20 +26,20 @@ body, .navbar, .sidebar, .nav-link, .btn, .form-control {
 
 /* Updated primary interaction colors */
 a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
-  color: #9b59b6 !important; /* Subdued purple for active elements and links */
+  color: #b65959 !important; /* Subdued orange for active elements and links */
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
 /* Subtle hover effects for enhanced user experience */
 .btn:hover, a:hover, .nav-link:hover {
-  background-color: #2c3e50 !important; /* Dark slate for hover */
+  background-color: #944848 !important; /* Dark slate for hover */
   color: #dcdde1 !important; /* Soft light gray for text on hover */
 }
 
 /* Navbar specific styling */
 .navbar {
   background-color: #16171b !important; /* Dark background for navbar */
-  border-bottom: 1px solid #9b59b6 !important; /* Subdued purple border */
+  border-bottom: 1px solid #b65959 !important; /* Subdued purple border */
 }
 
 .navbar-logo {
@@ -54,10 +55,21 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   }
 }
 
+/* Items that are to be placed below navbar and also sticky to top */
+.sticky-top-button-container {
+  position: sticky;
+  top: 70px; /* Adjust this value based on the actual height of your navbar */
+  z-index: 1000;
+  background-color: #16171b;
+  padding: 10px 20px;
+  width: 100%;
+  border-bottom: 1px solid #9b59b6;
+}
+
+
 /* Card styling for a unified dark theme */
 .card {
-  background: linear-gradient(to right, #232526, #414345);
-
+  background: linear-gradient(to right, #232526, #633438);
   border: none;
   color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -65,17 +77,13 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   padding: 10px;
 }
 
+.card:hover {
+  opacity: 0.75; /* Reduce opacity to give a selection effect */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Increase shadow for a lifted effect */
+}
+
 .card-header {
-  background-color: #343a40 !important; /* Darker shade for header */
-}
-
-.card-body {
-  color: #ffffff !important; /* White for readability */
-}
-
-.card-body.hoverable-card-body {
-  transition: transform 0.2s, box-shadow 0.3s;
-  cursor: pointer;
+  background-color: #202020 !important; /* Darker shade for header */
 }
 
 /* Dropdown menu styling within navbar */
@@ -85,38 +93,12 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
 }
 
 .dark-dropdown .dropdown-item {
-  color: #9b59b6 !important; /* Subdued purple for dropdown items */
+  color: #b65959 !important; /* Subdued purple for dropdown items */
 }
 
 .dark-dropdown .dropdown-item:hover {
   background-color: #2c3e50 !important; /* Dark slate for hover */
   color: #dcdde1 !important;
-}
-
-/* Custom styling for the Craft button */
-.btn-craft {
-  background-color: #8e44ad; /* Matching the card gradient */
-  color: #ffffff; /* White text for contrast */
-  border: none; /* Removing default border */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-}
-
-.btn-craft:hover {
-  background-color: #9b59b6; /* Lighter purple for hover */
-  color: #ffffff; /* Maintain white text on hover */
-}
-
-/* Custom styling for the Logout button */
-.btn-logout {
-  background-color: #34495e; /* Dark blue-gray */
-  color: #ffffff; /* White text for contrast */
-  border: none; /* Removing default border */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-}
-
-.btn-logout:hover {
-  background-color: #2c3e50; /* Slightly darker shade for hover */
-  color: #ffffff; /* Maintain white text on hover */
 }
 
 /* Custom Styling for Skill Badges */
@@ -140,6 +122,7 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   transition: transform 0.2s;
   min-width: 120px; /* Minimum width */
   box-sizing: border-box; /* Ensures padding is included in the width */
+  opacity: 0.75;
 }
 
 .badge-custom:hover {
@@ -157,12 +140,12 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   height: 24px; /* Maintain aspect ratio */
   color: #ffffff; /* Button color */
   font-size: 16px; /* Size of the 'X' */
-  opacity: 0.8; /* Slight transparency */
+  opacity: 1; /* Slight transparency */
   border: none; /* No border */
   cursor: pointer; /* Cursor as pointer */
 }
 
 .btn-close-custom:hover {
   opacity: 1; /* Full visibility on hover */
-  color: #ff0000; /* Change color on hover for visibility */
+  color: #f6f2f2; /* Change color on hover for visibility */
 }

@@ -1,0 +1,93 @@
+!!!
+%html
+  %head
+  .resume-body
+    = render 'layouts/resumes/common_components/banner', locals: { resume: @resume }
+    %table.layout
+      %tr
+        %td.left-column
+          = render 'layouts/resumes/common_components/contact', locals: { resume: @resume }
+          = render 'layouts/resumes/common_components/skills', locals: { resume: @resume }
+        %td.right-column
+          - if @resume.educations.any?
+            = render 'layouts/resumes/common_components/education', locals: { resume: @resume }
+          - if @resume.experiences.any?
+            = render 'layouts/resumes/common_components/experiences', locals: { resume: @resume }
+          - if @resume.cover_letter.present?
+            .section
+              %h2 Cover Letter
+              %div.cover_letter= raw @resume.cover_letter.content
+
+
+:css
+  .resume-body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background-color: #EEE;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .resume-body header {
+    background-color: #007bff;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .resume-body table.layout {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .resume-body td.left-column, td.right-column {
+    padding: 20px;
+    vertical-align: top;
+  }
+
+  .resume-body td.left-column {
+    width: 35%;
+    background-color: #f0f0f0;
+  }
+  .resume-body td.right-column {
+    width: 65%;
+  }
+  .resume-body h1, h2, h3, p {
+    margin: 10px 0;
+  }
+  .resume-body h1 {
+    font-size: 26px;
+    color: white;
+  }
+
+  .resume-body h2 {
+    font-size: 20px;
+    color: white;
+    margin-top: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+  }
+  .resume-body .skill-badge, .social-link {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin: 5px 5px 5px 0;
+    font-size: 12px;
+  }
+  .resume-body .section {
+    margin-bottom: 20px;
+  }
+  .resume-body .social-link {
+    background-color: transparent;
+    padding: 0;
+    margin: 0 5px 5px 0;
+    color: #007bff;
+  }
+
+  .resume-body .cover_letter, .experiences {
+    color: #495057;
+  }
