@@ -7,16 +7,7 @@
       %tr
         %td.left-column
           = render 'layouts/resumes/common_components/contact', locals: { resume: @resume }
-          %h2 Skills
-          - @resume.skills.each do |skill|
-            %span.skill-badge= skill.name
-          - if @resume.social_link.present?
-            %h2 Social Links
-            - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
-              - if @resume.social_link[link].present?
-                %p.social-link
-                  %strong= link.titleize.gsub('_', ' ') + ':'
-                  = @resume.social_link[link]
+          = render 'layouts/resumes/common_components/skills', locals: { resume: @resume }
         %td.right-column
           - if @resume.educations.any?
             = render 'layouts/resumes/common_components/education', locals: { resume: @resume }
@@ -39,43 +30,46 @@
     color: #333;
   }
 
-  .banner {
-    background-color: #0056b3;
-    color: white;
-    padding: 20px;
+  .resume-body header {
+    background-color: #007bff;
+    color: #FFFFFF;
     text-align: center;
+    padding: 1rem 0;
   }
 
-  table.layout {
+  .resume-body table.layout {
     width: 100%;
     table-layout: fixed;
   }
-  td.left-column, td.right-column {
+
+  .resume-body td.left-column, td.right-column {
     padding: 20px;
     vertical-align: top;
   }
-  td.left-column {
+
+  .resume-body td.left-column {
     width: 35%;
     background-color: #f0f0f0;
   }
-  td.right-column {
+  .resume-body td.right-column {
     width: 65%;
   }
-  h1, h2, h3, p {
+  .resume-body h1, h2, h3, p {
     margin: 10px 0;
   }
-  h1 {
+  .resume-body h1 {
     font-size: 26px;
     color: white;
   }
-  h2 {
+
+  .resume-body h2 {
     font-size: 20px;
-    color: #333;
+    color: white;
     margin-top: 20px;
     border-bottom: 1px solid #ccc;
     padding-bottom: 5px;
   }
-  .skill-badge, .social-link {
+  .resume-body .skill-badge, .social-link {
     display: inline-block;
     background-color: #007bff;
     color: white;
@@ -84,16 +78,16 @@
     margin: 5px 5px 5px 0;
     font-size: 12px;
   }
-  .section {
+  .resume-body .section {
     margin-bottom: 20px;
   }
-  .social-link {
+  .resume-body .social-link {
     background-color: transparent;
     padding: 0;
     margin: 0 5px 5px 0;
     color: #007bff;
   }
 
-  .cover_letter, .experiences {
+  .resume-body .cover_letter, .experiences {
     color: #495057;
   }
