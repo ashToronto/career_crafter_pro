@@ -9,7 +9,7 @@
           %tr
             %th.text-white Name
             %th.text-white Active
-            %th.text-white image
+            %th.text-white Usage
             %th.text-white edit
             %th.text-white delete
         %tbody
@@ -17,9 +17,8 @@
             %tr
               %td.text-white= theme.name
               %td.text-white= theme.active ? 'Yes' : 'No'
-              %td
-                .theme-preview
-                  = image_tag "themes/#{theme.name.downcase}.png", alt: theme.name
+              %td.text-white
+                usage placeholder feature wip
               %td
                 = link_to edit_admin_theme_path(theme), class: 'btn btn-outline-primary btn-sm me-2' do
                   = image_tag('pencil.png', alt: 'Edit', width: "20")
@@ -27,17 +26,3 @@
                 = form_for([:admin, theme], method: :delete, data: { confirm: 'Are you sure?' }) do
                   = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
                     = image_tag('trashcan.png', alt: 'Delete', width: "20")
-
-:css
-  .theme-previews {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .theme-preview {
-    cursor: pointer;
-  }
-  .theme-preview img {
-    width: 200px; /* Adjust based on your needs */
-    height: auto;
-  }

@@ -1,116 +1,21 @@
 !!!
 %html
   %head
-    = wicked_pdf_stylesheet_link_tag 'free_pdf_stylesheet/default'
-.resume-body
+    = wicked_pdf_stylesheet_link_tag 'themes/free_default'
+.resume-free-default
   %table
     %tr
       %td.left-column
-        %h1
-          = @resume.first_name
-          = @resume.last_name
-        %p
-          %strong Email:
-          = @resume.email
-        %p
-          %strong Phone:
-          = @resume.phone_number
-        %h2 Skills
-        %div
-          - @resume.skills.each do |skill|
-            %span.skill-badge= skill.name
-        - if @resume.social_link.present?
-          %h2 Social Links
-          - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
-            - if @resume.social_link[link].present?
-              %p
-                %strong= link.titleize.gsub('_', ' ') + ':'
-                = @resume.social_link[link]
+        = render 'layouts/resumes/common_components/banner', resume: @resume
+        = render 'layouts/resumes/common_components/contact', resume: @resume
+        = render 'layouts/resumes/common_components/skills', resume: @resume
       %td.right-column
         - if @resume.educations.any?
-          .section
-            %h2 Education
-            - @resume.educations.each do |education|
-              %h3= education.degree.titleize
-              %p= "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"
-              %p= education.institution_name
+          = render 'layouts/resumes/common_components/education', resume: @resume
         - if @resume.experiences.any?
           .section
-            %h2 Professional Experience
-            - @resume.experiences.each do |experience|
-              %h3= experience.job_title + " at " + experience.company_name
-              %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
-              %div.experience= raw experience.content
+            = render 'layouts/resumes/common_components/experiences', resume: @resume
         - if @resume.cover_letter.present?
           .section
             %h2 Cover Letter
             %div.cover_letter= raw @resume.cover_letter.content
-
-:css
-  .resume-body {
-    font-family: 'Helvetica', 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 14px;
-    color: #333;
-  }
-  .resume-body table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed; /* Keeps columns fixed */
-  }
-  .resume-body .left-column, .right-column {
-    vertical-align: top; /* Aligns content to the top */
-    padding: 20px;
-  }
-  .resume-body .left-column {
-    width: 35%;
-    background-color: #f8f9fa;
-    border-right: 2px solid #dee2e6;
-  }
-  .resume-body .right-column {
-    width: 65%;
-  }
-  .resume-body h1, h2, h3, h4, h5, h6, p {
-    margin: 10px 0;
-  }
-  .resume-body h1 {
-    font-size: 28px;
-    color: #007bff;
-  }
-  .resume-body h2 {
-    font-size: 22px;
-    margin-top: 20px;
-    border-bottom: 1px solid #dee2e6;
-    padding-bottom: 5px;
-  }
-  .resume-body h3 {
-    font-size: 18px;
-    color: #343a40;
-  }
-  .resume-body p, li {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  .resume-body ul {
-    padding-left: 20px;
-    list-style-type: none;
-  }
-  .resume-body .skill-badge {
-    display: inline-block;
-    background-color: #007bff;
-    color: #fff;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 12px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-  }
-  .resume-body .section {
-    margin-bottom: 30px; /* Adds more space between sections */
-  }
-
-  .resume-body .cover_letter, .experiences {
-    color: #495057;
-  }

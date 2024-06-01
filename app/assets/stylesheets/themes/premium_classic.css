@@ -1,0 +1,44 @@
+.resume-premium-classic header {
+  background-color: #2C3E50;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.resume-premium-classic .contact-info p, .resume-premium-classic .social-links li {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.resume-premium-classic .contact-info p i, .resume-premium-classic {
+  margin-right: 10px;
+}
+
+.resume-premium-classic h1,
+.resume-premium-classic h2{
+  color: white;
+}
+
+.resume-premium-classic .skill-badge {
+  display: inline-block;
+  background-color: #9b59b6;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.resume-premium-classic .cover-letter {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 1rem;
+}
+
+.resume-premium-classic .social-links .social-links li {
+  list-style: none;
+  padding: 0;
+}

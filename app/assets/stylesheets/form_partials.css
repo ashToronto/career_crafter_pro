@@ -102,8 +102,6 @@ select.form-select:-webkit-autofill:focus {
   transform: translateY(1px);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
-
-/* Theme selection form's styling */
 .theme-previews {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -114,11 +112,14 @@ select.form-select:-webkit-autofill:focus {
 }
 
 .theme-preview {
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s, background-color 0.3s;
+  background-color: #f8f9fa;  /* Light background for better visibility */
+  border: 2px solid #dee2e6;  /* Subtle border */
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Adds depth */
+  padding: 20px;  /* Padding for internal spacing */
+  min-height: 400px; /* Minimum height for uniformity */
+  width: 100%; /* Full width to fill the grid column */
+  max-width: 500px; /* Maximum width to prevent overly wide previews */
 }
 
 .theme-preview:hover {
@@ -127,39 +128,21 @@ select.form-select:-webkit-autofill:focus {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.theme-preview img {
-  width: 100%;
-  height: auto;
-  display: block;
-  max-height: 500px;
-}
-
-.theme-preview p {
-  text-align: center;
-  color: #ffffff;
-  margin-top: 5px;
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-/* Styles for radio button selection and hover effects */
-.theme-preview input[type='radio']:checked + img {
-  border: 6px solid #b65959;
+/* Specific styles when the radio button is checked */
+input[type='radio']:checked + label .theme-content {
+  border: 4px solid #b65959;
   box-shadow: 0 0 15px rgba(182, 89, 89, 0.75);
-  opacity: 0.9;
   transform: scale(1.02);
 }
 
-.theme-preview label:hover img {
-  background-color: #7a4343;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  transform: scale(1.05);
+.theme-content {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.theme-content p {
+  text-align: center;
+  color: #ffffff;
+  margin-top: 5px;
 }
