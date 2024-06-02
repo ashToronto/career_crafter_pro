@@ -20,7 +20,7 @@
                   %p.card-text.text-end
                     %small.text-muted
                       last updated #{resume.updated_at.strftime("%B %d, %Y")}
-                  .theme-selection-preview.bg-light.p-4.rounded-3.d-none.d-md-block
+                  .theme-content.bg-light.p-4.rounded-3.d-none.d-md-block
                     - @resume = resume
                     = render "layouts/resumes/#{resume.theme.name}_components/index", resume: resume
                   .col-md-4.d-block.d-md-none

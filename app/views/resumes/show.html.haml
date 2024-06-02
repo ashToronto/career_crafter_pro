@@ -43,6 +43,6 @@
                 = render 'resumes/sections/experiences', resume: @resume
 
           .col-md-6.d-none.d-md-block
-            .theme-selection-preview.bg-light.p-4.mt-4.rounded-3
+            .theme-content.bg-light.p-4.mt-4.rounded-3
               - if @resume.theme.name
                 = render "layouts/resumes/#{@resume.theme.name}_components/index", resume: @resume
