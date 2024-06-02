@@ -1,7 +1,8 @@
-%section.educations
+.educations
   %h3 Education
   - @resume.educations.each do |education|
-    %h3= education.degree&.titleize || 'New Degree'
-    - if education.start_date
-      %p= "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"
-    %p= education.institution_name
+    .education-item
+      %h4= education.institution_name
+      .date-footer
+        %p= "#{degree= education.location}"
+        %p= "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"

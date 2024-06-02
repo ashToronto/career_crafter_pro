@@ -1,18 +1,17 @@
 %html
   %head
-    = wicked_pdf_stylesheet_link_tag 'themes/layouts_pdf_base'
-    = wicked_pdf_stylesheet_link_tag 'themes/premium_classic'
+    = wicked_pdf_stylesheet_link_tag 'themes/free_modern'
 .resume-layout
-  .resume-premium-classic
+  .resume-free-modern
     = render 'layouts/resumes/common_components/banner', resume: @resume
     %article.info
       %section.contact-info
         = render 'layouts/resumes/common_components/contact', resume: @resume
+        - if @resume.cover_letter.present?
+          = render 'layouts/resumes/common_components/cover_letter', resume: @resume
         - if @resume.skills.any?
           = render 'layouts/resumes/common_components/skills', resume: @resume
     %main
-      - if @resume.cover_letter.present?
-        = render 'layouts/resumes/common_components/cover_letter', resume: @resume
       - if @resume.experiences.any?
         = render 'layouts/resumes/common_components/experiences', resume: @resume
       - if @resume.educations.any?

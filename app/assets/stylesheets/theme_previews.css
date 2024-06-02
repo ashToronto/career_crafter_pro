@@ -1,0 +1,51 @@
+
+.theme-previews {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+  gap: 20px;
+  padding: 30px;
+  justify-content: center;
+  align-items: start;
+}
+
+input[type='radio']:checked + label .theme-content {
+  border: 5px solid #7653c1; /* Slightly thinner border */
+  box-shadow: 0 0 10px rgba(154, 102, 102, 0.5); /* Softer shadow */
+  opacity: 0.6;
+}
+
+/* Base styles for .theme-content */
+.theme-content {
+  cursor: pointer;
+  border-radius: 10px;
+  min-height: 800px;
+  max-width: 600px;
+  background-color: #f8f9fa;
+  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 1424px) {
+  .theme-content {
+    min-height: 600px;  /* Slightly less tall for smaller devices */
+    min-width: 450px;   /* Adjust width for medium screens */
+  }
+}
+
+/* Small screens (e.g., tablets in portrait) */
+@media (max-width: 768px) {
+  .theme-content {
+    min-height: 400px;  /* Suitable for smaller devices */
+    min-width: 300px;   /* Adjust width to fit smaller screens */
+    padding: 10px;      /* Optional: add padding for better readability */
+  }
+}
+
+/* Extra small screens (e.g., mobile devices) */
+@media (max-width: 576px) {
+  .theme-content {
+    display: none;  /* Hide this element on very small devices if not optimal */
+    /* Alternatively, adjust the size and layout appropriately if you choose to display it */
+  }
+}

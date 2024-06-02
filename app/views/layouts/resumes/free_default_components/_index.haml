@@ -10,12 +10,13 @@
         = render 'layouts/resumes/common_components/contact', resume: @resume
         = render 'layouts/resumes/common_components/skills', resume: @resume
       %td.right-column
+        - if @resume.cover_letter.present?
+          .section
+            %h2 Cover Letter
+            %div.cover_letter= raw @resume.cover_letter.content
+
         - if @resume.educations.any?
           = render 'layouts/resumes/common_components/education', resume: @resume
         - if @resume.experiences.any?
           .section
             = render 'layouts/resumes/common_components/experiences', resume: @resume
-        - if @resume.cover_letter.present?
-          .section
-            %h2 Cover Letter
-            %div.cover_letter= raw @resume.cover_letter.content

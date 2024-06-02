@@ -7,11 +7,11 @@
     %article.info
       .contact-info
         = render 'layouts/resumes/common_components/contact', resume: @resume
+        - if @resume.cover_letter.present?
+          = render 'layouts/resumes/common_components/cover_letter', resume: @resume
         - if @resume.skills.any?
           = render 'layouts/resumes/common_components/skills', resume: @resume
     %main
-      - if @resume.cover_letter.present?
-        = render 'layouts/resumes/common_components/cover_letter', resume: @resume
       - if @resume.experiences.any?
         = render 'layouts/resumes/common_components/experiences', resume: @resume
       - if @resume.educations.any?

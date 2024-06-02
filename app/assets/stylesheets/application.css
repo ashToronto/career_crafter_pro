@@ -13,6 +13,7 @@
 
  *= require form_partials
  *= require charts
+ *= require theme_previews
 
  *= require_tree .
  *= require_self

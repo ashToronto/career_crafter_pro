@@ -1,8 +1,9 @@
 .experiences
-  %h3 work history
+  %h3 Work History
   - @resume.experiences.each do |experience|
-    - if experience.job_title && experience.company_name
-      %h4= experience.job_title + " at " + experience.company_name
-    - if experience.start_date
-      %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
-    .description= raw experience.content
+    .experience-item
+      %h4= "#{experience.job_title} at #{experience.company_name}"
+      .date-footer
+        %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
+      .description
+        = raw experience.content

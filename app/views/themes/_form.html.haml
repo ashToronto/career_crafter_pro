@@ -3,10 +3,9 @@
     = f.submit "Save Theme", class: "btn-save"
   .theme-previews
     - @themes.each do |theme|
-      .theme-preview
-        = radio_button_tag 'resume[theme_id]', theme.id, @resume.theme_id == theme.id, class: 'visually-hidden', id: "resume_theme_id_#{theme.id}"
-        = label_tag "resume_theme_id_#{theme.id}" do
-          .theme-content
-            - if theme.name
-              - fake_resume = sample_resume
-              = render "layouts/resumes/#{theme.name.downcase}_components/index", locals: { resume: fake_resume }
+      = radio_button_tag 'resume[theme_id]', theme.id, @resume.theme_id == theme.id, class: 'visually-hidden', id: "resume_theme_id_#{theme.id}"
+      = label_tag "resume_theme_id_#{theme.id}" do
+        .theme-content
+          - if theme.name
+            - @resume = sample_resume
+            = render "layouts/resumes/#{theme.name.downcase}_components/index", locals: { resume: @resume }

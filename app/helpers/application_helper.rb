@@ -18,6 +18,7 @@ module ApplicationHelper
       educations: [Education.new(
         {
           institution_name: 'University of Tech',
+          location: 'learning lane, New York, USA',
           degree: 1,
           start_date: Date.new(2010, 1, 1),
           end_date: Date.new(2014, 1, 1)
