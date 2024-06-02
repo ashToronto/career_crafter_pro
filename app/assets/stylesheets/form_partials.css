@@ -117,9 +117,6 @@ select.form-select:-webkit-autofill:focus {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   padding: 20px;
-  min-height: 400px;
-  width: 100%; /* Ensures it fits the container */
-  max-width: 100%; /* Use 100% of the grid column width */
 }
 
 input[type='radio']:checked + label .theme-content {
@@ -130,7 +127,7 @@ input[type='radio']:checked + label .theme-content {
 
 .theme-content {
   cursor: pointer;
-  padding: 10px;
   border-radius: 10px;
   min-height: 800px;
+  min-width: 600px;
 }

@@ -8,4 +8,5 @@
         = label_tag "resume_theme_id_#{theme.id}" do
           .theme-content
             - if theme.name
-              = render "layouts/resumes/#{theme.name.downcase}_components/index", locals: { resume: @resume }
+              - fake_resume = sample_resume
+              = render "layouts/resumes/#{theme.name.downcase}_components/index", locals: { resume: fake_resume }

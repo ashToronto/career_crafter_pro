@@ -23,7 +23,8 @@ class ResumesController < ApplicationController
                template: "layouts/resumes/#{@resume.theme.name}",
                layout: false, # No layout is used
                page_size: 'A4',
-               encoding: 'UTF-8'
+               encoding: 'UTF-8',
+               margin: { top: 0, bottom: 0, left: 0, right: 0 } # Remove margins
       end
     end
   end
@@ -33,7 +34,8 @@ class ResumesController < ApplicationController
                            template: "layouts/resumes/#{@resume.theme.name}",
                            layout: false,
                            page_size: 'A4',
-                           encoding: 'UTF-8'
+                           encoding: 'UTF-8',
+                           margin: { top: 0, bottom: 0, left: 0, right: 0 } # Remove margins
     send_data pdf, filename: "resume_#{params[:id]}.pdf", type: 'application/pdf', disposition: 'attachment'
   end
 

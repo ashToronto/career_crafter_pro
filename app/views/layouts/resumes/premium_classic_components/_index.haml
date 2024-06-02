@@ -1,12 +1,11 @@
 %html
   %head
-    = wicked_pdf_stylesheet_link_tag 'themes/layouts_pdf_base'
     = wicked_pdf_stylesheet_link_tag 'themes/premium_classic'
 .resume-layout
   .resume-premium-classic
     = render 'layouts/resumes/common_components/banner', resume: @resume
     %article.info
-      %section.contact-info
+      .contact-info
         = render 'layouts/resumes/common_components/contact', resume: @resume
         - if @resume.skills.any?
           = render 'layouts/resumes/common_components/skills', resume: @resume
