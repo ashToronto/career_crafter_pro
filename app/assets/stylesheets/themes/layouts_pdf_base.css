@@ -1,0 +1,52 @@
+/* Base styles for all PDFs */
+.resume-layout {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #EAECEF;
+  color: #000000;
+}
+
+.resume-layout h1,
+.resume-layout h2,
+.resume-layout h3,
+.resume-layout h4,
+.resume-layout h5,
+.resume-layout h6,
+.resume-layout p,
+.resume-layout li {
+  margin: 10px 0;
+  color: #000000; /* Ensures text color is black only within the resume layout */
+}
+
+.resume-layout h2 {
+  font-size: 18px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #CCCCCC;
+  padding-bottom: 3px;
+}
+
+.resume-layout h3 {
+  font-size: 16px;
+  color: #34495E;
+}
+
+.resume-layout ul {
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.resume-layout .table-layout {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.resume-layout .box-section {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 0.5rem;
+}
+
+.social-links {
+  font-size: 10px;
+}

@@ -4,7 +4,8 @@
   .theme-previews
     - @themes.each do |theme|
       .theme-preview
+        = radio_button_tag 'resume[theme_id]', theme.id, @resume.theme_id == theme.id, class: 'visually-hidden', id: "resume_theme_id_#{theme.id}"
         = label_tag "resume_theme_id_#{theme.id}" do
-          = radio_button_tag 'resume[theme_id]', theme.id, @resume.theme_id == theme.id, class: 'visually-hidden', id: "resume_theme_id_#{theme.id}"
-          = image_tag "themes/#{theme.name.downcase}.png", alt: theme.name, class: "img-fluid"
-          %p= theme.name
+          .theme-content
+            - if theme.name
+              = render "layouts/resumes/#{theme.name.downcase}_components/index", locals: { resume: @resume }

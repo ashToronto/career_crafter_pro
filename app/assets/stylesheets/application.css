@@ -66,6 +66,9 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   border-bottom: 1px solid #9b59b6;
 }
 
+.theme-selection-preview {
+  height: 800px;
+}
 
 /* Card styling for a unified dark theme */
 .card {
