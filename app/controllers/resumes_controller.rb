@@ -9,7 +9,7 @@ class ResumesController < ApplicationController
   def create
     @resume = current_user.resumes.build(resume_params)
     if @resume.save
-      redirect_to edit_resume_theme_path(@resume), notice: 'Resume was successfully created.'
+      redirect_to resume_path(@resume), notice: 'Resume was successfully created.'
     else
       render :new
     end
