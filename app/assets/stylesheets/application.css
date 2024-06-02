@@ -67,7 +67,7 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
 }
 
 .theme-selection-preview {
-  min-height: 600px;
+  height: 800px;
 }
 
 /* Card styling for a unified dark theme */

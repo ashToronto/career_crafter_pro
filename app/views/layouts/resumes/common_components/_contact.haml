@@ -1,13 +1,10 @@
 %section.contact-info
   %p
-    %i.bi.bi-envelope-fill
     = @resume.email
   %p
-    %i.bi.bi-telephone-fill
     = @resume.phone_number
   - if @resume.social_link.present?
-    %ul.social-links
+    .social-links
       - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
         - if @resume.social_link[link].present?
-          %li
-            = link_to @resume.social_link[link], @resume.social_link[link], target: '_blank'
+          = link_to @resume.social_link[link], @resume.social_link[link], target: '_blank'

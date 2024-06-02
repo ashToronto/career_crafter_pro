@@ -1,14 +1,8 @@
 /* Base styles for all PDFs */
 .resume-layout {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  margin: 0;
-  padding: 0;
   background-color: #EAECEF;
   color: #000000;
-}
-
-.resume-layout header, .resume-layout article, .resume-layout section {
-  padding: 2px;
 }
 
 .resume-layout h1,
@@ -51,4 +45,8 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 0.5rem;
+}
+
+.social-links {
+  font-size: 10px;
 }

@@ -9,6 +9,7 @@ class HomeController < ApplicationController
 
   def dashboard
     @user_resumes = current_user.resumes.includes(:theme, :experiences, :educations, :social_link, :skills,
-                                                  :cover_letter).order(updated_at: :desc)
+                                                  cover_letter: [:rich_text_content],
+                                                  experiences: [:rich_text_content]).order(updated_at: :desc)
   end
 end

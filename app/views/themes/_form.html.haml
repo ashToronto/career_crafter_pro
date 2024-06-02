@@ -9,4 +9,3 @@
           .theme-content
             - if theme.name
               = render "layouts/resumes/#{theme.name.downcase}_components/index", locals: { resume: @resume }
-            %p= theme.name
