@@ -53,8 +53,5 @@ application up and running.
 
 * 🧩 Make sure you use the correct prefix i.e `free` vs `premium` followed by the design name.
 * 🧩 Create a new file `[my pdf design name].pdf.haml` in the appropriate resume themes folder structure.
-* 🧩 For the time being css for .pdf themes will be inline css and isolated to only those files.
-* 🧩 Update database with new theme name it should correspond to the correct .pdf file name `[my pdf design name].pdf.haml`
-* 🧩 Add image/screenshot of the pdf design place under `assets/images/themes/[my pdf design name].png` make sure the design name of the file and image are consistant.
-
-* 🧩 You will also need to run `rake themes:update_db` this will take the newly added `assets/images/themes/[my new pdf design name].png` and add it to the database. This means all theme names in the database will sync with the .png file names in the their respective images in assets. Alternatively you can manually enter the theme name via the admin dashboard as a backup approach if anything goes wrong with the rake task.
+* 🧩 For the time being css for .pdf themes will stored in the wicked_pdf_stylesheets in the stylesheets folder structure they are called in the .pdf/.haml views responsible for rendering previews and the pdf itself, theya re self contained and intended to be used on haml partials that in turn are leveraged to for the pdf and it's haml previews throughout the app.
+* 🧩 Update database with new theme name it should correspond to the correct .pdf file name `[my pdf design name].pdf.haml`.
