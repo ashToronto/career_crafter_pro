@@ -8,11 +8,11 @@ class ResumesController < ApplicationController
 
   def create
     @resume = current_user.resumes.build(resume_params)
-    if @resume.save
-      redirect_to resume_path(@resume), notice: 'Resume was successfully created.'
-    else
-      render :new
-    end
+    @resume.save!
+    redirect_to resume_path(@resume), notice: 'Resume was successfully created.'
+  rescue ActiveRecord::RecordInvalid => e
+    logger.error "Failed to create resume: #{e.message}"
+    redirect_to new_resume_path, alert: e.message
   end
 
   def show
@@ -45,16 +45,19 @@ class ResumesController < ApplicationController
   end
 
   def update
-    if @resume.update(resume_params)
-      redirect_to @resume, notice: 'Resume was successfully updated.'
-    else
-      render :edit
-    end
+    @resume.update!(resume_params)
+    redirect_to @resume, notice: 'Resume was successfully updated.'
+  rescue ActiveRecord::RecordInvalid => e
+    logger.error "Failed to update resume: #{e.message}"
+    redirect_to resume_path(@resume), alert: e.message
   end
 
   def destroy
-    @resume.destroy
+    @resume.destroy!
     redirect_to dashboard_path, notice: 'Resume was successfully destroyed.'
+  rescue RecordNotFound => e
+    logger.error "Failed to delete resume: #{e.message}"
+    redirect_to root_path, alert: e.message
   end
 
   private

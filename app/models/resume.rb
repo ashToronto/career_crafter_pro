@@ -13,12 +13,12 @@ class Resume < ApplicationRecord
   before_validation :assign_default_theme, if: -> { theme_id.blank? }
 
   validates :user_id, presence: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: 'only allows letters' }
+  validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: 'only allows letters' }
   validates :country, presence: true
   validates :state, presence: true
   validates :phone_number, presence: true
-  validates :email, presence: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :job_title, presence: true
 
   def slug_candidates
