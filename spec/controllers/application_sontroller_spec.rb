@@ -10,6 +10,10 @@ RSpec.describe ApplicationController, type: :controller do
     def show
       raise ActiveRecord::RecordNotFound, 'Simulated RecordNotFound'
     end
+
+    def create
+      raise ActiveRecord::RecordInvalid, CoverLetter.new
+    end
   end
 
   # Test for StandardError
@@ -31,6 +35,18 @@ RSpec.describe ApplicationController, type: :controller do
 
       expect(response).to redirect_to(error_path)
       expect(flash[:alert]).to eq('Simulated RecordNotFound')
+    end
+  end
+
+  # Test for ActiveRecord::RecordInvalid
+  describe 'handling ActiveRecord::RecordInvalid' do
+    it 'redirects to the referrer or error path with a validation failure message' do
+      routes.draw { post 'create' => 'anonymous#create' }
+      request.headers['Referer'] = edit_resume_cover_letter_path(1)
+      post :create
+
+      expect(response).to redirect_to(edit_resume_cover_letter_path(1))
+      expect(flash[:alert]).to include('Validation failed')
     end
   end
 end
