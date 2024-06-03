@@ -11,7 +11,7 @@ class EducationsController < ApplicationController
 
   def create
     @education = @resume.educations.build(education_params)
-    if @education.save
+    if @education.save!
       redirect_to resume_path(@resume), notice: 'Education was successfully added.'
     else
       render :new
@@ -19,7 +19,7 @@ class EducationsController < ApplicationController
   end
 
   def update
-    if @education.update(education_params)
+    if @education.update!(education_params)
       redirect_to resume_path(@resume), notice: 'Education was successfully updated.'
     else
       render :edit
@@ -27,7 +27,7 @@ class EducationsController < ApplicationController
   end
 
   def destroy
-    @education.destroy
+    @education.destroy!
     redirect_to resume_path(@resume), notice: 'Education was successfully removed.'
   end
 
