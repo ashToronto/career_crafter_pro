@@ -45,7 +45,7 @@ RSpec.describe ResumesController, type: :controller do
     context 'with invalid params' do
       it 'triggers the flash notice and re-renders the page' do
         post :create, params: { resume: invalid_attributes }
-        expect(response).to redirect_to(new_resume_path)
+        expect(response).to redirect_to(error_path)
         expect(flash[:alert])
       end
     end
@@ -83,7 +83,7 @@ RSpec.describe ResumesController, type: :controller do
     context 'with invalid params' do
       it 're-renders the page and shows error flash' do
         put :update, params: { id: resume.to_param, resume: invalid_attributes }
-        expect(response).to redirect_to(resume_path)
+        expect(response).to redirect_to(error_path)
         expect(flash[:alert])
       end
     end
