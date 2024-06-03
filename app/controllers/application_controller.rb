@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     redirect_to error_path, alert: e.message
   end
 
-  def record_not_found_logger
+  def record_not_found_logger(e)
     logger.error "Something went wrong Record not found: #{e.message}"
     redirect_to error_path, alert: e.message
   end
