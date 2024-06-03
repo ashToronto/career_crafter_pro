@@ -15,7 +15,7 @@ class CoverLettersController < ApplicationController
 
   def create
     @cover_letter = @resume.build_cover_letter(cover_letter_params)
-    if @cover_letter.save
+    if @cover_letter.save!
       redirect_to resume_path(@resume), notice: 'Cover Letter was successfully added.'
     else
       render :new
@@ -23,7 +23,7 @@ class CoverLettersController < ApplicationController
   end
 
   def update
-    if @cover_letter.update(cover_letter_params)
+    if @cover_letter.update!(cover_letter_params)
       redirect_to resume_path(@resume), notice: 'Cover Letter was successfully updated.'
     else
       render :edit
@@ -31,7 +31,7 @@ class CoverLettersController < ApplicationController
   end
 
   def destroy
-    @cover_letter.destroy
+    @cover_letter.destroy!
     redirect_to resume_path(@resume), notice: 'Cover Letter was successfully removed.'
   end
 
