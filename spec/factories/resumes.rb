@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :resume do
     user
+    theme
     email { Faker::Internet.email }
     first_name { 'Adam' }
     last_name { 'Sandler' }
