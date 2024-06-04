@@ -2,12 +2,12 @@ FactoryBot.define do
   factory :education do
     association :resume
 
-    institution_name { 'MyString' }
-    location { 'MyString' }
-    field_of_study { 'MyString' }
-    degree { 1 } # or use one of the defined enum keys for readability
-    start_date { 10.days.ago }
-    end_date { 5.days.ago }
+    institution_name { 'Test University' }
+    location { 'Test City' }
+    field_of_study { 'Computer Science' }
+    degree { :masters }
+    start_date { Date.yesterday }
+    end_date { Date.today }
     currently_study { false }
   end
 end

@@ -36,16 +36,17 @@ RSpec.describe ResumesController, type: :controller do
         end.to change(Resume, :count).by(1)
       end
 
-      it 'redirects to the themes page after resume creation' do
+      it 'redirects after resume creation' do
         post :create, params: { resume: valid_attributes }
         expect(response).to redirect_to(resume_path(Resume.last))
       end
     end
 
     context 'with invalid params' do
-      it "returns a success response (i.e., to display the 'new' template)" do
+      it 'triggers the flash notice and re-renders the page' do
         post :create, params: { resume: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to redirect_to(error_path)
+        expect(flash[:alert])
       end
     end
   end
@@ -80,9 +81,10 @@ RSpec.describe ResumesController, type: :controller do
     end
 
     context 'with invalid params' do
-      it "returns a success response (i.e., to display the 'edit' template)" do
+      it 're-renders the page and shows error flash' do
         put :update, params: { id: resume.to_param, resume: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to redirect_to(error_path)
+        expect(flash[:alert])
       end
     end
   end

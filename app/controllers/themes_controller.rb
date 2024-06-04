@@ -9,11 +9,13 @@ class ThemesController < ApplicationController
   end
 
   def update
-    if @resume.update(theme_params)
+    selected_theme = Theme.find_by(id: theme_params[:theme_id])
+    if selected_theme && @resume.update!(theme: selected_theme)
       redirect_to @resume, notice: 'Resume theme updated successfully.'
     else
-      @themes = Theme.all
-      render :edit, alert: 'Unable to update theme.'
+      @themes = Theme.where(active: true)
+      flash.now[:alert] = 'Unable to update theme.'
+      render :edit
     end
   end
 

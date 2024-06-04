@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'home#index'
   get '/dashboard', to: 'home#dashboard', as: 'dashboard'
+  get '/error', to: 'error#index'
 
   namespace :admin do
     root 'dashboard#index' # Admin dashboard root path

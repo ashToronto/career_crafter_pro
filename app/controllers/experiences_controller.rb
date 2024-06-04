@@ -9,8 +9,8 @@ class ExperiencesController < ApplicationController
 
   def create
     @experience = @resume.experiences.build(experience_params)
-    if @experience.save
-      redirect_to new_resume_education_path(@resume), notice: 'Work Experience was successfully created.'
+    if @experience.save!
+      redirect_to resume_path(@resume), notice: 'Work Experience was successfully created.'
     else
       render :new
     end
@@ -22,7 +22,7 @@ class ExperiencesController < ApplicationController
 
   def update
     @experience = @resume.experiences.find(params[:id])
-    if @experience.update(experience_params)
+    if @experience.update!(experience_params)
       redirect_to resume_path(@resume), notice: 'Work experience was successfully updated.'
     else
       render :edit
@@ -30,7 +30,7 @@ class ExperiencesController < ApplicationController
   end
 
   def destroy
-    @experience.destroy
+    @experience.destroy!
     redirect_to resume_path(@resume), notice: 'Experience was successfully removed.'
   end
 

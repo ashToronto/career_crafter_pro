@@ -8,11 +8,8 @@ class ResumesController < ApplicationController
 
   def create
     @resume = current_user.resumes.build(resume_params)
-    if @resume.save
-      redirect_to resume_path(@resume), notice: 'Resume was successfully created.'
-    else
-      render :new
-    end
+    @resume.save!
+    redirect_to resume_path(@resume), notice: 'Resume was successfully created.'
   end
 
   def show
@@ -45,15 +42,12 @@ class ResumesController < ApplicationController
   end
 
   def update
-    if @resume.update(resume_params)
-      redirect_to @resume, notice: 'Resume was successfully updated.'
-    else
-      render :edit
-    end
+    @resume.update!(resume_params)
+    redirect_to @resume, notice: 'Resume was successfully updated.'
   end
 
   def destroy
-    @resume.destroy
+    @resume.destroy!
     redirect_to dashboard_path, notice: 'Resume was successfully destroyed.'
   end
 
