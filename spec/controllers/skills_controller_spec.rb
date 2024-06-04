@@ -36,11 +36,11 @@ RSpec.describe SkillsController, type: :controller do
     end
 
     context 'with all empty skill names' do
-      it 'does not create any Skills and redirects to resume' do
+      it 'does not create any Skills and redirects with error message' do
         expect do
           post :create, params: { resume_id: resume.id, skills: { name: ', , , ' } }
         end.not_to change(Skill, :count)
-        expect(response).to redirect_to(resume_path(resume))
+        expect(response).to redirect_to(new_resume_skill_path)
       end
     end
   end
