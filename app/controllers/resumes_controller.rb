@@ -27,6 +27,8 @@ class ResumesController < ApplicationController
   end
 
   def download_pdf
+    @resume.increment!(:download_count)
+    current_user.increment!(:total_download_count)
     pdf = render_to_string pdf: "resume_#{params[:id]}",
                            template: "layouts/resumes/#{@resume.theme.name}",
                            layout: false,

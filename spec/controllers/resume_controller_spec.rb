@@ -103,4 +103,23 @@ RSpec.describe ResumesController, type: :controller do
       expect(response).to redirect_to('/dashboard')
     end
   end
+
+  describe 'GET #download_pdf' do
+    let(:resume) { create(:resume, user: user) }
+
+    before do
+      allow(controller).to receive(:render_to_string).and_return('Mock PDF content')
+      get :download_pdf, params: { id: resume.id }
+    end
+
+    it 'increments the download count for the resume and the user' do
+      expect(resume.reload.download_count).to eq(1)
+      expect(user.reload.total_download_count).to eq(1)
+    end
+
+    it 'sends a PDF file' do
+      expect(response.body).to include('Mock PDF content')
+      expect(response.headers['Content-Disposition']).to include("attachment; filename=\"resume_#{resume.id}.pdf\"")
+    end
+  end
 end
