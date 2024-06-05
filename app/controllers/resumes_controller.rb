@@ -27,8 +27,6 @@ class ResumesController < ApplicationController
   end
 
   def download_pdf
-    @resume.increment!(:download_count)
-    current_user.increment!(:total_download_count)
     pdf = render_to_string pdf: "resume_#{params[:id]}",
                            template: "layouts/resumes/#{@resume.theme.name}",
                            layout: false,
@@ -36,6 +34,9 @@ class ResumesController < ApplicationController
                            encoding: 'UTF-8',
                            margin: { top: 0, bottom: 0, left: 0, right: 0 } # Remove margins
     send_data pdf, filename: "resume_#{params[:id]}.pdf", type: 'application/pdf', disposition: 'attachment'
+    @resume.increment!(:download_count)
+    @resume.theme.increment!(:download_count)
+    current_user.increment!(:total_download_count)
   end
 
   def edit

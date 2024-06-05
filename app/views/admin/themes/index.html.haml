@@ -18,7 +18,7 @@
               %td.text-white= theme.name
               %td.text-white= theme.active ? 'Yes' : 'No'
               %td.text-white
-                usage placeholder feature wip
+                =theme.download_count
               %td
                 = link_to edit_admin_theme_path(theme), class: 'btn btn-outline-primary btn-sm me-2' do
                   = image_tag('pencil.png', alt: 'Edit', width: "20")

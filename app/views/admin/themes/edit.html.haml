@@ -1,9 +1,9 @@
 %div.container-fluid
   %div.row
-    %div.col-lg-3
+    .col-lg-2
       = render 'admin/sidebar'
 
-    %div.col-lg-9
+    .col-lg-4.pt-4
       = form_for [:admin, @theme], html: { class: 'needs-validation', novalidate: '' } do |f|
         %div.card
           %div.card-header
@@ -21,10 +21,11 @@
           = f.submit 'Update Theme', class: 'btn btn-primary'
           = link_to 'Cancel', admin_themes_path, class: 'btn btn-secondary'
 
-      %div.card.mb-4
-        %div.card-body
-          %p.text-muted-white (if you want to update image do it through version control to file system)
-          - if @theme
-            = image_tag "themes/#{@theme.name.downcase}.png", alt: @theme.name, class: 'img-fluid'
-          - else
-            %p No theme selected.
+    .col-lg-4.pt-2
+      %div.card-body
+        - if @theme
+          .theme-content
+            - @resume = sample_resume
+            = render "layouts/resumes/#{@theme.name}_components/index", resume: @resume
+        - else
+          %p No theme selected.
