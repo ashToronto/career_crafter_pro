@@ -9,4 +9,6 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-Rails.application.config.assets.precompile += %w[themes/free_deault.css]
+Rails.application.config.assets.precompile += %w[themes/free_deault.css
+                                                 themes/free_modern.css
+                                                 themes/premium_classic.css]
