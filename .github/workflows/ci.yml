@@ -28,7 +28,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.0" # Specify the Ruby version if different
+          ruby-version: "3.0.0" # Specify the Ruby version if different
       - name: Install dependencies
         run: |
           sudo apt-get install libpq-dev
