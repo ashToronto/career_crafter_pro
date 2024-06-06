@@ -31,8 +31,9 @@
 
 /public/assets
 
-# Ignore master key for decrypting credentials and more.
+# Ignore master key for decrypting credentials and application yml for env variable protection.
 /config/master.key
+/config/application.yml
 
 # Ignore code coverage report assets
 /coverage/*
