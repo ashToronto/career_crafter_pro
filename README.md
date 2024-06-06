@@ -55,3 +55,4 @@ application up and running.
 * 🧩 Create a new file `[my pdf design name].pdf.haml` in the appropriate resume themes folder structure.
 * 🧩 For the time being css for .pdf themes will stored in the wicked_pdf_stylesheets in the stylesheets folder structure they are called in the .pdf/.haml views responsible for rendering previews and the pdf itself, theya re self contained and intended to be used on haml partials that in turn are leveraged to for the pdf and it's haml previews throughout the app.
 * 🧩 Update database with new theme name it should correspond to the correct .pdf file name `[my pdf design name].pdf.haml`.
+* 🧩 Finally add the theme name to the assets initializers precompile list this allows the wicked pdf stylesheet to load
