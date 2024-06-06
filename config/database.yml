@@ -56,6 +56,8 @@ development:
 test:
   <<: *default
   database: career_crafter_pro_test
+  username: postgres
+  password: postgres
   host: localhost
 
 # As with config/credentials.yml, you never want to store sensitive information,

@@ -12,6 +12,8 @@ jobs:
       postgres:
         image: postgres:11
         env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
           POSTGRES_DB: career_crafter_pro_test
         options: >-
           --health-cmd pg_isready
