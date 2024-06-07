@@ -1,11 +1,12 @@
 require 'faker'
 
-User.where.not(role: :admin).destroy_all
+User.destroy_all
 
 users = Array.new(3) do
   User.create(
     email: Faker::Internet.email,
-    password: 'password'
+    password: 'password',
+    confirmed_at: Time.now
   )
 end
 
