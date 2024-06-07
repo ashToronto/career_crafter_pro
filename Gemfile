@@ -51,6 +51,7 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
 gem 'friendly_id', '~> 5.4.0'
+gem 'figaro'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
@@ -68,6 +69,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem 'letter_opener'
 end
 
 group :test do

@@ -12,6 +12,8 @@ application up and running.
 
 ##### Configuration
 
+- create an `application.yml` file it will be gitignored and is needed to handle our environment variables. Ask for the .env example file.
+
 - run `rails s` to start the application
 
 ##### Database creation

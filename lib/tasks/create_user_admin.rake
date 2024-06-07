@@ -5,11 +5,9 @@ namespace :admin do
     password = ENV['PASSWORD'] || 'password'
 
     admin_exists_already = User.find_by(email: email, role: :admin)
-    user = User.new(email: email, password: password, role: :admin)
+    user = User.new(email: email, password: password, role: :admin, confirmed_at: Time.now)
 
-    if admin_exists_already
-      puts "admin already exists"
-    end
+    puts 'admin already exists' if admin_exists_already
 
     if user.save
       puts 'Admin user created successfully!'
