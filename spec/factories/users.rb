@@ -5,16 +5,10 @@ FactoryBot.define do
     password_confirmation { 'password' }
     confirmed_at { Time.now } # Automatically confirm the user
 
-    trait :candidate do
-      role { 'candidate' }
-    end
+    role { :candidate }
 
     trait :admin do
-      role { 'admin' }
-    end
-
-    trait :employer do
-      role { 'employer' }
+      role { :admin }
     end
   end
 end

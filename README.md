@@ -12,15 +12,21 @@ application up and running.
 
 ##### Configuration
 
-- create an `application.yml` file it will be gitignored and is needed to handle our environment variables. Ask for the .env example file.
-
-- run `rails s` to start the application
+- create an `application.yml` file in the root of your project it will be gitignored and is needed to handle our environment variables. Reference the `.env.example` file and copy the keys and update their values for your local dev environment.
 
 ##### Database creation
 
 - run `rake db:setup`
 - run `rake db:migrate` - migrations or db updates
-- run `rake admin:create_admin` - to create mock admin user
+
+- run `rails s` to start the application
+
+##### Admin creation
+
+- you will need to first set `ADMIN_EMAIL` in you application.yml file as an environment variable
+- Next create an account in career crafter pro using `ADMIN_EMAIL` for account creation
+- then run `rake admin:upgrade_to_admin` from the console to upgrade the email to become an admin user
+- the account you created for `ADMIN_EMAIL` should now have access to the admin dashboard
 
 ##### How to run the test suite
 
@@ -29,8 +35,6 @@ application up and running.
 - to view the code coverage in a web browser: from your the root dir & terminal run: `open coverage/index.html`
 
 * Services TBD (job queues, cache servers, search engines, gems, etc.)
-
-- `gem cancancan` 🧩 for admin user managment & built over `devise` - if you assign another user admin privelages the current admin will no longer keep their admin status. There can be only one admin. This functionality is kept to ensure continuity of any business model i.e if the admin quits it can be passed on to the next in chain of leadership. 🧩
 
 ##### Active storage usage Rails 7
 
@@ -48,7 +52,7 @@ application up and running.
 ##### Mailer services
 
 - We use the letter opener gem to simulate email authentication and confirmation in `development env`.
-- We use the AWS SES in `production env`.
+- We use AWS SES in `production env`.
 
 ##### Deployment instructions
 
