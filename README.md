@@ -45,6 +45,11 @@ application up and running.
 
 - However it is a good idea to resolve or work around n+! issues as they degrade performance.
 
+##### Mailer services
+
+- We use the letter opener gem to simulate email authentication and confirmation in `development env`.
+- We use the AWS SES in `production env`.
+
 ##### Deployment instructions
 
 - If you choose to clone this repo and want to deploy, you will need a new master-key (gitignored and used to decrypt) and a new `credentials.ymc.enc` file (which you will check-in to version control).

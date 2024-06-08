@@ -75,7 +75,20 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'email-smtp.us-east-1.amazonaws.com', # Use the appropriate AWS SES SMTP endpoint
+    user_name: ENV['SES_SMTP_USERNAME'], # Your AWS access key ID
+    password: ENV['SES_SMTP_PASSWORD'], # Your AWS secret access key
+    domain: ENV['SES_VERIFIED_EMAIL'], # Use a placeholder or verified email domain
+    port: 587,
+    authentication: :login,
+    enable_starttls_auto: true
+  }
+  config.action_mailer.default_url_options = { host: 'example.com', protocol: 'http' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
