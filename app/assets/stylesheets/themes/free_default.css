@@ -74,6 +74,14 @@
   color: #495057;
 }
 
+.resume-free-default .education-item, .experience-item {
+  padding-top: 7px;
+}
+
+.resume-free-default .experience-item .description {
+  padding-left: 25px;
+}
+
 .resume-free-default h3 {
   font-size: 20px;
   color: #333;
