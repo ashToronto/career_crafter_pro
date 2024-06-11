@@ -1,4 +1,20 @@
-%p
-  Welcome #{@email}!
-%p You can confirm your account email through the link below:
-%p= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+  %body{style: "background-color: #16171b; color: #efefef; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; padding: 20px; text-align: center;"}
+    %table{style: "width: 100%; max-width: 600px; margin: 20px auto; border-collapse: collapse; border: 1px solid #333333;"}
+      %tr
+        %td{style: "background-color: #202020; padding: 20px; text-align: center; border-bottom: 1px solid #424242;"}
+          %img{src: "https://logo-career-crafter-pro.s3.amazonaws.com/logo.png", alt: "Career Crafter Pro Logo", style: "height: 60px;"}
+          %p{style: "margin-top: 20px; font-size: 16px; color: #efefef;"}
+            Welcome #{@email}!
+          %p{style: "font-size: 14px; color: #CCCCCC;"}
+            You can confirm your account email through the link below:
+          %p{style: "font-size: 16px; margin-top: 20px; padding: 15px; background-color: #333333; border-radius: 5px;"}
+            = link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), style: "color: #b65959; text-decoration: none; font-weight: bold;"
+
+      %tr
+        %td{style: "background-color: #232526; padding: 20px; border-radius: 5px; color: #CCCCCC; font-size: 14px;"}
+          %p
+            If you did not request this, please ignore this email. Your account will remain inactive.
