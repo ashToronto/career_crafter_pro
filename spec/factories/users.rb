@@ -10,5 +10,13 @@ FactoryBot.define do
     trait :admin do
       role { :admin }
     end
+
+    trait :confirmed do
+      confirmed_at { Time.now }
+    end
+
+    trait :unconfirmed do
+      confirmed_at { nil }
+    end
   end
 end

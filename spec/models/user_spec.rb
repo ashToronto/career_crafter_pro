@@ -13,6 +13,41 @@ RSpec.describe User, type: :model do
     expect(admin).to be_admin
   end
 
+  # Mailer path tests
+  context 'when a new user is registered' do
+    let(:user) { create(:user, confirmed_at: nil) } # Ensure user is not auto-confirmed for this test
+
+    it 'generates a confirmation token and sends it via email' do
+      expect(user.confirmation_token).not_to be_nil
+    end
+
+    it 'does not set confirmed_at until user has clicked email link' do
+      expect(user.confirmed_at).to be_nil
+    end
+
+    it 'sets confirmed_at upon email confirmation' do
+      user.update!(confirmed_at: Time.now)
+      expect(user.confirmed_at).not_to be_nil
+    end
+  end
+
+  # Testing password reset functionality
+  context 'when a user forgets their password' do
+    let(:user) { create(:user, :confirmed) } # Ensure user is confirmed to test password reset
+
+    it 'sends a password reset email' do
+      # Assuming user has requested a password reset
+      user.send_reset_password_instructions
+      expect(ActionMailer::Base.deliveries.last.to).to include(user.email)
+      expect(ActionMailer::Base.deliveries.last.subject).to include('Reset password instructions')
+    end
+
+    it 'updates the user password when provided with valid parameters' do
+      user.reset_password('newpassword123', 'newpassword123')
+      expect(user.valid_password?('newpassword123')).to be true
+    end
+  end
+
   # Sad path tests
 
   context 'with invalid attributes' do
