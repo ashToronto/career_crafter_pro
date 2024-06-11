@@ -1,6 +1,8 @@
 # CareerCrafterPro
 
-CareerCrafterPro is a web application that allows users to create, customize, and download resumes using a variety of predefined themes. This project is built with Ruby on Rails and utilizes several advanced features including Active Storage and Action Text.
+![CareerCrafterPro](https://logo-career-crafter-pro.s3.amazonaws.com/logo.png)
+
+- CareerCrafterPro is a web application that allows users to create, customize, and download resumes using a variety of predefined themes. This project is built with Ruby on Rails and utilizes several advanced features including Active Storage and Action Text.
 
 ## System Requirements
 
