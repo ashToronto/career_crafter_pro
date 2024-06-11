@@ -80,16 +80,17 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'email-smtp.us-east-1.amazonaws.com', # AWS SES SMTP endpoint
-    user_name: ENV['SES_SMTP_USERNAME'], #  AWS access key ID
-    password: ENV['SES_SMTP_PASSWORD'], # AWS secret access key
-    domain: 'info.career-crafter-pro.com', # AWS verified domain
+    address: ENV['SES_SMTP_ADDRESS'], # AWS SES SMTP endpoint
+    user_name: ENV['SES_SMTP_USERNAME'], #  # SES SMTP username from IAM
+    password: ENV['SES_SMTP_PASSWORD'], # SES SMTP password from IAM
+    domain: ENV['SES_VERIFIED_SUBDOMAIN'], # MAIL FROM domain verified in SES
     port: 587,
     authentication: :login,
     enable_starttls_auto: true
   }
-  config.action_mailer.default_url_options = { host: ENV['SES_VERIFIED_DOMAIN'], protocol: 'https' }
-  config.action_mailer.default_options = { from: 'info@career-crafter-pro.com' } # This should be a verified sender
+
+  config.action_mailer.default_url_options = { host: ENV['APPLICATION_HOST'], protocol: 'https' }
+  config.action_mailer.default_options = { from: ENV['DEFAULT_EMAIL_FROM'] } # This should be a verified sender
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
