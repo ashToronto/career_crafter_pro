@@ -38,6 +38,17 @@ RSpec.describe SocialLinksController, type: :controller do
       end
     end
 
+    context 'with mixed attributes i.e some valid and some invalid' do
+      let(:mixed_attributes) { { linkedin_url: 'https://www.linkedin.com/in/your-profile', twitter_url: 'not_a_url' } }
+
+      it 'creates only valid social links and re-renders the form with errors for invalid' do
+        expect do
+          post :create, params: { resume_id: resume.id, social_link: mixed_attributes }
+        end.to change(SocialLink, :count).by(1) # Only LinkedIn URL is valid and gets saved
+        expect(flash[:alert]).to include('Validation failed: Twitter url is invalid')
+      end
+    end
+
     context 'with invalid attributes' do
       let(:invalid_attributes) { { linkedin_url: 'not_a_url' } }
 
@@ -45,7 +56,7 @@ RSpec.describe SocialLinksController, type: :controller do
         expect do
           post :create, params: { resume_id: resume.id, social_link: invalid_attributes }
         end.not_to change(SocialLink, :count)
-        expect(response).to redirect_to(new_resume_social_link_path(resume))
+        expect(flash[:alert]).to include('Validation failed: Linkedin url is invalid')
       end
     end
   end
@@ -62,11 +73,14 @@ RSpec.describe SocialLinksController, type: :controller do
       end
     end
 
-    context 'with invalid attributes' do
-      it 'does not update the social link and redirects' do
-        put :update, params: { resume_id: resume.id, id: social_link.id, social_link: { linkedin_url: 'bad_url' } }
+    context 'with mixed valid and invalid attributes' do
+      let(:mixed_attributes) { { linkedin_url: 'https://www.linkedin.com/in/new', twitter_url: 'bad_url' } }
+
+      it 'updates valid links and re-renders the edit form with errors for the invalid links' do
+        put :update, params: { resume_id: resume.id, id: social_link.id, social_link: mixed_attributes }
         social_link.reload
-        expect(response).to redirect_to(edit_resume_social_link_path(resume))
+        expect(social_link.linkedin_url).to eq('https://www.linkedin.com/in/new') # Valid URL updated
+        expect(flash[:alert]).to include('Validation failed: Twitter url is invalid')
       end
     end
   end

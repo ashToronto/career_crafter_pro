@@ -23,7 +23,10 @@ module ApplicationHelper
           start_date: Date.new(2010, 1, 1),
           end_date: Date.new(2014, 1, 1)
         }
-      )]
+      )],
+      social_link: SocialLink.new(
+        linkedin_url: 'https://www.linkedin.com/@example'
+      )
     )
   end
 end

@@ -9,6 +9,7 @@
         = render 'layouts/resumes/common_components/banner', resume: @resume
         = render 'layouts/resumes/common_components/contact', resume: @resume
         = render 'layouts/resumes/common_components/skills', resume: @resume
+        = render 'layouts/resumes/common_components/social_links', resume: @resume
       %td.right-column
         - if @resume.cover_letter.present?
           .section
