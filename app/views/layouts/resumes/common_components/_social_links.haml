@@ -2,4 +2,5 @@
   .social-links
     - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
       - if @resume.social_link[link].present?
-        = link_to @resume.social_link[link], @resume.social_link[link], target: '_blank'
+        .span
+          = link_to @resume.social_link[link], @resume.social_link[link], target: '_blank'

@@ -25,7 +25,8 @@ module ApplicationHelper
         }
       )],
       social_link: SocialLink.new(
-        linkedin_url: 'https://www.linkedin.com/@example'
+        linkedin_url: 'https://www.linkedin.com/@example',
+        github_url: 'https://www.github.com/@example'
       )
     )
   end

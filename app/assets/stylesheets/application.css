@@ -29,6 +29,7 @@ body, .navbar, .sidebar, .nav-link, .btn, .form-control {
 a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   color: #b65959 !important; /* Subdued orange for active elements and links */
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  word-wrap: break-word;
 }
 
 /* Subtle hover effects for enhanced user experience */
