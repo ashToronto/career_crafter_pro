@@ -26,9 +26,13 @@ body, .navbar, .sidebar, .nav-link, .btn, .form-control {
 }
 
 /* Updated primary interaction colors */
-a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
+.btn, .nav-link.active, .navbar-brand, .btn:focus {
   color: #b65959 !important; /* Subdued orange for active elements and links */
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  word-wrap: break-word;
+}
+
+a {
   word-wrap: break-word;
 }
 
@@ -49,6 +53,10 @@ a, .btn, .nav-link.active, .navbar-brand, .btn:focus {
   width: 50px;
   transition: height 0.3s ease;
   margin-left:5px;
+}
+
+.navbar a {
+  color: #b65959 !important;
 }
 
 @media (max-width: 768px) {
