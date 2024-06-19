@@ -7,6 +7,7 @@
     %article.info
       %section.contact-info
         = render 'layouts/resumes/common_components/contact', resume: @resume
+        = render 'layouts/resumes/common_components/social_links', resume: @resume
         - if @resume.cover_letter.present?
           = render 'layouts/resumes/common_components/cover_letter', resume: @resume
         - if @resume.skills.any?

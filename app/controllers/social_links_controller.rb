@@ -9,11 +9,15 @@ class SocialLinksController < ApplicationController
   end
 
   def create
-    @social_link = @resume.build_social_link(social_link_params)
-    @social_link.save!
-    redirect_to resume_path(@resume), notice: 'Social links were successfully added.'
-  rescue ActiveRecord::RecordInvalid
-    redirect_to new_resume_social_link_path(@resume), alert: 'Not all Urls saved please use appropriate format'
+    @social_link = @resume.build_social_link
+    results = save_individual_links
+
+    if results.values.all?
+      redirect_to resume_path(@resume), notice: 'Social links were successfully added.'
+    else
+      flash[:alert] = construct_error_message(results)
+      render :new
+    end
   end
 
   def destroy
@@ -26,10 +30,14 @@ class SocialLinksController < ApplicationController
   end
 
   def update
-    @social_link.update!(social_link_params)
-    redirect_to resume_path(@resume), notice: 'Social links were successfully updated.'
-  rescue ActiveRecord::RecordInvalid
-    redirect_to edit_resume_social_link_path(@resume), alert: 'Not all Urls were saved please use appropriate format'
+    results = save_individual_links
+
+    if results.values.all?
+      redirect_to resume_path(@resume), notice: 'Social links were successfully updated.'
+    else
+      flash[:alert] = construct_error_message(results)
+      render :edit
+    end
   end
 
   private
@@ -52,5 +60,25 @@ class SocialLinksController < ApplicationController
 
     flash[:alert] = 'At least one social link must be provided.'
     redirect_to new_resume_social_link_path
+  end
+
+  def save_individual_links
+    results = {}
+    social_link_params.each do |key, value|
+      next if value.blank?
+
+      @social_link.assign_attributes({ key => value })
+      if @social_link.validate!(key)
+        @social_link.save(validate: false) # Save without further validation
+        results[key] = true
+      else
+        results[key] = false
+      end
+    end
+    results
+  end
+
+  def construct_error_message(results)
+    "Some URLs couldn't be saved: " + results.select { |_k, v| !v }.keys.join(', ')
   end
 end

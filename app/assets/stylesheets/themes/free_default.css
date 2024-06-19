@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-size: 14px;
   color: #333;
+  word-wrap: break-word;
 }
 
 .resume-free-default table {
@@ -100,4 +101,13 @@
   margin-bottom: 2px;
   padding-bottom: 2px;
   border-bottom: 1px solid #eee;
+}
+
+/* Ensure anchor tags within .social-links don't overflow */
+.resume-free-default .social-links a {
+  text-decoration: none; /* Remove underline */
+  overflow-wrap: break-word; /* Break long URLs */
+  word-wrap: break-word;
+  display: inline-block; /* Allows the break to occur */
+  max-width: 100%; /* Max width to fit container */
 }
