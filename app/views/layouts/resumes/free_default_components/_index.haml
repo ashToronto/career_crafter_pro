@@ -6,18 +6,51 @@
   %table
     %tr
       %td.left-column
-        = render 'layouts/resumes/common_components/banner', resume: @resume
-        = render 'layouts/resumes/common_components/contact', resume: @resume
-        = render 'layouts/resumes/common_components/skills', resume: @resume
-        = render 'layouts/resumes/common_components/social_links', resume: @resume
+        %header
+          %h1= @resume.first_name + ' ' + @resume.last_name
+          %h2= @resume.job_title
+
+        %section.contact-info
+          %p
+            = @resume.email
+          %p
+            = @resume.phone_number
+
+        %h2 Skills
+        - @resume.skills.each do |skill|
+          %span.skill-badge= skill.name
+
+        - if @resume.social_link.present?
+          .social-links
+            - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
+              - if @resume.social_link[link].present?
+                .span
+                  = link_to @resume.social_link[link], @resume.social_link[link], target: '_blank'
+
       %td.right-column
         - if @resume.cover_letter.present?
-          .section
-            %h2 Cover Letter
-            %div.cover_letter= raw @resume.cover_letter.content
+          %h2 Cover Letter
+          %section.cover-letter
+            %div= raw @resume.cover_letter.content
 
         - if @resume.educations.any?
-          = render 'layouts/resumes/common_components/education', resume: @resume
+          .educations
+            %h3 Education
+            - @resume.educations.each do |education|
+              .education-item
+                %h4= education.institution_name
+                .date-footer
+                  %p= "#{degree= education.location}"
+                  %p= "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"
+
+
         - if @resume.experiences.any?
-          .section
-            = render 'layouts/resumes/common_components/experiences', resume: @resume
+          .experiences
+            %h3 Work History
+            - @resume.experiences.each do |experience|
+              .experience-item
+                %h4= "#{experience.job_title} at #{experience.company_name}"
+                .date-footer
+                  %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
+                .description
+                  = raw experience.content
