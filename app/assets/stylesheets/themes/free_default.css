@@ -22,7 +22,7 @@
 
 .resume-free-default .left-column {
   width: 35%;
-  border-right: 15px solid #dee2e6;
+  border-right: 10px solid #dee2e6;
 }
 
 .resume-free-default .right-column {
@@ -76,6 +76,7 @@
 .resume-free-default section {
   padding-bottom: 5px; /* Adds more space between sections */
   padding-top: 5px;
+  border-top: 1px solid #ccc;
 }
 
 .resume-free-default a {
