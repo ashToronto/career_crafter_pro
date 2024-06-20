@@ -19,9 +19,9 @@
             = @resume.phone_number
 
         - if @resume.educations.any?
-          %h3 Education
-          - @resume.educations.each do |education|
-            %section.educations
+          %section
+            %h3 Education
+            - @resume.educations.each do |education|
               %h4= education.institution_name
               .date-footer
                 %p= "#{education.location}:"
