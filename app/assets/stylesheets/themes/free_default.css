@@ -57,6 +57,16 @@
   line-height: 1.5;
 }
 
+/* Styles content rendered by trix action text rich text */
+.resume-free-default .trix-content {
+  line-height: 1.5;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #333;
+  word-wrap: break-word;
+}
+
 .resume-free-default li {
   padding-bottom: 2px;
   line-height: 1.5;
@@ -68,13 +78,9 @@
   padding-top: 5px;
 }
 
-.resume-free-default .rich-text-section {
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
 .resume-free-default a {
   font-size: 14px;
+  color: #333;
 }
 
 .resume-free-default .experience-item {
