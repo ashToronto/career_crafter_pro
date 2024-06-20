@@ -20,7 +20,7 @@
 
       .container
         .row
-          .col-md-6
+          .col-md-5
             = render 'resumes/sections/personal_details', resume: @resume
 
             - if @resume.cover_letter.present?
@@ -42,8 +42,8 @@
                 %h3.mb-3 Work Experience
                 = render 'resumes/sections/experiences', resume: @resume
 
-          .col-md-6.d-none.d-md-block
+          .col-md-7.d-none.d-md-block
             %h3.pt-4 Quick Preview
-            .theme-content.bg-light.p-4.mt-4.rounded-3
+            .theme-editor.bg-light.rounded-3
               - if @resume.theme.name
                 = render "layouts/resumes/#{@resume.theme.name}_components/index", resume: @resume

@@ -1,4 +1,5 @@
 
+/* theme selector for user theme selection form */
 .theme-previews {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two columns layout */
@@ -14,14 +15,25 @@ input[type='radio']:checked + label .theme-content {
   opacity: 0.6;
 }
 
-/* Base styles for .theme-content */
+/* theme display for user dashboard */
 .theme-content {
   cursor: pointer;
   border-radius: 10px;
-  min-height: 800px;
-  max-width: 600px;
+  height: 800px;
+  width: 600px;
   background-color: #f8f9fa;
-  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+/* Theme editor on resume show page */
+.theme-editor {
+  cursor: pointer;
+  border-radius: 10px;
+  min-height: 1123px; /* actual pdf dimensions */
+  width: 794px; /* actual pdf dimensions */
+  background-color: #f8f9fa;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
