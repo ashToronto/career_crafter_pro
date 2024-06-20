@@ -17,12 +17,12 @@
 .resume-free-default .left-column, .right-column {
   vertical-align: top; /* Aligns content to the top */
   padding: 20px;
+  border-right: 1px solid #dee2e6;
 }
 
 .resume-free-default .left-column {
   width: 35%;
-  background-color: #f8f9fa;
-  border-right: 2px solid #dee2e6;
+  border-right: 15px solid #dee2e6;
 }
 
 .resume-free-default .right-column {
@@ -30,84 +30,61 @@
 }
 
 .resume-free-default h1 {
-  font-size: 28px;
+  font-size: 40px;
+  font-weight: bold; /* Correct way to set weight */
   color: #007bff;
 }
 
 .resume-free-default h2 {
-  font-size: 22px;
-  margin-top: 20px;
-  border-bottom: 1px solid #dee2e6;
-  padding-bottom: 5px;
-}
-
-.resume-free-default h3 {
-  font-size: 18px;
+  font-size: 28px; /* Slightly larger to differentiate from paragraph text */
   color: #343a40;
 }
 
-.resume-free-default p, li {
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.resume-free-default ul {
-  padding-left: 20px;
-  list-style-type: none;
-}
-
-.resume-free-default .skill-badge {
-  display: inline-block;
-  background-color: #007bff;
-  color: #fff;
-  padding: 5px 15px;
-  border-radius: 20px;
-  font-size: 12px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-}
-
-.resume-free-default .section {
-  margin-bottom: 30px; /* Adds more space between sections */
-}
-
-.resume-free-default .cover_letter, .experiences {
-  color: #495057;
-}
-
-.resume-free-default .education-item, .experience-item {
-  padding-top: 7px;
-}
-
-.resume-free-default .experience-item .description {
-  padding-left: 25px;
-}
-
 .resume-free-default h3 {
-  font-size: 20px;
-  color: #333;
-  padding: 5px;
+  font-size: 22px;
+  font-weight: bold; /* Ensuring it's visually strong */
+  font-style: italic; /* Retaining italic style */
+  border-top: 1px solid #dee2e6; /* Underline to denote importance */
 }
 
 .resume-free-default h4 {
-  font-size: 18px;
-  color: #333;
-  padding-left: 25px;
+  font-size: 16px;
+  font-weight: bold; /* Ensuring it's visually strong */
+  font-style: italic; /* Retaining italic style */
+}
+
+.resume-free-default p {
+  line-height: 1.5;
+}
+
+.resume-free-default li {
+  padding-bottom: 2px;
+  line-height: 1.5;
+  list-style-type: disc;
+}
+
+.resume-free-default section {
+  padding-bottom: 5px; /* Adds more space between sections */
+  padding-top: 5px;
+}
+
+.resume-free-default .rich-text-section {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.resume-free-default a {
+  font-size: 14px;
+}
+
+.resume-free-default .experience-item {
+  padding-top: 5px;
+  padding-bottom:5px;
 }
 
 .resume-free-default .date-footer p {
-  padding-left: 25px;
+  margin: 0;
   font-size: 12px;
-  margin-bottom: 2px;
-  padding-bottom: 2px;
-  border-bottom: 1px solid #eee;
-}
-
-/* Ensure anchor tags within .social-links don't overflow */
-.resume-free-default .social-links a {
-  text-decoration: none; /* Remove underline */
-  overflow-wrap: break-word; /* Break long URLs */
-  word-wrap: break-word;
-  display: inline-block; /* Allows the break to occur */
-  max-width: 100%; /* Max width to fit container */
+  color: #555;
+  font-style: italic;
 }
