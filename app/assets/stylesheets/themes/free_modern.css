@@ -1,79 +1,111 @@
-body, html {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-.resume-layout {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .resume-free-modern {
-  width: 100%;
-  padding: 0;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; /* Professional and clean font */
   margin: 0;
+  padding: 20px;
   box-sizing: border-box;
-  word-wrap: break-word;
-}
-
-.resume-free-modern .modern_banner {
-  background-color: #4a69bd;
-  color: #FFFFFF;
-  text-align: center;
-  padding: 1.5rem 0;
-}
-
-.resume-free-modern .cover-letter,
-.resume-free-modern .social-links,
-.resume-free-modern .contact-info,
-.resume-free-modern .summary,
-.resume-free-modern .skills,
-.resume-free-modern .experiences p,
-.resume-free-modern .educations p {
-  background-color: #FFFFFF;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding-left: 20px;
-  margin-bottom: 1rem;
   font-size: 14px;
+  color: #333; /* Darker text for better readability */
+  background: #FFF;
 }
 
-.resume-free-modern h1, .resume-free-modern h2 {
-  color: #333;
+.resume-free-modern table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* Keeps columns fixed */
+  text-align: center;
 }
 
-.resume-free-modern .skill-badge {
-  background-color: #82ccdd;
-  color: #ffffff;
-  padding: 5px 10px;
-  border-radius: 10px;
-  margin: 5px;
-  font-size: 12px;
+.resume-free-modern .left-column {
+  width: 50%;
+}
+
+.resume-free-modern .right-column {
+  width: 50%;
+}
+
+.resume-free-modern h1 {
+  font-size: 32px;
   font-weight: bold;
+  color: #2C3E50;
+  margin-top: 0;
+}
+
+.resume-free-modern h2 {
+  font-size: 26px;
+  color: #34495E;
+  margin-top: 0;
 }
 
 .resume-free-modern h3 {
   font-size: 20px;
-  color: #333;
-  padding: 5px;
+  font-weight: bold;
+  color: #16A085;
+  margin-bottom: 10px;
+  margin-top: 15px;
 }
 
-.resume-free-modern h4 {
-  font-size: 18px;
-  color: #333;
-  padding-left: 25px;
+.resume-free-modern p, .resume-free-modern li {
+  font-size: 14px;
+  line-height: 1.8; /* Increased line height for better readability */
+  color: #333; /* Darker grey for improved text visibility */
 }
 
-.resume-free-modern .date-footer p {
-  text-align: right;
+.resume-free-modern a {
+  color: #3498DB;
+  text-decoration: none;
+}
+
+.resume-free-modern header {
+  justify-content: center; /* Centering and spacing out contact info */
+  align-items: center;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.resume-free-modern .skills-list span {
+  display: inline-block; /* Displays each skill inline but as block  */
+  margin-right: 5px; /* Adds space after each skill */
+  font-size: 14px; /* Sets a readable font size */
+  color: #34495E; /* Subtle, professional color */
+}
+
+.resume-free-modern .skills-list span:last-child:after {
+  content: ""; /* Removes the comma after the last item */
+}
+
+.resume-free-modern .skills-list span:after {
+  content: ","; /* Adds a comma after each skill except the last one */
+}
+
+.resume-free-modern .education-item, .resume-free-modern .date-footer {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.resume-free-modern .date-footer {
   font-size: 12px;
-  margin-bottom: 5px;
-  padding-bottom: 2px;
-  padding-right: 15px;
-  border-bottom: 1px solid #eee;
+  color: #333;
+  font-style: italic;
+}
+
+.resume-free-modern section {
+  padding-top: 10px;
+  border-top: 2px solid #ECF0F1;
+}
+
+.resume-free-modern .social-links {
+  justify-content: space-around;
+  list-style-type: square;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.resume-free-modern .trix-content {
+  line-height: 1.5;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; /* Professional and clean font */
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #333;
+  word-wrap: break-word;
+  padding: 5px;
 }
