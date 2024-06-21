@@ -41,8 +41,7 @@
         - if @resume.cover_letter.present?
           %section
             %h3 Cover Letter
-            .rich-text-section
-              = raw @resume.cover_letter.content
+            = raw @resume.cover_letter.content
 
         - if @resume.experiences.any?
           %section
@@ -52,7 +51,6 @@
                 %h4= "#{experience.job_title} at #{experience.company_name}"
                 .date-footer
                   %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
-                .rich-text-section
                   = raw experience.content
 
         - if @resume.social_link.present?
