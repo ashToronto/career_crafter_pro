@@ -13,6 +13,34 @@ CareerCrafterPro is a web application that allows users to create, customize, an
 
 ### Setup
 
+#### Setting up Ruby 3.0.0
+
+##### Windows OS
+1. Install Ruby 3.0.0 from Ruby Installer
+2. Git clone asdf repo to access asdf: git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+3. Install wsl on machine: wsl --install
+4. sudo apt update
+5. sudo apt install curl git autoconf dirmngr gpg build-essential
+6. echo '. $HOME/.asdf/asdf.sh' >> ~/.bashrc
+7. echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
+8. source ~/.bashrc
+9. asdf plugin add ruby
+10. asdf install ruby 3.0.0
+
+#### Setting up Rails 7.1.2.0
+
+##### Windows OS
+**In the directory in WSL that ruby was installed**
+1. sudo apt-get install build-essential libssl-dev libreadline-dev zlib1g-dev libsqlite3-dev
+2. the current version of ruby is not 3.0.0, so run: asdf install ruby 3.0.0
+3. ensure that the global version of ruby on your machine is the same run: asdf global ruby [my ruby version]
+4. ensure that the global version of ruby on the current  is the same run: asdf local ruby [my ruby version]
+5. put the correct version of ruby into environment variables: export PATH="$HOME/.asdf/shims:$PATH"
+6. Install rails: Gem install rails
+
+
+#### Setting up Development Environment
+
 1. Clone the repository to your local machine.
 2. Run `bundle install` to install the project dependencies.
 3. Create an `application.yml` file in the root directory. Use the `.env.example` file as a reference to set up necessary environment variables for your development environment.
