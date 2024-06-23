@@ -74,7 +74,7 @@ To add new templates and themes:
 - Create a new file in the `app/views/themes` directory named `[my_pdf_design_name].pdf.haml`.
 - Store CSS for the new themes in `app/assets/stylesheets/themes/[my_pdf_design_name.css]`.
 - Add the theme name to the precompile list in `config/initializers/assets.rb` to ensure it loads correctly with Wicked PDF.
-- Update the database to include the new theme name corresponding to the new `.pdf.haml` file via admin dashboard or rake task.
+- Update the database to include the new theme name corresponding to the new `.pdf.haml` file via admin dashboard or rake task in `create_theme_names.rake`.
 
 ## Questions or Contributions
 

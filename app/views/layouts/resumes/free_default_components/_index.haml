@@ -2,22 +2,62 @@
 %html
   %head
     = wicked_pdf_stylesheet_link_tag 'themes/free_default'
+
 .resume-free-default
   %table
     %tr
       %td.left-column
-        = render 'layouts/resumes/common_components/banner', resume: @resume
-        = render 'layouts/resumes/common_components/contact', resume: @resume
-        = render 'layouts/resumes/common_components/skills', resume: @resume
-        = render 'layouts/resumes/common_components/social_links', resume: @resume
-      %td.right-column
-        - if @resume.cover_letter.present?
-          .section
-            %h2 Cover Letter
-            %div.cover_letter= raw @resume.cover_letter.content
+        %header
+          %h1= @resume.first_name
+          %h1=@resume.last_name
+          %h2= @resume.job_title
+
+        %section
+          %p
+            = @resume.email
+          %p
+            = @resume.phone_number
 
         - if @resume.educations.any?
-          = render 'layouts/resumes/common_components/education', resume: @resume
+          %section
+            %h3 Education
+            - @resume.educations.each do |education|
+              %h4= education.institution_name
+              .date-footer
+                %p= "#{education.location}:"
+                - if education.currently_study
+                  %p= "#{education.start_date.strftime('%b %Y')} - Present"
+                - else
+                  %p= "#{education.start_date.strftime('%b %Y')} - #{education.end_date.strftime('%b %Y')}"
+              %p.degree= "#{education.degree}: #{education.field_of_study}"
+
+        %section
+          %h3 Skills
+          %ul.skills-list
+            - @resume.skills.each do |skill|
+              %li= skill.name
+
+      %td.right-column
+        - if @resume.cover_letter.present?
+          %section
+            %h3 Cover Letter
+            = raw @resume.cover_letter.content
+
         - if @resume.experiences.any?
-          .section
-            = render 'layouts/resumes/common_components/experiences', resume: @resume
+          %section
+            %h3 Work History
+            - @resume.experiences.each do |experience|
+              .experience-item
+                %h4= "#{experience.job_title} at #{experience.company_name}"
+                .date-footer
+                  %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
+                  = raw experience.content
+
+        - if @resume.social_link.present?
+          %section
+            %h3 Social Links
+            %ul.social-links
+              - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
+                - if @resume.social_link[link].present?
+                  %li
+                    = link_to @resume.social_link[link], @resume.social_link[link], target: '_blank'
