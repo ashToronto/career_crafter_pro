@@ -38,12 +38,31 @@ CareerCrafterPro is a web application that allows users to create, customize, an
 5. put the correct version of ruby into environment variables: export PATH="$HOME/.asdf/shims:$PATH"
 6. Install rails: Gem install rails
 
+#### Setting up Postgres
+
+##### Windows OS
+1. [Download and Install Postgres] (https://www.postgresql.org/download/windows/)
+2. sudo apt list --installed | grep postgresql
+3. sudo apt install postgresql-client
+4) sudo apt update
+5) sudo apt install postgresql postgresql-contrib
+6) sudo service postgresql status
+7) sudo systemctl enable postgresql
+8) sudo systemctl start postgresql
+
+
 
 #### Setting up Development Environment
 
-1. Clone the repository to your local machine.
-2. Run `bundle install` to install the project dependencies.
-3. Create an `application.yml` file in the root directory. Use the `.env.example` file as a reference to set up necessary environment variables for your development environment.
+##### Windows OS
+1. Clone the repository to your local machine linux environment.
+2. install the necessary yaml libraries: sudo apt-get update
+sudo apt-get install -y libyaml-dev
+3. sudo apt-get update
+sudo apt-get install -y libpq-dev
+4. gem install pg -v '1.5.4'
+5. Run `bundle install` to install the project dependencies.
+6. Create an `application.yml` file in the root directory to store database login credentials(Use the `.env.example` file as a reference to set up necessary environment variables for your development environment.)
 
 ### Database Initialization
 
