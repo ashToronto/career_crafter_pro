@@ -3,24 +3,23 @@ body, html {
   margin: 0;
   width: 100%;
   height: 100%;
-}
-
-.resume-layout {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .resume-premium-classic {
-  width: 100%;
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 14px;
+  color: #333;
   word-wrap: break-word;
 }
 
-.resume-premium-classic header {
+.resume-premium-classic .banner {
   background-color: #5d2cc7;
   color: #FFFFFF;
   text-align: center;
@@ -29,8 +28,72 @@ body, html {
   width: 100%;
 }
 
-.resume-premium-classic h1, .resume-premium-classic h2 {
-  color: white;
+.resume-premium-classic .banner h1, .resume-premium-classic .banner h2 {
+  margin: 0;
+}
+
+.resume-premium-classic .banner .contact-info {
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.resume-premium-classic .banner .contact-info p {
+  margin: 0 1rem;
+}
+
+.resume-premium-classic table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.resume-premium-classic td {
+  vertical-align: top;
+  padding: 20px;
+  border-right: 1px solid #dee2e6;
+}
+
+.resume-premium-classic .left-column {
+  width: 60%;
+}
+
+.resume-premium-classic .right-column {
+  width: 40%;
+  background-color: #f4f4f4;
+  border-left: 1px solid #ddd;
+}
+
+.resume-premium-classic .section {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+}
+
+.resume-premium-classic h3 {
+  font-size: 20px;
+  color: #5d2cc7;
+  margin-bottom: 10px;
+  border-bottom: 3px solid #5d2cc7;
+}
+
+.resume-premium-classic h4 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+  font-style: italic;
+  word-wrap: break-word;
+}
+
+.resume-premium-classic p {
+  line-height: 1.5;
+}
+
+.resume-premium-classic .date-footer {
+  text-align: right;
+  font-size: 12px;
+  color: #555;
 }
 
 .resume-premium-classic .skill-badge {
@@ -41,57 +104,27 @@ body, html {
   margin: 5px;
   font-size: 12px;
   font-weight: bold;
+  display: inline-block;
 }
 
-.resume-premium-classic .cover-letter,
-.resume-premium-classic .social-links,
-.resume-premium-classic .contact-info,
-.resume-premium-classic .experiences p,
-.resume-premium-classic .experiences .description,
-.resume-premium-classic .educations p,
-.resume-premium-classic .educations description {
-  background-color: #FFFFFF;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding-left: 27px;
-  padding-right: 3px;
+.resume-premium-classic .experience-item,
+.resume-premium-classic .education-item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.resume-premium-classic .trix-content {
+  line-height: 1.5;
+  font-family: 'Arial', sans-serif;  box-sizing: border-box;
   font-size: 14px;
-}
-
-.resume-premium-classic h3,
-.resume-premium-classic h3 {
-  font-size: 18px;
-  padding-left: 7px;
-}
-
-.resume-premium-classic h4,
-.resume-premium-classic h4 {
-  font-size: 16px;
-  padding-left: 15px;
-}
-
-.resume-premium-classic .social-links {
-  font-size: 10px;
-  padding-left: 2px;
-}
-
-.resume-premium-classic h3 {
-  font-size: 20px;
   color: #333;
-  padding: 5px;
+  word-wrap: break-word;
 }
 
-.resume-premium-classic h4 {
-  font-size: 18px;
+.resume-premium-classic .social-links a {
+  justify-content: space-around;
+  list-style-type: square;
+  padding: 2px;
   color: #333;
-  padding-left: 25px;
-}
-
-.resume-premium-classic .date-footer p {
-  text-align: right;
-  font-size: 12px;
-  margin-bottom: 5px;
-  padding-bottom: 2px;
-  padding-right: 15px;
-  border-bottom: 1px solid #eee;
 }
