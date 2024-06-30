@@ -1,55 +1,54 @@
+!!!
 %html
   %head
     = wicked_pdf_stylesheet_link_tag 'themes/premium_classic'
-.resume-layout
-  .resume-premium-classic
-    %header
-      %h1= @resume.first_name + ' ' + @resume.last_name
-      %h2= @resume.job_title
-    %article.info
-      .contact-info
-        %section.contact-info
-          %p
-            = @resume.email
-          %p
-            = @resume.phone_number
+  %body
+    .resume-premium-classic
+      .banner
+        %h1= @resume.first_name + ' ' + @resume.last_name
+        %h2= @resume.job_title
+        .contact-info
+          %span= @resume.email + ' | ' + @resume.phone_number
+      %table
+        %tr
+          %td.left-column
+            - if @resume.educations.any?
+              .section
+                %h3 Education
+                - @resume.educations.each do |education|
+                  .education-item
+                    %h4= education.institution_name
+                    %p.degree= "#{education.degree}: #{education.field_of_study}"
+                    .date-footer
+                      %p= "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"
 
-      - if @resume.social_link.present?
-        .social-links
-          - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
-            - if @resume.social_link[link].present?
-              .span
-                = link_to @resume.social_link[link], @resume.social_link[link], target: '_blank'
+            - if @resume.experiences.any?
+              .section
+                %h3 Work History
+                - @resume.experiences.each do |experience|
+                  .experience-item
+                    %h4= "#{experience.job_title} at #{experience.company_name}"
+                    %p= raw experience.content
+                    .date-footer
+                      %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
 
-      - if @resume.cover_letter.present?
-        %section.cover-letter
-          %div= raw @resume.cover_letter.content
+          %td.right-column
+            - if @resume.cover_letter.present?
+              .section.cover-letter
+                %h3 Summary
+                %div= raw @resume.cover_letter.content
 
+            .section
+              %h3 Skills
+              %ul.skills-list
+                - @resume.skills.each do |skill|
+                  %li.skill-badge= skill.name
 
-      - if @resume.skills.any?
-        %h2 Skills
-        - @resume.skills.each do |skill|
-          %span.skill-badge= skill.name
-
-
-    %main
-      - if @resume.experiences.any?
-        .experiences
-          %h3 Work History
-          - @resume.experiences.each do |experience|
-            .experience-item
-              %h4= "#{experience.job_title} at #{experience.company_name}"
-              .date-footer
-                %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
-              .description
-                = raw experience.content
-
-      - if @resume.educations.any?
-        .educations
-          %h3 Education
-          - @resume.educations.each do |education|
-            .education-item
-              %h4= education.institution_name
-              .date-footer
-                %p= "#{degree= education.location}"
-                %p= "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"
+            - if @resume.social_link.present?
+              .section
+                %h3 Social Links
+                %ul.social-links
+                  - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
+                    - if @resume.social_link[link].present?
+                      %li
+                        = link_to @resume.social_link[link], @resume.social_link[link], target: '_blank'
