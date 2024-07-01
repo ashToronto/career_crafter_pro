@@ -2,7 +2,6 @@
 /* theme selector for user theme selection form */
 .theme-previews {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns layout */
   gap: 20px;
   padding: 30px;
   justify-content: center;
