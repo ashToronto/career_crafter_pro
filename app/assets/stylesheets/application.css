@@ -76,9 +76,14 @@ a {
   border-bottom: 1px solid #9b59b6;
 }
 
+:root {
+  /* applies to the largest DOM layer in the tree */
+  --background-gradient: linear-gradient(to right, #232526, #633438);
+}
+
 /* Card styling for a unified dark theme */
 .card {
-  background: linear-gradient(to right, #232526, #633438);
+  background: var(--background-gradient);
   border: none;
   color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -93,6 +98,17 @@ a {
 
 .card-header {
   background-color: #202020 !important; /* Darker shade for header */
+}
+
+/* orange-blue card template */
+.card-orange-blue {
+  --background-gradient: linear-gradient(to right, #2E3968, #E77B4D);
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card-black-grey {
+  --background-gradient: linear-gradient(to right, #16171B, #B1AFAF);
 }
 
 /* Dropdown menu styling within navbar */

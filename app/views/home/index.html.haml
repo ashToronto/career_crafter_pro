@@ -47,10 +47,15 @@
   .container
     %h2.text-center.mb-4 Premium Features: A Step Above
     %p.text-center With exclusive templates and advanced editing features, our premium service elevates your resume to the next level.
-    = link_to 'Explore Premium', '#', class: 'btn btn-outline-light'
+    = link_to 'Explore Premium', '#', class: 'btn btn-dark btn-lg mt-3'
 
 %section.cta.bg-dark.text-white.py-5
   .container.text-center
     %h2 Start Crafting Your Future
     %p Begin the journey to a standout resume today with Career Crafter Pro.
     = link_to 'Join Now', new_user_registration_path, class: 'btn btn-dark btn-lg mt-3'
+
+%section.cta.bg-dark.text-white.py-5
+  .container.text-center
+    %h2 Learn More About Us
+    = link_to 'About Us', about_path, class: 'btn btn-dark btn-lg mt-3'
