@@ -8,12 +8,9 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    # creates an instance variable called user_resumes
-    # binding.pry
     @user_resumes = current_user.resumes.includes(:theme, :experiences, :educations, :social_link, :skills,
                                                   cover_letter: [:rich_text_content],
                                                   experiences: [:rich_text_content]).order(updated_at: :desc)
-    # binding.pry
   end
 
   def about
