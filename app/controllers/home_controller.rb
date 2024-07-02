@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-    require 'pry-byebug'
   before_action :authenticate_user!, only: %i[dashboard]
 
   def index
