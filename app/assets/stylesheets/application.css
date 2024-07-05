@@ -101,9 +101,7 @@ a {
 .card-orange-blue {
   --color1: #2E3968;
   --color2: #E77B4D;
-  display: flex;
-  justify-content: space-evenly;
-  height: 20rem;
+  height: 19rem;
 }
 
 .contributor-card-spacer {
