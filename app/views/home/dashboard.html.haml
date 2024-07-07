@@ -15,27 +15,25 @@
         - @user_resumes.each do |resume|
           - if resume.theme.name
             .col
-              .card.hoverable
-                .card-body
-                  %p.card-text.text-end
-                    %small.text-muted
-                      last updated #{resume.updated_at.strftime("%B %d, %Y")}
-                  .theme-content.bg-light.p-4.rounded-3.d-none.d-md-block
-                    - @resume = resume
-                    = render "layouts/resumes/#{resume.theme.name}_components/index", resume: resume
-                  .col-md-4.d-block.d-md-none
-                    %h5.card-title= resume.first_name
-                    %p.card-text= resume.job_title
-                    %p.card-text= "#{resume.country}, #{resume.state}"
-                    %p.card-text= resume.phone_number
-                    %p.card-text= resume.email
-                    = render 'resumes/completion_pie_chart', resume: resume
-                .card-footer
-                  .btn-group
-                    = link_to resume_path(resume), class: 'btn btn-lg me-2' do
-                      %i.bi.bi-pencil-square
-                    = link_to download_pdf_resume_path(resume, format: :pdf), class: 'btn btn-lg me-2' do
-                      %i.bi.bi-download
-                    = form_for resume, method: :delete, data: { confirm: 'Are you sure you want to delete this resume?' } do
-                      = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-lg') do
-                        %i.bi.bi-trash
+              %small.text-muted.text-end.text-white
+                last updated #{resume.updated_at.strftime("%B %d, %Y")}
+              .theme-content.bg-light.p-4.rounded-3.d-none.d-md-block
+                - @resume = resume
+                = render "layouts/resumes/#{resume.theme.name}_components/index", resume: resume
+              .col-md-4.d-block.d-md-none
+                %h5.card-title= resume.first_name
+                %p.card-text= resume.job_title
+                %p.card-text= "#{resume.country}, #{resume.state}"
+                %p.card-text= resume.phone_number
+                %p.card-text= resume.email
+                = render 'resumes/completion_pie_chart', resume: resume
+
+              .card-footer
+                .btn-group
+                  = link_to resume_path(resume), class: 'btn btn-lg me-2' do
+                    %i.bi.bi-pencil-square
+                  = link_to download_pdf_resume_path(resume, format: :pdf), class: 'btn btn-lg me-2' do
+                    %i.bi.bi-download
+                  = form_for resume, method: :delete, data: { confirm: 'Are you sure you want to delete this resume?' } do
+                    = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-lg') do
+                      %i.bi.bi-trash

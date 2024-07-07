@@ -19,31 +19,28 @@
               Download PDF
 
       .container
-        .row
-          .col-md-5
-            = render 'resumes/sections/personal_details', resume: @resume
+        = render 'resumes/sections/personal_details', resume: @resume
 
-            - if @resume.cover_letter.present?
-              = render 'resumes/sections/cover_letter', resume: @resume
+        - if @resume.cover_letter.present?
+          = render 'resumes/sections/cover_letter', resume: @resume
 
-            - if @resume.skills.any?
-              %h3.mb-3 Skill Sets
-              = render 'resumes/sections/skills', resume: @resume
+        - if @resume.skills.any?
+          %h3.mb-3 Skill Sets
+          = render 'resumes/sections/skills', resume: @resume
 
-            - if @resume.social_link.present?
-              = render 'resumes/sections/social_links', resume: @resume
+        %h3.pt-4 Quick Preview
+        .theme-editor.bg-light.rounded-3.d-none.d-md-block
+          - if @resume.theme.name
+            = render "layouts/resumes/#{@resume.theme.name}_components/index", resume: @resume
 
-            - if @resume.educations.any?
-              %h3.mb-3 Education
-              = render 'resumes/sections/educations', resume: @resume
+        - if @resume.social_link.present?
+          = render 'resumes/sections/social_links', resume: @resume
 
-            - if @resume.experiences.any?
-              .col-md-12
-                %h3.mb-3 Work Experience
-                = render 'resumes/sections/experiences', resume: @resume
+        - if @resume.educations.any?
+          %h3.mb-3 Education
+          = render 'resumes/sections/educations', resume: @resume
 
-          .col-md-7.d-none.d-md-block
-            %h3.pt-4 Quick Preview
-            .theme-editor.bg-light.rounded-3
-              - if @resume.theme.name
-                = render "layouts/resumes/#{@resume.theme.name}_components/index", resume: @resume
+        - if @resume.experiences.any?
+          .col-md-12
+            %h3.mb-3 Work Experience
+            = render 'resumes/sections/experiences', resume: @resume
