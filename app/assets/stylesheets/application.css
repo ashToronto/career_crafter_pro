@@ -78,7 +78,9 @@ a {
 
 /* Card styling for a unified dark theme */
 .card {
-  background: linear-gradient(to right, #232526, #633438);
+  background: linear-gradient(to right, var(--color1), var(--color2));
+  --color1: #232526;
+  --color2: #633438;
   border: none;
   color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -93,6 +95,24 @@ a {
 
 .card-header {
   background-color: #202020 !important; /* Darker shade for header */
+}
+
+/* orange-blue card template */
+.card-orange-blue {
+  --color1: #2E3968;
+  --color2: #E77B4D;
+  height: 19rem;
+}
+
+.contributor-card-spacer {
+  height: 9rem;
+  width: 100%
+}
+
+.card-black-grey {
+  --color1: #16171B;
+  --color2: #B1AFAF;
+  width: 50%;
 }
 
 /* Dropdown menu styling within navbar */

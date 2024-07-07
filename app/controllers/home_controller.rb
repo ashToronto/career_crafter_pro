@@ -12,4 +12,7 @@ class HomeController < ApplicationController
                                                   cover_letter: [:rich_text_content],
                                                   experiences: [:rich_text_content]).order(updated_at: :desc)
   end
+
+  def about
+  end
 end
