@@ -16,6 +16,12 @@
             %div.form-group.form-check
               = f.check_box :active, class: 'form-check-input'
               = f.label :active, 'Active', class: 'form-check-label'
+              %p.text-muted any user with a de-active theme will be switched to free default theme
+
+            %div.form-group.form-check
+              = f.check_box :is_premium, class: 'form-check-input'
+              = f.label :is_premium, 'Premium', class: 'form-check-label'
+              %p.text-muted Upgrades theme to a premium theme
 
         %div.card-footer
           = f.submit 'Update Theme', class: 'btn btn-primary'

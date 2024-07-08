@@ -58,7 +58,7 @@ module Admin
     end
 
     def theme_params
-      params.require(:theme).permit(:name, :active)
+      params.require(:theme).permit(:name, :active, :is_premium)
     end
   end
 end

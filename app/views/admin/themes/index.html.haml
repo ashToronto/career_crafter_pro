@@ -9,6 +9,7 @@
           %tr
             %th.text-white Name
             %th.text-white Active
+            %th.text-white Pricing
             %th.text-white Usage
             %th.text-white edit
             %th.text-white delete
@@ -17,6 +18,7 @@
             %tr
               %td.text-white= theme.name
               %td.text-white= theme.active ? 'Yes' : 'No'
+              %td.text-white= theme.is_premium ? 'premium' : 'free'
               %td.text-white
                 =theme.download_count
               %td
