@@ -27,6 +27,21 @@ CareerCrafterPro is a web application that allows users to create, customize, an
 9. asdf plugin add ruby
 10. asdf install ruby 3.0.0
 
+##### Mac OS
+1. Have Homebrew installed. If you don't already have it installed, download it here: https://brew.sh/
+2. Install GPG (Gnu Privacy Guard). To install, run `brew install gpg` in your local terminal.
+3. Install RVM (Ruby Version Manager)
+   - Import the GPG Keys:
+     - Run the following into the terminal:
+       - `gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB`
+     - If you run into a "Network Error," run these 2 commands instead:
+       - `curl -sSL https://rvm.io/mpapis.asc | gpg --import -`
+       - `curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -`
+   - Install RVM by running into the terminal: `\curl -sSL https://get.rvm.io | bash -s stable`
+   - To load RVM, run `source ~/.rvm/scripts/rvm`
+4. To install Ruby, run into terminal: `rvm install "ruby-3.0.0"`. Run the command `rvm use 3.0.0 --default` to use 3.0.0 as the default Ruby version.
+5. Running `rvm list` will show all installed Ruby versions, and running `ruby -v` should output 3.0.0 as the Ruby version you are currently using.
+
 #### Setting up Rails 7.1.2.0
 
 ##### Windows OS
@@ -37,6 +52,10 @@ CareerCrafterPro is a web application that allows users to create, customize, an
 4. ensure that the global version of ruby on the current  is the same run: asdf local ruby [my ruby version]
 5. put the correct version of ruby into environment variables: export PATH="$HOME/.asdf/shims:$PATH"
 6. Install rails: Gem install rails
+
+#### Mac OS
+1. Run this command in the terminal to install Rails 7.1.2.0: `gem install rails -v 7.1.2`
+2. To make sure Rails is installed correctly, run: `rails -v`. It should output version 7.1.2.
 
 #### Setting up Postgres
 
@@ -50,7 +69,10 @@ CareerCrafterPro is a web application that allows users to create, customize, an
 7) sudo systemctl enable postgresql
 8) sudo systemctl start postgresql
 
-
+#### Mac OS
+1. Install Postgres through Homebrew by running into terminal: `brew install postgresql`
+2. To verify the installation by connecting to the PostgreSQL server, run: `psql postgres`. To quit, run `\q` into the shell.
+3. When inside the shell, run command `CREATE ROLE myappuserName WITH LOGIN PASSWORD 'myapppassword';` to set up a pgsql role with priviledges.
 
 #### Setting up Development Environment
 
@@ -63,6 +85,16 @@ sudo apt-get install -y libpq-dev
 4. gem install pg -v '1.5.4'
 5. Run `bundle install` to install the project dependencies.
 6. Create an `application.yml` file in the root directory to store database login credentials(Use the `.env.example` file as a reference to set up necessary environment variables for your development environment.)
+
+#### Mac OS
+1. Clone the repository to your local working environment.
+2. Create an `application.yml` file in the root directory.
+   - In this file, add these 2 lines to add our 2 key values, which represent our environment variables:
+```
+POSTGRES_USER: myappuserName
+POSTGRES_PASSWORD: myapppassword
+```
+3. Run `bundle install` to download project dependencies.
 
 ### Database Initialization
 
