@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  context 'Resumes' do
+    it { should have_many(:resumes) }
+  end
+
   # Happy path tests
 
   it 'is a candidate by default' do
@@ -76,7 +80,16 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context 'Resumes' do
-    it { should have_many(:resumes) }
+  # Testing subscriptions
+  context 'with subscriptions' do
+    it { should have_many(:subscriptions) }
+
+    it 'can have subscriptions' do
+      user = create(:user)
+      subscription_plan = create(:subscription_plan)
+      subscription = create(:subscription, user: user, subscription_plan: subscription_plan)
+
+      expect(user.subscriptions).to include(subscription)
+    end
   end
 end
