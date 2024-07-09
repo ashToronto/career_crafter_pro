@@ -54,6 +54,9 @@ gem 'wkhtmltopdf-binary'
 gem 'friendly_id', '~> 5.4.0'
 gem 'figaro'
 
+gem "stripe", "~> 12.1"
+
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
   gem 'factory_bot_rails'
