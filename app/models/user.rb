@@ -8,4 +8,5 @@ class User < ApplicationRecord
   enum role: { candidate: 0, admin: 1 }
 
   has_many :resumes, dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
 end
