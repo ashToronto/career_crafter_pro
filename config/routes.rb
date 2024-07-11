@@ -29,4 +29,8 @@ Rails.application.routes.draw do
       get 'download_pdf'
     end
   end
+
+  resources :subscriptions, only: [:create]
+  get 'subscription_success', to: 'subscriptions#success'
+  get 'subscription_cancel', to: 'subscriptions#cancel'
 end
