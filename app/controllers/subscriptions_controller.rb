@@ -13,10 +13,8 @@ class SubscriptionsController < ApplicationController
       success_url: subscription_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: subscription_cancel_url
     )
-
     # renders the stripe checkout url for js to handle
     render json: { checkout_url: session.url }
-    # redirect_to session.url, allow_other_host: true
   end
 
   def success
@@ -39,6 +37,24 @@ class SubscriptionsController < ApplicationController
   end
 
   def cancel
-    redirect_to pricing_path, alert: 'Subscription cancelled.'
+    @subscription = current_user.subscriptions.active.last
+
+    if @subscription.present?
+      stripe_subscription = Stripe::Subscription.retrieve(@subscription.stripe_subscription_id)
+      Stripe::Subscription.update(@subscription.stripe_subscription_id, cancel_at_period_end: true)
+
+      @subscription.update!(status: :canceled)
+      redirect_to manage_subscription_path, notice: 'Subscription canceled successfully.'
+    else
+      redirect_to manage_subscription_path, alert: 'No active subscription found.'
+    end
+  end
+
+  def manage
+    @subscription = current_user.subscriptions.active.last
+    @next_billing_date = if @subscription.present? && @subscription.stripe_subscription_id
+                           stripe_subscription = Stripe::Subscription.retrieve(@subscription.stripe_subscription_id)
+                           Time.at(stripe_subscription.current_period_end)
+                         end
   end
 end
