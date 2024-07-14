@@ -17,9 +17,9 @@
 
     - if @subscription.active?
       = button_to 'Cancel Subscription', cancel_subscription_path, method: :post, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to cancel your subscription?' }
-    - else
+    - elsif @subscription.canceled? && @subscription.end_date > Time.current
       %p Your subscription is canceled.
-      %p.text-muted Continue using our premium features until your last billing date
+      %p.text-muted Continue using our premium features until your last billing date: #{@subscription.end_date.strftime("%B %d, %Y")}
       %p.text-muted Re-activate your subscription by creating a new one after your final billing date
   - else
     %p You do not have an active subscription.

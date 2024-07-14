@@ -5,5 +5,6 @@ FactoryBot.define do
     subscription_plan
     stripe_subscription_id { "sub_#{SecureRandom.hex(8)}" }
     status { :active }
+    end_date { nil }
   end
 end
