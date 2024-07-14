@@ -21,7 +21,6 @@ class SubscriptionsController < ApplicationController
     session_id = params[:session_id]
     session = Stripe::Checkout::Session.retrieve(session_id)
 
-    customer = Stripe::Customer.retrieve(session.customer)
     subscription = Stripe::Subscription.retrieve(session.subscription)
 
     @user = current_user
@@ -43,16 +42,21 @@ class SubscriptionsController < ApplicationController
       stripe_subscription = Stripe::Subscription.retrieve(@subscription.stripe_subscription_id)
       Stripe::Subscription.update(@subscription.stripe_subscription_id, cancel_at_period_end: true)
 
-      @subscription.update!(status: :canceled)
-      redirect_to manage_subscription_path, notice: 'Subscription canceled successfully.'
+      @subscription.update!(
+        status: :canceled,
+        end_date: Time.at(stripe_subscription.current_period_end)
+      )
+
+      redirect_to manage_subscription_path,
+                  notice: 'Subscription canceled successfully. You can still access premium features until the end of your billing period.'
     else
       redirect_to manage_subscription_path, alert: 'No active subscription found.'
     end
   end
 
   def manage
-    @subscription = current_user.subscriptions.active.last
-    @next_billing_date = if @subscription.present? && @subscription.stripe_subscription_id
+    @subscription = current_user.subscriptions.order(:created_at).last
+    @next_billing_date = if @subscription&.stripe_subscription_id
                            stripe_subscription = Stripe::Subscription.retrieve(@subscription.stripe_subscription_id)
                            Time.at(stripe_subscription.current_period_end)
                          end

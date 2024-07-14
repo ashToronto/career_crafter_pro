@@ -9,4 +9,12 @@ class User < ApplicationRecord
 
   has_many :resumes, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
+
+  def active_subscription?
+    subscriptions.any?(&:active_or_in_grace_period?)
+  end
+
+  def active_candidate_subscription?
+    active_subscription? && subscriptions.any? { |s| s.subscription_plan.customer_type == 'candidate' }
+  end
 end
