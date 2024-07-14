@@ -9,11 +9,11 @@
         %li.nav-item.dropdown
           %a.nav-link.dropdown-toggle{"href" => "#", "id" => "navbarDropdownMenuLink", "role" => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
             %i.bi.bi-bell-fill.me-2
-            Notifications
+            Settings
           .dropdown-menu.dropdown-menu-end.dark-dropdown{"aria-labelledby" => "navbarDropdownMenuLink"}
             = link_to edit_user_registration_path, class: 'dropdown-item' do
               %i.bi.bi-gear-wide-connected.me-2
-              Profile Settings
+              Profile
             - if current_user.admin?
               = link_to admin_root_path, class: 'dropdown-item' do
                 %i.bi.bi-gear-fill.me-2
@@ -21,7 +21,7 @@
             - if current_user.subscriptions.present?
               = link_to manage_subscription_path, class: 'dropdown-item' do
                 %i.bi.bi-gear-fill.me-2
-                Manage Subscriptions
+                Subscriptions
             = form_tag destroy_user_session_path, method: :delete, class: 'dropdown-item' do
               = button_tag type: 'submit', class: 'btn btn-logout' do
                 %i.bi.bi-box-arrow-right.me-2
