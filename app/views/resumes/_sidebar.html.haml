@@ -8,9 +8,14 @@
     %nav#sidebarMenu.col-md.col-lg.d-md-block.sidebar.collapse
       .position-sticky.pt-3
 
-        - unless current_user.subscriptions.present?
-          %turbo-frame#subscription_frame
-            = button_to 'Upgrade to Premium', subscriptions_path, method: :post, class: 'btn btn-primary', data: { controller: "subscription", action: "click->subscription#createCheckoutSession", subscription_target: "button", plan_id: ENV['CANDIDATE_PLAN_ID'] }
+        - # Subscription button is hidden in development mode
+        - if Rails.env.development?
+          - if current_user.active_candidate_subscription?
+            %turbo-frame#subscription_frame
+              %p.text-muted You have Premium Access
+          - else
+            %turbo-frame#subscription_frame
+              = button_to 'Upgrade to Premium', subscriptions_path, method: :post, class: 'btn btn-primary', data: { controller: "subscription", action: "click->subscription#createCheckoutSession", subscription_target: "button", plan_id: ENV['CANDIDATE_PLAN_ID'] }
 
         %ul.nav.flex-column
           %li.nav-item
