@@ -30,7 +30,6 @@ input[type='radio']:checked + label .theme-content {
 .theme-editor {
   cursor: pointer;
   border-radius: 10px;
-  min-height: 1123px; /* actual pdf dimensions */
   width: 794px; /* actual pdf dimensions */
   background-color: #f8f9fa;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
