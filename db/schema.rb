@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_07_170713) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_11_165539) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -130,6 +130,28 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_07_170713) do
     t.index ["resume_id"], name: "index_social_links_on_resume_id"
   end
 
+  create_table "subscription_plans", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "stripe_plan_id", null: false
+    t.integer "customer_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stripe_plan_id"], name: "index_subscription_plans_on_stripe_plan_id", unique: true
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "subscription_plan_id", null: false
+    t.string "stripe_subscription_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "end_date"
+    t.index ["stripe_subscription_id"], name: "index_subscriptions_on_stripe_subscription_id", unique: true
+    t.index ["subscription_plan_id"], name: "index_subscriptions_on_subscription_plan_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "themes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -168,4 +190,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_07_170713) do
   add_foreign_key "resumes", "users"
   add_foreign_key "skills", "resumes"
   add_foreign_key "social_links", "resumes"
+  add_foreign_key "subscriptions", "subscription_plans"
+  add_foreign_key "subscriptions", "users"
 end

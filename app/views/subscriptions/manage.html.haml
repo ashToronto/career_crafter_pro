@@ -1,0 +1,25 @@
+%h1.text-center.p-4 Manage Subscription
+
+.container.text-center
+  - if @subscription.present?
+    %p
+      %strong Plan:
+      = @subscription.subscription_plan.name
+    %p
+      %strong Status:
+      = @subscription.status.capitalize
+    %p
+      %strong Start Date:
+      = @subscription.created_at.strftime("%B %d, %Y")
+    %p
+      %strong Next Billing Date:
+      = @next_billing_date.strftime("%B %d, %Y")
+
+    - if @subscription.active?
+      = button_to 'Cancel Subscription', cancel_subscription_path, method: :post, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to cancel your subscription?' }
+    - elsif @subscription.canceled? && @subscription.end_date > Time.current
+      %p Your subscription is canceled.
+      %p.text-muted Continue using our premium features until your last billing date: #{@subscription.end_date.strftime("%B %d, %Y")}
+      %p.text-muted Re-activate your subscription by creating a new one after your final billing date
+  - else
+    %p You do not have an active subscription.
