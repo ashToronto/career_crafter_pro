@@ -11,36 +11,66 @@
             Back
 
           - if @resume.theme
-            = link_to resume_path(@resume, format: :pdf), target: '_blank', class: 'btn' do
-              %i.bi.bi-eye-fill.me-1
-              Preview
             = link_to download_pdf_resume_path(@resume, format: :pdf), class: 'btn' do
               %i.bi.bi-download.me-1
               Download PDF
 
-      .container
-        = render 'resumes/sections/personal_details', resume: @resume
+      .container.pt-4
+        .accordion#resumeAccordion
+          .accordion-item
+            .accordion-header
+              %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapsePersonalDetails" }, aria_expanded: "true", aria_controls: "collapsePersonalDetails" }
+                Edit Personal Details
+            .accordion-collapse.collapse#collapsePersonalDetails{ aria_labelledby: "headingPersonalDetails", data: { bs_parent: "#resumeAccordion" } }
+              .accordion-body.bg-dark.text-white
+                = render 'resumes/sections/personal_details', resume: @resume
 
-        - if @resume.cover_letter.present?
-          = render 'resumes/sections/cover_letter', resume: @resume
+          - if @resume.cover_letter.present?
+            .accordion-item
+              .accordion-header
+                %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseCoverLetter" }, aria_expanded: "true", aria_controls: "collapseCoverLetter" }
+                  Edit Cover Letter
+              .accordion-collapse.collapse#collapseCoverLetter{ aria_labelledby: "headingCoverLetter", data: { bs_parent: "#resumeAccordion" } }
+                .accordion-body.bg-dark.text-white
+                  = render 'resumes/sections/cover_letter', resume: @resume
 
-        - if @resume.skills.any?
-          %h3.mb-3 Skill Sets
-          = render 'resumes/sections/skills', resume: @resume
+          - if @resume.skills.any?
+            .accordion-item
+              .accordion-header
+                %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseSkills" }, aria_expanded: "true", aria_controls: "collapseSkills" }
+                  Edit Skills
+              .accordion-collapse.collapse#collapseSkills{ aria_labelledby: "headingSkills", data: { bs_parent: "#resumeAccordion" } }
+                .accordion-body.bg-dark.text-white
+                  = render 'resumes/sections/skills', resume: @resume
 
-        %h3.pt-4 Quick Preview
-        .theme-editor.bg-light.rounded-3.d-none.d-md-block
+          - if @resume.educations.any?
+            .accordion-item
+              .accordion-header
+                %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseEducation" }, aria_expanded: "true", aria_controls: "collapseEducation" }
+                  Edit Education
+              .accordion-collapse.collapse#collapseEducation{ aria_labelledby: "headingEducation", data: { bs_parent: "#resumeAccordion" } }
+                .accordion-body.bg-dark.text-white
+                  = render 'resumes/sections/educations', resume: @resume
+
+          - if @resume.experiences.any?
+            .accordion-item
+              .accordion-header
+                %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseWorkExperience" }, aria_expanded: "true", aria_controls: "collapseWorkExperience" }
+                  Edit Work Experience
+              .accordion-collapse.collapse#collapseWorkExperience{ aria_labelledby: "headingWorkExperience", data: { bs_parent: "#resumeAccordion" } }
+                .accordion-body.bg-dark.text-white
+                  = render 'resumes/sections/experiences', resume: @resume
+
+          - if @resume.social_link.present?
+            .accordion-item
+              .accordion-header
+                %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseSocialLinks" }, aria_expanded: "true", aria_controls: "collapseSocialLinks" }
+                  Edit Social Links
+              .accordion-collapse.collapse#collapseSocialLinks{ aria_labelledby: "headingSocialLinks", data: { bs_parent: "#resumeAccordion" } }
+                .accordion-body.bg-dark.text-white
+                  = render 'resumes/sections/social_links', resume: @resume
+
+        .theme-editor-container.position-relative
+          %h3.pt-4 PDF Preview
           - if @resume.theme
             %iframe{ src: resume_path(@resume, format: :pdf), width: "100%", height: "1000px", style: "border: none;" }
-
-        - if @resume.social_link.present?
-          = render 'resumes/sections/social_links', resume: @resume
-
-        - if @resume.educations.any?
-          %h3.mb-3 Education
-          = render 'resumes/sections/educations', resume: @resume
-
-        - if @resume.experiences.any?
-          .col-md-12
-            %h3.mb-3 Work Experience
-            = render 'resumes/sections/experiences', resume: @resume
