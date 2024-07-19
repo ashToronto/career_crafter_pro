@@ -25,23 +25,14 @@
               .accordion-body.bg-dark.text-white
                 = render 'resumes/sections/personal_details', resume: @resume
 
-          - if @resume.cover_letter.present?
+          - if @resume.experiences.any?
             .accordion-item
               .accordion-header
-                %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseCoverLetter" }, aria_expanded: "true", aria_controls: "collapseCoverLetter" }
-                  Edit Cover Letter
-              .accordion-collapse.collapse#collapseCoverLetter{ aria_labelledby: "headingCoverLetter", data: { bs_parent: "#resumeAccordion" } }
+                %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseWorkExperience" }, aria_expanded: "true", aria_controls: "collapseWorkExperience" }
+                  Edit Work Experience
+              .accordion-collapse.collapse#collapseWorkExperience{ aria_labelledby: "headingWorkExperience", data: { bs_parent: "#resumeAccordion" } }
                 .accordion-body.bg-dark.text-white
-                  = render 'resumes/sections/cover_letter', resume: @resume
-
-          - if @resume.skills.any?
-            .accordion-item
-              .accordion-header
-                %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseSkills" }, aria_expanded: "true", aria_controls: "collapseSkills" }
-                  Edit Skills
-              .accordion-collapse.collapse#collapseSkills{ aria_labelledby: "headingSkills", data: { bs_parent: "#resumeAccordion" } }
-                .accordion-body.bg-dark.text-white
-                  = render 'resumes/sections/skills', resume: @resume
+                  = render 'resumes/sections/experiences', resume: @resume
 
           - if @resume.educations.any?
             .accordion-item
@@ -52,14 +43,14 @@
                 .accordion-body.bg-dark.text-white
                   = render 'resumes/sections/educations', resume: @resume
 
-          - if @resume.experiences.any?
+          - if @resume.skills.any?
             .accordion-item
               .accordion-header
-                %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseWorkExperience" }, aria_expanded: "true", aria_controls: "collapseWorkExperience" }
-                  Edit Work Experience
-              .accordion-collapse.collapse#collapseWorkExperience{ aria_labelledby: "headingWorkExperience", data: { bs_parent: "#resumeAccordion" } }
+                %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseSkills" }, aria_expanded: "true", aria_controls: "collapseSkills" }
+                  Edit Skills
+              .accordion-collapse.collapse#collapseSkills{ aria_labelledby: "headingSkills", data: { bs_parent: "#resumeAccordion" } }
                 .accordion-body.bg-dark.text-white
-                  = render 'resumes/sections/experiences', resume: @resume
+                  = render 'resumes/sections/skills', resume: @resume
 
           - if @resume.social_link.present?
             .accordion-item
@@ -69,6 +60,15 @@
               .accordion-collapse.collapse#collapseSocialLinks{ aria_labelledby: "headingSocialLinks", data: { bs_parent: "#resumeAccordion" } }
                 .accordion-body.bg-dark.text-white
                   = render 'resumes/sections/social_links', resume: @resume
+
+          - if @resume.cover_letter.present?
+            .accordion-item
+              .accordion-header
+                %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseCoverLetter" }, aria_expanded: "true", aria_controls: "collapseCoverLetter" }
+                  Edit Summary
+              .accordion-collapse.collapse#collapseCoverLetter{ aria_labelledby: "headingCoverLetter", data: { bs_parent: "#resumeAccordion" } }
+                .accordion-body.bg-dark.text-white
+                  = render 'resumes/sections/cover_letter', resume: @resume
 
           .theme-editor-container.position-relative
             %h3.pt-4 PDF Preview
