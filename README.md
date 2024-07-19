@@ -84,11 +84,11 @@ sudo apt-get install -y libyaml-dev
 sudo apt-get install -y libpq-dev
 4. gem install pg -v '1.5.4'
 5. Run `bundle install` to install the project dependencies.
-6. Create an `application.yml` file in the root directory to store database login credentials(Use the `.env.example` file as a reference to set up necessary environment variables for your development environment.)
+6. Create an `application.yml` file in the `config` directory to store database login credentials(Use the `.env.example` file as a reference to set up necessary environment variables for your development environment.)
 
 #### Mac OS
 1. Clone the repository to your local working environment.
-2. Create an `application.yml` file in the root directory.
+2. Create an `application.yml` file in the `config` directory.
    - In this file, add these 2 lines to add our 2 key values, which represent our environment variables:
 ```
 POSTGRES_USER: myappuserName
