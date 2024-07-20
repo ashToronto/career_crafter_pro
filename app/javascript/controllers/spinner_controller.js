@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["spinner"]
 
   connect() {
-    // console.log("SpinnerController connected")
+    console.log("SpinnerController connected")
     if (this.hasSpinnerTarget) {
       console.log("Spinner target found")
       this.showSpinner()
@@ -14,16 +14,15 @@ export default class extends Controller {
   }
 
   showSpinner() {
-    // console.log("Show spinner")
+    console.log("Show spinner")
     this.spinnerTarget.style.display = "block"
     setTimeout(() => {
       this.hideSpinner()
-    }, 5136) // 5 milliseconds delay
+    }, 5000) // 5000 milliseconds delay
   }
 
   hideSpinner() {
-    // console.log("Hide spinner")
+    console.log("Hide spinner")
     this.spinnerTarget.style.display = "none"
-    this.iframeTarget.style.visibility = "visible"
   }
 }
