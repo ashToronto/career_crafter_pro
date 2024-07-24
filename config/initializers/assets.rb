@@ -11,4 +11,5 @@ Rails.application.config.assets.version = '1.0'
 # folder are already added.
 Rails.application.config.assets.precompile += %w[themes/free_default.css
                                                  themes/free_modern.css
-                                                 themes/premium_classic.css]
+                                                 themes/premium_classic.css
+                                                 themes/premium_modern.css]

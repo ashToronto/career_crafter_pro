@@ -1,0 +1,60 @@
+!!!
+%html
+  %head
+    = wicked_pdf_stylesheet_link_tag 'themes/premium_modern'
+  %body
+    .resume-premium-modern
+      %table
+        %tr
+          %td.left-column
+            .name-section
+              %h4= @resume.first_name + ' ' + @resume.last_name
+            - if @resume.skills.any?
+              .skill-section
+                %h6 Skills
+                %hr
+                %ul.skills-list
+                  - @resume.skills.each do |skill|
+                    %p= skill.name
+
+          %td.right-column
+            %h3= @resume.job_title
+            %span= @resume.email + ' | ' + @resume.phone_number
+            - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
+              - if @resume.social_link[link].present? 
+                =link_to @resume.social_link[link], @resume.social_link[link], target: '_blank
+                
+
+            - if @resume.cover_letter.present?
+              .section.cover-letter
+                %h3 Summary
+                %div= raw @resume.cover_letter.content
+          
+            - if @resume.social_link.present?
+              .section
+                %h3 Social Links
+                %ul.social-links
+                  - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
+                    - if @resume.social_link[link].present?
+                      %li
+                        = link_to @resume.social_link[link], @resume.social_link[link], target: '_blank'
+            
+            - if @resume.experiences.any?
+              .section
+                %h3 Work History
+                - @resume.experiences.each do |experience|
+                  .experience-item
+                    %h4= "#{experience.job_title} at #{experience.company_name}"
+                    %p= raw experience.content
+                    .date-footer
+                      %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
+            
+            - if @resume.educations.any?
+              .section
+                %h3 Education
+                - @resume.educations.each do |education|
+                  .education-item
+                    %h4= education.institution_name
+                    %p.degree= "#{education.degree}: #{education.field_of_study}"
+                    .date-footer
+                      %p= "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"
