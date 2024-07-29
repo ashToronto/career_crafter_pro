@@ -13,7 +13,7 @@
     .container.mt-4
       .row.row-cols-1.row-cols-md-2.g-4
         - @user_resumes.each do |resume|
-          - if resume.theme.name
+          - if resume.theme.name.present?
             .col
               %small.text-muted.text-end.text-white
                 last updated #{resume.updated_at.strftime("%B %d, %Y")}
