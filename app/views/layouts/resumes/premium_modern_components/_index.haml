@@ -1,0 +1,63 @@
+!!!
+%html
+  %head
+    = wicked_pdf_stylesheet_link_tag 'themes/premium_modern'
+  %body
+    .resume-premium-modern
+      %table
+        %tr
+          %td.left-column
+            .name-section
+              %h4= @resume.first_name + ' ' + @resume.last_name
+            %br
+            - if @resume.skills.any?
+              %h6 Skills
+              %hr
+              %ul.skills-list
+                - @resume.skills.each do |skill|
+                  %li= skill.name
+
+          %td.right-column
+            .section-header
+              %h3= @resume.job_title
+            %span= @resume.email + ' | ' + @resume.phone_number
+            - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
+              - if @resume.social_link[link].present? 
+                =link_to @resume.social_link[link], @resume.social_link[link], target: '_blank'
+
+            - if @resume.cover_letter.present?
+              %br
+              .section.cover-letter
+                %h4 Summary
+                %hr
+                %div= raw @resume.cover_letter.content
+                %br
+
+            - if @resume.experiences.any?
+              .section
+                %h4 Work History
+                %hr
+                - @resume.experiences.each do |experience|
+                  .experience-item
+                    .d-flex.mb-0
+                      .flex-grow-1
+                        %h6= "#{experience.job_title}"
+                        .section-header
+                          %h6= "#{experience.company_name}"
+                      %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
+                    %p= raw experience.content
+
+            - if @resume.educations.any?
+              .section
+                %h4 Education
+                %hr
+                - @resume.educations.each do |education|
+                  .education-item
+                    .d-flex.mb-0
+                      .flex-grow-1
+                        %h6= "#{education.degree}: #{education.field_of_study}"
+                        %h6= education.institution_name
+                      .section-header
+                        %p= "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"
+
+                   

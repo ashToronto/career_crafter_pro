@@ -1,0 +1,46 @@
+body, html {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.resume-premium-modern {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #333;
+  word-wrap: break-word;
+}
+
+.resume-premium-modern td {
+  align-content: flex-start;
+}
+
+.resume-premium-modern .left-column {
+  width: 30%;
+  background-color: #17695f;
+  color: white;
+}
+
+.resume-premium-modern .right-column {
+  width: 70%;
+  background-color: #f4f4f4;
+  border-left: 1px solid #ddd;
+  color: black;
+}
+
+.resume-premium-modern .name-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-header {
+  color: #2fc9b7;
+}
