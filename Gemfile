@@ -36,6 +36,7 @@ gem "jbuilder"
 # gem "bcrypt", "~> 3.1.7"
 
 gem 'devise'
+gem 'activerecord-session_store'
 gem 'aws-sdk-ses', '~> 1'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
