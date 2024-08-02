@@ -16,6 +16,7 @@ CareerCrafterPro is a web application that allows users to create, customize, an
 #### Setting up Ruby 3.0.0
 
 ##### Windows OS
+
 1. Install Ruby 3.0.0 from Ruby Installer
 2. Git clone asdf repo to access asdf: git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
 3. Install wsl on machine: wsl --install
@@ -28,6 +29,7 @@ CareerCrafterPro is a web application that allows users to create, customize, an
 10. asdf install ruby 3.0.0
 
 ##### Mac OS
+
 1. Have Homebrew installed. If you don't already have it installed, download it here: https://brew.sh/
 2. Install GPG (Gnu Privacy Guard). To install, run `brew install gpg` in your local terminal.
 3. Install RVM (Ruby Version Manager)
@@ -45,24 +47,29 @@ CareerCrafterPro is a web application that allows users to create, customize, an
 #### Setting up Rails 7.1.2.0
 
 ##### Windows OS
+
 **In the directory in WSL that ruby was installed**
+
 1. sudo apt-get install build-essential libssl-dev libreadline-dev zlib1g-dev libsqlite3-dev
 2. the current version of ruby is not 3.0.0, so run: asdf install ruby 3.0.0
 3. ensure that the global version of ruby on your machine is the same run: asdf global ruby [my ruby version]
-4. ensure that the global version of ruby on the current  is the same run: asdf local ruby [my ruby version]
+4. ensure that the global version of ruby on the current is the same run: asdf local ruby [my ruby version]
 5. put the correct version of ruby into environment variables: export PATH="$HOME/.asdf/shims:$PATH"
 6. Install rails: Gem install rails
 
 #### Mac OS
+
 1. Run this command in the terminal to install Rails 7.1.2.0: `gem install rails -v 7.1.2`
 2. To make sure Rails is installed correctly, run: `rails -v`. It should output version 7.1.2.
 
 #### Setting up Postgres
 
 ##### Windows OS
+
 1. [Download and Install Postgres] (https://www.postgresql.org/download/windows/)
 2. sudo apt list --installed | grep postgresql
 3. sudo apt install postgresql-client
+
 4) sudo apt update
 5) sudo apt install postgresql postgresql-contrib
 6) sudo service postgresql status
@@ -70,6 +77,7 @@ CareerCrafterPro is a web application that allows users to create, customize, an
 8) sudo systemctl start postgresql
 
 #### Mac OS
+
 1. Install Postgres through Homebrew by running into terminal: `brew install postgresql`
 2. To verify the installation by connecting to the PostgreSQL server, run: `psql postgres`. To quit, run `\q` into the shell.
 3. When inside the shell, run command `CREATE ROLE myappuserName WITH LOGIN PASSWORD 'myapppassword';` to set up a pgsql role with priviledges.
@@ -77,23 +85,27 @@ CareerCrafterPro is a web application that allows users to create, customize, an
 #### Setting up Development Environment
 
 ##### Windows OS
+
 1. Clone the repository to your local machine linux environment.
 2. install the necessary yaml libraries: sudo apt-get update
-sudo apt-get install -y libyaml-dev
+   sudo apt-get install -y libyaml-dev
 3. sudo apt-get update
-sudo apt-get install -y libpq-dev
+   sudo apt-get install -y libpq-dev
 4. gem install pg -v '1.5.4'
 5. Run `bundle install` to install the project dependencies.
 6. Create an `application.yml` file in the `config` directory to store database login credentials(Use the `.env.example` file as a reference to set up necessary environment variables for your development environment.)
 
 #### Mac OS
+
 1. Clone the repository to your local working environment.
 2. Create an `application.yml` file in the `config` directory.
    - In this file, add these 2 lines to add our 2 key values, which represent our environment variables:
+
 ```
 POSTGRES_USER: myappuserName
 POSTGRES_PASSWORD: myapppassword
 ```
+
 3. Run `bundle install` to download project dependencies.
 
 ### Database Initialization
@@ -154,6 +166,24 @@ To add new templates and themes:
 - Store CSS for the new themes in `app/assets/stylesheets/themes/[my_pdf_design_name.css]`.
 - Add the theme name to the precompile list in `config/initializers/assets.rb` to ensure it loads correctly with Wicked PDF.
 - Update the database to include the new theme name corresponding to the new `.pdf.haml` file via admin dashboard or rake task in `create_theme_names.rake`.
+
+## Session Management
+
+### Purpose
+
+The application uses ActiveRecord's session store to manage user sessions. Each session is stored in the `sessions` table in the database. This table helps in tracking user sessions, maintaining login states, and providing necessary security features like CSRF protection.
+
+### Manual Cleanup of Sessions
+
+Due to the current limitations (absence of Redis or queuing services), the cleanup of old sessions is performed manually using a rake task. This manual cleanup is essential to ensure that the `sessions` table does not grow indefinitely, which could impact the performance of the application.
+
+#### Running the Cleanup Task
+
+To manually clean up old sessions, you can run the following rake task:
+
+```sh
+rake session:cleanup
+```
 
 ## Questions or Contributions
 
