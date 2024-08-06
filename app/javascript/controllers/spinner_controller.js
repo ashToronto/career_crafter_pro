@@ -24,6 +24,5 @@ export default class extends Controller {
   hideSpinner() {
     // console.log("Hide spinner")
     this.spinnerTarget.style.display = "none"
-    this.iframeTarget.style.visibility = "visible"
   }
 }
