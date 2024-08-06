@@ -30,6 +30,8 @@ RSpec.configure do |config|
   config.fixture_paths = ["#{::Rails.root}/spec/fixtures"]
   config.use_transactional_fixtures = true
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
+
   # config.use_active_record = false # Uncomment this line if you're not using ActiveRecord
 
   # factory bot
