@@ -17,6 +17,10 @@
 
   %body.d-flex.flex-column.min-vh-100
     = render 'layouts/navbar'
+    .d-block.d-md-none.alert.alert-warning.text-center
+      %strong Note:
+      Resume previews are not yet optimized on mobile devices. Please use a desktop for the best experience. Thank you for your patience.
+
     .flex-grow-1
       - if notice
         %p.alert.alert-success= notice

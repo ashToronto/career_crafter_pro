@@ -70,10 +70,14 @@
                 .accordion-body.bg-dark.text-white
                   = render 'resumes/sections/cover_letter', resume: @resume
 
-          .theme-editor-container.position-relative
-            %h3.pt-4 PDF Preview
-            - if @resume.theme
-              .spinner-container.d-flex.justify-content-center.align-items-center
-                .spinner-border.text-danger.spinner-border-lg{ role: "status", data: { controller: "spinner", spinner_target: "spinner" } }
-                  %span.visually-hidden Loading...
-              %iframe{ src: resume_path(@resume, format: :pdf), width: "100%", height: "1000px", style: "border: none;", data: { spinner_target: "iframe" } }
+        .d-none.d-md-block
+          %h3.pt-4 PDF Preview
+          - if @resume.theme
+            .spinner-container.d-flex.justify-content-center.align-items-center
+              .spinner-border.text-danger.spinner-border-lg{ role: "status", data: { controller: "spinner", spinner_target: "spinner" } }
+                %span.visually-hidden Loading...
+            %iframe{ src: resume_path(@resume, format: :pdf), width: "100%", height: "1000px", style: "border: none;", data: { spinner_target: "iframe" } }
+
+        .d-block.d-md-none.mt-4
+          .theme-content
+            = render "layouts/resumes/#{@resume.theme.name}_components/index", resume: @resume

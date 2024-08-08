@@ -37,24 +37,8 @@ input[type='radio']:checked + label .theme-content {
 
 @media (max-width: 1424px) {
   .theme-content {
-    min-height: 600px;  /* Slightly less tall for smaller devices */
-    min-width: 450px;   /* Adjust width for medium screens */
-  }
-}
-
-/* Small screens (e.g., tablets in portrait) */
-@media (max-width: 768px) {
-  .theme-content {
-    min-height: 400px;  /* Suitable for smaller devices */
-    min-width: 300px;   /* Adjust width to fit smaller screens */
-    padding: 10px;      /* Optional: add padding for better readability */
-  }
-}
-
-/* Extra small screens (e.g., mobile devices) */
-@media (max-width: 576px) {
-  .theme-content {
-    display: none;  /* Hide this element on very small devices if not optimal */
-    /* Alternatively, adjust the size and layout appropriately if you choose to display it */
+    min-height: 400px;  /* Slightly less tall for smaller devices */
+    width: 100%;   /* Adjust width for medium screens */
+    font-size: 10px;
   }
 }
