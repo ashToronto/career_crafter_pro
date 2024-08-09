@@ -39,6 +39,5 @@ input[type='radio']:checked + label .theme-content {
   .theme-content {
     min-height: 400px;  /* Slightly less tall for smaller devices */
     width: 100%;   /* Adjust width for medium screens */
-    font-size: 10px;
   }
 }
