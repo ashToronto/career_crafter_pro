@@ -21,6 +21,8 @@ class Resume < ApplicationRecord
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :job_title, presence: true
 
+  validate :resume_limit, on: :create
+
   def slug_candidates
     [
       %i[first_name last_name job_title]
@@ -33,5 +35,11 @@ class Resume < ApplicationRecord
     # Find the default theme by name or any other identifier
     default_theme = Theme.find_by(name: 'free_default')
     self.theme_id = default_theme.id if default_theme.present?
+  end
+
+  def resume_limit
+    return unless user.present? && user.resumes.count >= 3
+
+    errors.add(:base, 'You can only create a maximum of 3 resumes.')
   end
 end

@@ -20,5 +20,24 @@ RSpec.describe Resume, type: :model do
       resume = build(:resume, user: nil)
       expect(resume).not_to be_valid
     end
+
+    context 'when the user has reached the resume limit' do
+      let(:user) { create(:user) }
+
+      it 'does not allow the user to create more than 3 resumes' do
+        create_list(:resume, 3, user: user)
+
+        new_resume = build(:resume, user: user)
+        expect(new_resume).not_to be_valid
+        expect(new_resume.errors[:base]).to include('You can only create a maximum of 3 resumes.')
+      end
+
+      it 'allows the user to create up to 3 resumes' do
+        create_list(:resume, 2, user: user)
+
+        third_resume = build(:resume, user: user)
+        expect(third_resume).to be_valid
+      end
+    end
   end
 end
