@@ -4,8 +4,8 @@ class Resume < ApplicationRecord
 
   belongs_to :user, counter_cache: :resumes_count
   belongs_to :theme, optional: true
-  has_many :experiences, dependent: :destroy
-  has_many :educations, dependent: :destroy
+  has_many :experiences, -> { order(end_date: :desc) }, dependent: :destroy
+  has_many :educations, -> { order(end_date: :desc) }, dependent: :destroy
   has_many :skills, dependent: :destroy
   has_one :cover_letter, dependent: :destroy
   has_one :social_link, dependent: :destroy

@@ -5,6 +5,8 @@ require 'rails_helper'
 RSpec.describe Resume, type: :model do
   describe 'associations' do
     it { should belong_to(:user) }
+    it { should have_many(:experiences).order(end_date: :desc).dependent(:destroy) }
+    it { should have_many(:educations).order(end_date: :desc).dependent(:destroy) }
   end
 
   describe 'validations' do
