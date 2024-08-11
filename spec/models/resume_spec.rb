@@ -42,4 +42,28 @@ RSpec.describe Resume, type: :model do
       end
     end
   end
+
+  describe 'ordering of experiences and educations' do
+    let(:resume) { create(:resume) }
+
+    let!(:experience1) { create(:experience, resume: resume, start_date: 3.years.ago, end_date: 2.years.ago) }
+    let!(:experience2) { create(:experience, resume: resume, start_date: 2.years.ago, end_date: 1.year.ago) }
+    # Currently working status set to true
+    let!(:experience3) do
+      create(:experience, resume: resume, start_date: 1.year.ago, end_date: nil, current_work: true)
+    end
+    let!(:education1) { create(:education, resume: resume, start_date: 3.years.ago, end_date: 3.years.ago) }
+    let!(:education2) { create(:education, resume: resume, start_date: 3.years.ago, end_date: 2.years.ago) }
+    # Currently studying status set to true
+    let!(:education3) do
+      create(:education, resume: resume, start_date: 1.year.ago, end_date: nil, currently_study: true)
+    end
+    it 'orders experiences by end_date in descending order' do
+      expect(resume.experiences).to eq([experience3, experience2, experience1])
+    end
+
+    it 'orders educations by end_date in descending order' do
+      expect(resume.educations).to eq([education3, education2, education1])
+    end
+  end
 end
