@@ -6,13 +6,13 @@
         %h5.mt-2 Career Crafter Pro
         %p.small We are currently beta testing our platform. Thank you for your patience.
         %p.small If you are interested in participating as a beta tester please reach out.
-        .row.justify-content-center.g-0
-          .col
-            = link_to 'About Us', about_path, class: 'btn btn-outline-light mt-3'      
-          .col
-            = link_to 'Home', root_path, class: 'btn btn-outline-light mt-3' 
-          .col
+        .row.justify-content-center
+          .span
+            = link_to 'About Us', about_path, class: 'btn btn-outline-light mt-3'
+
+            = link_to 'Home', root_path, class: 'btn btn-outline-light mt-3'
+
             .btn.btn-outline-light.mt-3
-              %a{ href: 'https://www.linkedin.com/company/career-crafter-pro/', target: '_blank', style: "color: #944848"} 
+              %a{ href: 'https://www.linkedin.com/company/career-crafter-pro/', target: '_blank', style: "color: #944848"}
                 %i.bi.bi-linkedin
                 LinkedIN
