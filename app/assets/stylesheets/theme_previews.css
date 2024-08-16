@@ -19,7 +19,7 @@ input[type='radio']:checked + label .theme-content {
   cursor: pointer;
   border-radius: 10px;
   height: 800px;
-  width: 600px;
+  max-width: 600px;
   background-color: #f8f9fa;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -35,7 +35,7 @@ input[type='radio']:checked + label .theme-content {
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-@media (max-width: 1424px) {
+@media (max-width: 800px) {
   .theme-content {
     min-height: 400px;  /* Slightly less tall for smaller devices */
     width: 100%;   /* Adjust width for medium screens */

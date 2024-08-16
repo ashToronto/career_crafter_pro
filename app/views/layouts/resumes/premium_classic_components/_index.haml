@@ -12,15 +12,10 @@
       %table
         %tr
           %td.left-column
-            - if @resume.educations.any?
-              .section
-                %h3 Education
-                - @resume.educations.each do |education|
-                  .education-item
-                    %h4= education.institution_name
-                    %p.degree= "#{education.degree}: #{education.field_of_study}"
-                    .date-footer
-                      %p= "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"
+            - if @resume.cover_letter.present?
+              .section.cover-letter
+                %h3 Summary
+                %div= raw @resume.cover_letter.content
 
             - if @resume.experiences.any?
               .section
@@ -33,10 +28,15 @@
                       %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
 
           %td.right-column
-            - if @resume.cover_letter.present?
-              .section.cover-letter
-                %h3 Summary
-                %div= raw @resume.cover_letter.content
+            - if @resume.educations.any?
+              .section
+                %h3 Education
+                - @resume.educations.each do |education|
+                  .education-item
+                    %h4= education.institution_name
+                    %p.degree= "#{education.degree}: #{education.field_of_study}"
+                    .date-footer
+                      %p= "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"
 
             .section
               %h3 Skills

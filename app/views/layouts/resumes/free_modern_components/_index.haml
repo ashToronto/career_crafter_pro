@@ -6,13 +6,10 @@
   %header
     %h1= @resume.first_name + ' ' + @resume.last_name
     %h2= @resume.job_title
-
-    %table
-      %tr
-        %td.left-column
-          %em= @resume.email
-        %td.right-column
-          %em= @resume.phone_number
+    %span
+      %em= @resume.email
+      |
+      %em= @resume.phone_number
 
   - if @resume.cover_letter.present?
     %section
