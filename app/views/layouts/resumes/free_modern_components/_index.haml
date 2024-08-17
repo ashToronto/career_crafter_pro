@@ -42,6 +42,7 @@
             %strong= education.institution_name
             %em= "#{education.degree} #{education.field_of_study}"
             .date-footer
+              %p= "#{education.location}"
               %span= "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"
 
   - if @resume.skills.any?
