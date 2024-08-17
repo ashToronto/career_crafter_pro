@@ -24,12 +24,12 @@
             - @resume.educations.each do |education|
               %h4= education.institution_name
               .date-footer
-                %p= "#{education.location}:"
+                %p= "#{education.location}"
                 - if education.currently_study
                   %p= "#{education.start_date.strftime('%b %Y')} - Present"
                 - else
                   %p= "#{education.start_date.strftime('%b %Y')} - #{education.end_date.strftime('%b %Y')}"
-              %p.degree= "#{education.degree}: #{education.field_of_study}"
+                %p.degree= "#{education.degree}: #{education.field_of_study}"
 
         %section
           %h3 Skills
@@ -50,8 +50,15 @@
               .experience-item
                 %h4= "#{experience.job_title} at #{experience.company_name}"
                 .date-footer
-                  %p= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
-                  = raw experience.content
+                  %span= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
+                  - if experience.city.present? || experience.province.present? || experience.country.present?
+                    #{","}
+                    - location_parts = []
+                    - location_parts << experience.city if experience.city.present?
+                    - location_parts << experience.province if experience.province.present?
+                    - location_parts << experience.country if experience.country.present?
+                    = location_parts.join(', ')
+                = raw experience.content
 
         - if @resume.social_link.present?
           %section
