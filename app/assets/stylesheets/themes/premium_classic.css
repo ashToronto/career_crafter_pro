@@ -81,7 +81,7 @@ body, html {
 .resume-premium-classic h4 {
   font-size: 18px;
   color: #333;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   font-style: italic;
   word-wrap: break-word;
 }
@@ -127,4 +127,5 @@ body, html {
   list-style-type: square;
   padding: 2px;
   color: #333;
+  line-height: 1.5;
 }
