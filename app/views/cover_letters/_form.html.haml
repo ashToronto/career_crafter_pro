@@ -1,6 +1,5 @@
 = form_for [@resume, @cover_letter], url: resume_cover_letter_path(@resume) do |f|
   .form-group.mb-3
-    = f.label :content, 'Craft an Executive summary'
     = f.rich_text_area :content, class: 'form-control custom-text-area', placeholder: "- Highlight your career goals and achievments", required: true
 
   = f.submit 'Save Summary', class: 'btn-save'
