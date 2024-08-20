@@ -1,47 +1,52 @@
-- @resume.experiences.each do |experience|
-  .card.mb-3
-    .card-body.hoverable-card-body
-      .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
-        %h2.h5
-          = experience.job_title
-          %span at
-          = experience.company_name
-        .btn-group.mt-3.mt-md-0
-          = link_to edit_resume_experience_path(@resume, experience), class: 'btn btn-outline-primary btn-sm me-2' do
-            = image_tag('pencil.png', alt: 'Edit', width: "20")
-          = form_for([@resume, experience], method: :delete, data: { confirm: 'Are you sure?' }) do
-            = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
-              = image_tag('trashcan.png', alt: 'Delete', width: "20")
-      %h6.card-subtitle.mb-2.text-muted= experience.job_title
-      .row
-        .col-6.col-md-6
-          %p= experience.content
-          - if experience.remote_work
-            %p
-              %i.bi.bi-broadcast-pin.me-2
-              %strong Remote Work
-          %p
-            %i.bi.bi-map-fill.me-2
-            %strong Address:
-            = experience.country
-            = experience.province
-            = experience.city
+- if @resume.experiences.exists?
+  .accordion#experienceAccordion.p-4.m-4
+    - @resume.experiences.each_with_index do |experience, index|
+      - if experience.id.present?
+        .accordion-item.mb-3
+          .accordion-header
+            %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseExperience#{index}" }, aria_expanded: "false", aria_controls: "collapseExperience#{index}" }
+              = "#{experience.job_title} at #{experience.company_name}"
+          .accordion-collapse.collapse{id: "collapseExperience#{index}", aria_labelledby: "headingExperience#{index}", data: { bs_parent: "#experienceAccordion" } }
+            .accordion-body.bg-dark.text-white
+              .card-body.hoverable-card-body
+                .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
+                  %h2.h5
+                    = experience.job_title
+                    %span at
+                    = experience.company_name
+                  .btn-group.mt-3.mt-md-0
+                    = link_to edit_resume_experience_path(@resume, experience), class: 'btn btn-outline-primary btn-sm me-2' do
+                      = image_tag('pencil.png', alt: 'Edit', width: "20")
+                    = form_for([@resume, experience], method: :delete, data: { confirm: 'Are you sure?' }) do
+                      = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
+                        = image_tag('trashcan.png', alt: 'Delete', width: "20")
+                .row
+                  .col-6.col-md-6
+                    %p= experience.content
+                    - if experience.remote_work
+                      %p
+                        %i.bi.bi-broadcast-pin.me-2
+                        %strong Remote Work
+                    %em
+                      = experience.city.present? ? "#{experience.city}, " : ""
+                      = experience.province.present? ? "#{experience.province}, " : ""
+                      = experience.country.present? ? experience.country : ""
 
-          .card-footer
-            .row.text-muted
-              .col-auto
-                %i.bi.bi-calendar2-event-fill
-                %span.ms-2
-                  %strong Start:
-                  = experience.start_date.strftime('%B %d, %Y')
-              - if experience.end_date.present?
-                .col-auto
-                  %i.bi.bi-calendar2-x-fill
-                  %span.ms-2
-                    %strong End:
-                    = experience.end_date.strftime('%B %d, %Y')
-              - if experience.remote_work
-                .col-auto
-                  %i.bi.bi-check2-circle
-                  %span.ms-2
-                    %strong Currently working here
+                .card-footer
+                  .row.text-muted
+                    .col-auto
+                      %i.bi.bi-calendar2-event-fill
+                      %span.ms-2
+                        %strong Start:
+                        = experience.start_date.strftime('%B %d, %Y')
+                    - if experience.end_date.present?
+                      .col-auto
+                        %i.bi.bi-calendar2-x-fill
+                        %span.ms-2
+                          %strong End:
+                          = experience.end_date.strftime('%B %d, %Y')
+                    - if experience.current_work
+                      .col-auto
+                        %i.bi.bi-check2-circle
+                        %span.ms-2
+                          %strong Currently working here

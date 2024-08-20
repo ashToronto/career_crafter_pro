@@ -25,15 +25,6 @@
               .accordion-body.bg-dark.text-white
                 = render 'resumes/sections/personal_details', resume: @resume
 
-          - if @resume.experiences.any?
-            .accordion-item
-              .accordion-header
-                %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseWorkExperience" }, aria_expanded: "true", aria_controls: "collapseWorkExperience" }
-                  Edit Work Experience
-              .accordion-collapse.collapse#collapseWorkExperience{ aria_labelledby: "headingWorkExperience", data: { bs_parent: "#resumeAccordion" } }
-                .accordion-body.bg-dark.text-white
-                  = render 'resumes/sections/experiences', resume: @resume
-
           - if @resume.educations.any?
             .accordion-item
               .accordion-header

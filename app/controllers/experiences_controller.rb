@@ -37,7 +37,7 @@ class ExperiencesController < ApplicationController
   private
 
   def set_resume
-    @resume = current_user.resumes.friendly.find(params[:resume_id])
+    @resume = current_user.resumes.includes(experiences: :rich_text_content).friendly.find(params[:resume_id])
   end
 
   def set_experience
