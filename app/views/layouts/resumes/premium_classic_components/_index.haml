@@ -25,7 +25,8 @@
                     %h4= "#{experience.job_title} at #{experience.company_name}"
                     %p= raw experience.content
                     .date-footer
-                      %span= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
+                      - if experience.end_date.present? || experience.current_work
+                        %span= "#{experience.start_date.strftime('%b %Y')} - #{experience.current_work ? 'Present' : experience.end_date.strftime('%b %Y')}"
                       - if experience.city.present? || experience.province.present? || experience.country.present?
                         #{","}
                         - location_parts = []

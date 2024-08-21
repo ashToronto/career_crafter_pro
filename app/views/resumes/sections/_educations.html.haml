@@ -1,43 +1,52 @@
-- @resume.educations.each do |education|
-  .card.mb-3
-    .card-body.hoverable-card-body
-      .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
-        %h2.h5= education.institution_name
-        .btn-group.mt-3.mt-md-0
-          = link_to edit_resume_education_path(@resume, education), class: 'btn btn-outline-primary btn-sm me-2' do
-            = image_tag('pencil.png', alt: 'Edit', width: "20")
-          = form_for([@resume, education], method: :delete, data: { confirm: 'Are you sure?' }) do
-            = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
-              = image_tag('trashcan.png', alt: 'Delete', width: "20")
-      %h6.card-subtitle.mb-2.text-muted= education.location
-      %p
-        %i.bi.bi-journal-bookmark-fill.me-2
-        = education.field_of_study
-      .row
-        .col-12.col-md-6
-          %p
-            %i.bi.bi-mortarboard-fill.me-2
-            %strong Degree:
-            = education.degree
-          %p
-            %i.bi.bi-map-fill.me-2
-            %strong Province:
-            = education.location
-        .card-footer
-          .row.text-muted
-            .col-auto
-              %i.bi.bi-calendar2-event-fill
-              %span.ms-2
-                %strong Start:
-                = education.start_date.strftime('%B %d, %Y')
-            - if education.end_date.present?
-              .col-auto
-                %i.bi.bi-calendar2-x-fill
-                %span.ms-2
-                  %strong End:
-                  = education.end_date.strftime('%B %d, %Y')
-            - if education.currently_study
-              .col-auto
-                %i.bi.bi-check2-circle
-                %span.ms-2
-                  %strong Currently Studying
+- if @resume.educations.exists?
+  .accordion#educationAccordion.p-4.m-4
+    - @resume.educations.each_with_index do |education, index|
+      - if education.id.present?
+        .accordion-item.mb-3
+          .accordion-header
+            %button.accordion-button.collapsed.bg-secondary.text-white{ type: "button", data: { bs_toggle: "collapse", bs_target: "#collapseEducation#{index}" }, aria_expanded: "false", aria_controls: "collapseEducation#{index}" }
+              = education.institution_name
+          .accordion-collapse.collapse{id: "collapseEducation#{index}", aria_labelledby: "headingEducation#{index}", data: { bs_parent: "#educationAccordion" } }
+            .accordion-body.bg-dark.text-white
+              .card-body.hoverable-card-body
+                .d-flex.flex-column.flex-md-row.justify-content-between.align-items-center.mb-2
+                  %h2.h5= education.institution_name
+                  .btn-group.mt-3.mt-md-0
+                    = link_to edit_resume_education_path(@resume, education), class: 'btn btn-outline-primary btn-sm me-2' do
+                      = image_tag('pencil.png', alt: 'Edit', width: "20")
+                    = form_for([@resume, education], method: :delete, data: { confirm: 'Are you sure?' }) do
+                      = button_tag(type: 'submit', class: 'btn btn-outline-danger btn-sm') do
+                        = image_tag('trashcan.png', alt: 'Delete', width: "20")
+                %h6.card-subtitle.mb-2.text-muted= education.location
+                %p
+                  %i.bi.bi-journal-bookmark-fill.me-2
+                  = education.field_of_study
+                .row
+                  .col-12.col-md-6
+                    %p
+                      %i.bi.bi-mortarboard-fill.me-2
+                      %strong Degree:
+                      = education.degree
+                    %p
+                      %i.bi.bi-map-fill.me-2
+                      %strong Province:
+                      = education.location
+
+                .card-footer
+                  .row.text-muted
+                    .col-auto
+                      %i.bi.bi-calendar2-event-fill
+                      %span.ms-2
+                        %strong Start:
+                        = education.start_date.strftime('%B %d, %Y')
+                    - if education.end_date.present?
+                      .col-auto
+                        %i.bi.bi-calendar2-x-fill
+                        %span.ms-2
+                          %strong End:
+                          = education.end_date.strftime('%B %d, %Y')
+                    - if education.currently_study
+                      .col-auto
+                        %i.bi.bi-check2-circle
+                        %span.ms-2
+                          %strong Currently Studying

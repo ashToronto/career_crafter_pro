@@ -24,7 +24,7 @@
     = f.label :degree, class: 'form-label'
     = f.select :degree, Education.degrees.keys.map { |degree| [degree.titleize, degree] }, {}, class: 'form-select'
 
-  .row.mb-3
+  .row.form-group.mb-3
     .col-md-6
       = f.label :start_date, class: 'form-label'
       = f.date_field :start_date, class: 'form-control'
@@ -32,8 +32,9 @@
       = f.label :end_date, class: 'form-label'
       = f.date_field :end_date, class: 'form-control'
 
-  .form-check.mb-3
-    = f.check_box :currently_study, class: 'form-check-input', id: 'currentStudyCheck'
-    = f.label :currently_study, class: 'form-check-label', for: 'currentStudyCheck', class: 'form-label'
+  .form-group.mb-3
+    .form-check.mb-3
+      = f.check_box :currently_study, class: 'form-check-input', id: 'currentStudyCheck'
+      = f.label :currently_study, class: 'form-check-label', for: 'currentStudyCheck', class: 'form-label'
 
-  = f.submit @education.new_record? ? 'Create Education' : 'Update Education', class: 'btn-save'
+  = f.submit 'Save', class: 'btn-save'
