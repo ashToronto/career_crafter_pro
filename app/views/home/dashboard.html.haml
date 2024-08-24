@@ -18,16 +18,18 @@
               %small.text-muted.text-end.text-white
                 last updated #{resume.updated_at.strftime("%B %d, %Y")}
               .d-none.d-md-block
-                .spinner-container.d-flex.justify-content-center.align-items-center
-                  .spinner-border.text-danger.spinner-border-lg{ role: "status", data: { controller: "spinner", spinner_target: "spinner" } }
-                    %span.visually-hidden Loading...
-                %iframe{src: "#{resume_path(resume, format: :pdf)}#toolbar=0", width: "100%", height: "750px", frameborder: "0", data: { spinner_target: "iframe" }}
+                .iframe-wrapper.position-relative
+
+                  .spinner-container.d-flex.justify-content-center.align-items-center
+                    .spinner-border.text-danger.spinner-border-lg{ role: "status", data: { controller: "spinner", spinner_target: "spinner" } }
+                      %span.visually-hidden Loading...
+                  %iframe{src: "#{resume_path(resume, format: :pdf)}#toolbar=0", width: "100%", height: "750px", frameborder: "0", data: { spinner_target: "iframe" }}
+                  %a.overlay-link{href: resume_path(resume)}
 
               .col-md-4.d-block.d-md-none
                 .theme-content
                   - @resume = resume
                   = render "layouts/resumes/#{resume.theme.name}_components/index", resume: resume
-
 
               .card-footer
                 .btn-group
