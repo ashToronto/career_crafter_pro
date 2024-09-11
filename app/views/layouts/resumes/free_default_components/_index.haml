@@ -31,11 +31,12 @@
                   %p= "#{education.start_date.strftime('%b %Y')} - #{education.end_date.strftime('%b %Y')}"
                 %p.degree= "#{education.degree}: #{education.field_of_study}"
 
-        %section
-          %h3 Skills
-          %ul.skills-list
-            - @resume.skills.each do |skill|
-              %li= skill.name
+        - if @resume.skills.any?
+          %section
+            %h3 Skills
+            %ul.skills-list
+              - @resume.skills.each do |skill|
+                %li= skill.name
 
       %td.right-column
         - if @resume.cover_letter.present?
@@ -61,7 +62,7 @@
                     = location_parts.join(', ')
                 = raw experience.content
 
-        - if @resume.social_link.present?
+        - if @resume.social_link.nil?
           %section
             %h3 Social Links
             %ul.social-links

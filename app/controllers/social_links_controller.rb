@@ -65,8 +65,6 @@ class SocialLinksController < ApplicationController
   def save_individual_links
     results = {}
     social_link_params.each do |key, value|
-      next if value.blank?
-
       @social_link.assign_attributes({ key => value })
       if @social_link.validate!(key)
         @social_link.save(validate: false) # Save without further validation

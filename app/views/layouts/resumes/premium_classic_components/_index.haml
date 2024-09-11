@@ -48,13 +48,14 @@
                       = "#{education.location}, "
                       = "#{education.start_date.strftime('%b %Y')} - #{education.currently_study ? 'Present' : education.end_date.strftime('%b %Y')}"
 
-            .section
-              %h3 Skills
-              %ul.skills-list
-                - @resume.skills.each do |skill|
-                  %li.skill-badge= skill.name
+            - if @resume.skills.any?
+              .section
+                %h3 Skills
+                %ul.skills-list
+                  - @resume.skills.each do |skill|
+                    %li.skill-badge= skill.name
 
-            - if @resume.social_link.present?
+            - if @resume.social_link.nil?
               .section
                 %h3 Social Links
                 %ul.social-links
