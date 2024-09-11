@@ -54,7 +54,7 @@
           %span
             = skill.name
 
-  - if @resume.social_link.present?
+  - if @resume.social_link.nil?
     %section
       %h3 Social Links
       %ul.social-links
