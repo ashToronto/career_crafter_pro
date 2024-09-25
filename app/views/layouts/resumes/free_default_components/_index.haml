@@ -62,7 +62,7 @@
                     = location_parts.join(', ')
                 = raw experience.content
 
-        - if @resume.social_link.nil?
+        - if @resume.social_link.present?
           %section
             %h3 Social Links
             %ul.social-links

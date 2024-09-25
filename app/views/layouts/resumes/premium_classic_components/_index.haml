@@ -55,7 +55,7 @@
                   - @resume.skills.each do |skill|
                     %li.skill-badge= skill.name
 
-            - if @resume.social_link.nil?
+            - if @resume.social_link.present?
               .section
                 %h3 Social Links
                 %ul.social-links
