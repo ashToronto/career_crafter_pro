@@ -56,7 +56,6 @@
 
   - if @resume.social_link.present?
     %section
-      %h3 Social Links
       %ul.social-links
         - %w(linkedin_url github_url twitter_url youtube_url facebook_url instagram_url personal_website_url).each do |link|
           - if @resume.social_link[link].present?
