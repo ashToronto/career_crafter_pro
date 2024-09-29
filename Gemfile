@@ -69,6 +69,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'shoulda-matchers'
   gem 'bullet'
+  gem 'bundler-audit', require: false
 end
 
 group :development do
