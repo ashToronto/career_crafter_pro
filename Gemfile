@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.0.0"
+ruby "3.1.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
@@ -69,6 +69,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'shoulda-matchers'
   gem 'bullet'
+  gem 'bundler-audit', require: false
 end
 
 group :development do
